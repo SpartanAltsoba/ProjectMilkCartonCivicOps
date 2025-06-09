@@ -1,0 +1,388 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap");
+
+/* --------------------------------------------------------------------------
+   GLOBAL RESET & ROOT
+-------------------------------------------------------------------------- */
+:root {
+  --side-panel-text-color: #000000;
+  --primary-bg-color: #f9f9f9;
+  --text-color: #000000;
+  --jet-black: #000000;
+  --accent-blue: rgba(50, 170, 220, 0.5);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", "Orbitron", sans-serif;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+body {
+  background-image: url("/images/background/background1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+     HEADER
+-------------------------------------------------------------------------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1px);
+  padding: 0.75rem 1rem;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 0 2px rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--jet-black);
+}
+
+.page-title {
+  color: var(--jet-black);
+  text-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.5),
+    0 0 6px rgba(0, 0, 0, 0.7);
+  font-weight: 900;
+  font-size: 2.2rem;
+  margin: 1rem auto;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+     GLASS PANEL & BUTTONS
+-------------------------------------------------------------------------- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 0 2px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border: 1px solid var(--jet-black);
+  margin-bottom: 1rem;
+}
+
+.glass-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--jet-black);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--jet-black);
+  font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  transition: box-shadow 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.15),
+    0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.glass-input::placeholder {
+  color: var(--jet-black);
+  opacity: 0.7;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+.glass-button {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--jet-black);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--jet-black);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+     MAIN CONTAINER
+-------------------------------------------------------------------------- */
+.main-container {
+  display: flex;
+  margin: 1rem;
+  gap: 1rem;
+  min-height: calc(100vh - 200px);
+}
+
+/* --------------------------------------------------------------------------
+     SIDE PANELS (LEFT & RIGHT)
+-------------------------------------------------------------------------- */
+.side-panel {
+  width: 300px;
+  min-width: 250px;
+  padding: 1rem;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  color: var(--jet-black);
+  font-weight: 900;
+  border: 2px solid var(--jet-black);
+  background: rgba(111, 195, 235, 0.192);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(1px);
+  border-radius: 12px;
+}
+
+.panel-logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.panel-logo-img {
+  max-height: 120px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+  border-radius: 8px;
+}
+
+.side-panel h2 {
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  color: var(--jet-black);
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.side-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-panel li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  color: var(--jet-black);
+  font-weight: 900;
+}
+
+.h2-link {
+  color: var(--jet-black);
+  font-weight: 900;
+  text-decoration: none;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.h2-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+     CENTER PANEL
+-------------------------------------------------------------------------- */
+.center-panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--jet-black);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(1px);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+     STATS WINDOW
+-------------------------------------------------------------------------- */
+.stats-window {
+  background: rgba(111, 195, 235, 0.192);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  border: 3px solid var(--jet-black);
+  text-align: center;
+}
+
+.stats-window h3 {
+  color: var(--jet-black);
+  font-weight: 900;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 4px rgb(252, 251, 251);
+}
+
+.stats-window p {
+  color: var(--jet-black);
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin: 0.25rem 0;
+}
+
+.stats-window p.total-kids {
+  color: #000;
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  border-top: 3px solid var(--jet-black);
+  padding-top: 0.5rem;
+}
+
+/* Stats Window Colors */
+.stats-window p.total-2025 {
+  color: #000;
+  font-weight: 700;
+}
+.stats-window p.total-2024 {
+  color: #000;
+  font-weight: 700;
+}
+.stats-window p.total-2023 {
+  color: #000;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+     FOOTER
+-------------------------------------------------------------------------- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(111, 195, 235, 0.192);
+  backdrop-filter: blur(1px);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--jet-black);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: auto;
+}
+
+.footer p {
+  color: var(--jet-black);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--jet-black);
+  font-weight: 700;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+     RESPONSIVE DESIGN
+-------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  .side-panel {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .center-panel {
+    min-height: 400px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+     FORM STYLING
+-------------------------------------------------------------------------- */
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Error styling */
+.bg-red-50 {
+  background-color: rgba(254, 242, 242, 0.8);
+  border-color: #fca5a5;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.text-red-700 {
+  color: #b91c1c;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}

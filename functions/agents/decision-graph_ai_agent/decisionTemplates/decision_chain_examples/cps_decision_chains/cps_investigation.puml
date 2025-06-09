@@ -1,0 +1,62 @@
+@startuml CPS Investigation Decision Chain
+
+!theme plain
+skinparam roundcorner 20
+skinparam backgroundColor transparent
+skinparam ArrowColor #FF0000
+skinparam ActivityFontColor #000000
+skinparam ActivityBorderColor #666666
+skinparam ActivityBackgroundColor #FFFFFF
+
+title CPS Investigation Decision Chain
+
+
+
+|Intake|
+start
+:Receive Report;
+:Screen Report;
+if (Meets Criteria?) then (yes)
+  :Assign Priority Level;
+else (no)
+  :Document Decision;
+  stop
+endif
+
+|Investigation|
+:Initial Contact;
+fork
+  :Interview Child;
+fork again
+  :Interview Family;
+fork again
+  :Gather Collateral Info;
+end fork
+:Document Findings;
+
+|Assessment|
+:Safety Assessment;
+:Risk Assessment;
+:Family Assessment;
+
+|Decision|
+if (Safety Threats?) then (yes)
+  if (Safety Plan Possible?) then (yes)
+    :Implement Safety Plan;
+    :In-Home Services;
+  else (no)
+    :Emergency Removal;
+    :Court Petition;
+  endif
+else (no)
+  if (Risk Level High?) then (yes)
+    :Voluntary Services;
+  else (no)
+    :Close Case;
+    :Document Decision;
+  endif
+endif
+
+stop
+
+@enduml

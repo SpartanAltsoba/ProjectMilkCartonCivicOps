@@ -1,0 +1,352 @@
+.
+├── babel.config.js
+├── civic_trace_data_model.json
+├── create-agent-structure.sh
+├── deploy.sh
+├── docs
+│   ├── api
+│   │   └── system_architecture.md
+│   ├── deployment
+│   │   ├── cost-optimization.md
+│   │   ├── deployment-checklist.md
+│   │   ├── deployment-readiness-report.md
+│   │   ├── optimization-plan.md
+│   │   └── optimization-summary.md
+│   └── development
+│       ├── aesthetic_review.md
+│       ├── annotations.xml
+│       ├── BREAKTHROUGH_ANALYSIS.md
+│       ├── context.xml
+│       ├── foia_templates.md
+│       ├── REAL_API_STATUS.md
+│       ├── REAL_DATA_FINDINGS.md
+│       └── ui_logic_review_v2.md
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+├── functions
+│   ├── agents
+│   │   ├── decision-graph
+│   │   │   ├── decisionTemplates
+│   │   │   │   └── decision_chain_examples
+│   │   │   │       ├── cps_decision_chains
+│   │   │   │       │   ├── chain_1_mandated_reports.puml
+│   │   │   │       │   ├── chain_2_fostercare.puml
+│   │   │   │       │   ├── chain_3_runaways.puml
+│   │   │   │       │   ├── chain_4_parent_lack_of_rights.puml
+│   │   │   │       │   ├── chain_5_ngo_contracts.puml
+│   │   │   │       │   ├── chain_6_mental_health.puml
+│   │   │   │       │   ├── chain_7_federal_audits.puml
+│   │   │   │       │   ├── chain_8_state_policy.puml
+│   │   │   │       │   ├── chain_9_statutes_petitions.puml
+│   │   │   │       │   ├── ngo_roles.txt
+│   │   │   │       │   └── the_cps_system.puml
+│   │   │   │       ├── cps_system.md
+│   │   │   │       └── decision_chain_images
+│   │   │   │           ├── photo_2025-04-15_17-58-43.jpg
+│   │   │   │           ├── photo_2025-04-15_18-00-55.jpg
+│   │   │   │           ├── photo_2025-04-15_18-00-56.jpg
+│   │   │   │           ├── photo_2025-04-15_18-00-57.jpg
+│   │   │   │           ├── photo_2025-04-15_18-00-58.jpg
+│   │   │   │           ├── photo_2025-04-15_18-00-59.jpg
+│   │   │   │           ├── photo_2025-04-15_18-01-00.jpg
+│   │   │   │           ├── photo_2025-04-15_18-01-01.jpg
+│   │   │   │           ├── photo_2025-04-15_18-01-02.jpg
+│   │   │   │           └── photo_2025-04-15_18-01-03.jpg
+│   │   │   ├── graphBuilder.ts
+│   │   │   └── runDecisionGraphAgent.ts
+│   │   ├── foia
+│   │   │   ├── foiaTemplates
+│   │   │   │   ├── template_CA.txt
+│   │   │   │   └── template_TX.txt
+│   │   │   ├── foiaUtils.ts
+│   │   │   └── runFoiaAgent.ts
+│   │   ├── index.ts
+│   │   ├── ngo-mapping
+│   │   │   ├── contractorDB.ts
+│   │   │   ├── grantPatterns.ts
+│   │   │   └── runNgoMappingAgent.ts
+│   │   ├── scoring
+│   │   │   ├── riskRules.ts
+│   │   │   ├── runScoringAgent.ts
+│   │   │   └── scoringUtils.ts
+│   │   └── search
+│   │       ├── runLegalSearchAgent.ts
+│   │       ├── runPolicySearchAgent.ts
+│   │       └── runSearchAgent.ts
+│   ├── index.js
+│   ├── index.ts
+│   ├── lib
+│   │   ├── aiAgent.ts
+│   │   ├── env.ts
+│   │   ├── googleSearch.ts
+│   │   ├── index.js.map
+│   │   ├── logger.ts
+│   │   ├── openai.ts
+│   │   └── validation.ts
+│   ├── middleware
+│   │   ├── auth.ts
+│   │   ├── errorHandler.ts
+│   │   └── rateLimiter.ts
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tests
+│   │   ├── agents
+│   │   │   ├── foiaAgent.test.ts
+│   │   │   └── searchAgent.test.ts
+│   │   └── utils
+│   │       └── mockResponses.ts
+│   └── tsconfig.json
+├── jest-axe.d.ts
+├── jest.config.js
+├── jest.setup.js
+├── logs
+│   ├── access
+│   ├── application
+│   │   ├── debug-2025-06-06.log
+│   │   ├── deployment.log
+│   │   ├── error-2025-06-06.log
+│   │   ├── info-2025-06-06.log
+│   │   └── warn-2025-06-06.log
+│   └── audit
+├── move-agent-scripts.sh
+├── next.config.js
+├── next-env.d.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── prisma
+│   ├── migrations
+│   │   ├── 20241219_schema_alignment
+│   │   │   └── migration.sql
+│   │   ├── 20250605221656_add_missing_fields
+│   │   │   └── migration.sql
+│   │   ├── 20250607041402_add_auth_fields_to_user
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   └── schema.prisma
+├── project-tree.txt
+├── public
+│   ├── documents
+│   │   └── templates
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── background
+│   │   │   ├── background1.jpg
+│   │   │   ├── background2.jpg
+│   │   │   ├── PMC_BG2.jpg
+│   │   │   └── PMC_BG.jpg
+│   │   ├── icons
+│   │   └── logos
+│   │       ├── logo1.jpg
+│   │       └── logo2.jpg
+│   └── service-worker.js
+├── README.md
+├── src
+│   ├── components
+│   │   ├── common
+│   │   │   ├── ErrorBoundary.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── LoadingSpinner.tsx
+│   │   │   └── Navbar.tsx
+│   │   ├── forms
+│   │   │   ├── FOIAForm.tsx
+│   │   │   ├── SearchBar.tsx
+│   │   │   └── StateCountySelector.tsx
+│   │   ├── tools
+│   │   │   ├── ExportOptions.tsx
+│   │   │   └── JurisdictionGuide.tsx
+│   │   └── visualization
+│   │       ├── DecisionChainVisualization.tsx
+│   │       ├── RiskScoreDashboard.tsx
+│   │       └── SearchResults.tsx
+│   ├── hooks
+│   │   └── useAuth.tsx
+│   ├── index.ts
+│   ├── lib
+│   │   ├── ai
+│   │   ├── api
+│   │   │   ├── api.ts
+│   │   │   ├── api-wrapper.ts
+│   │   │   ├── baseApiClient.ts
+│   │   │   ├── cache.ts
+│   │   │   ├── courtListenerClientV2.ts
+│   │   │   ├── dataGovClient.ts
+│   │   │   ├── dataGovClientV2.ts
+│   │   │   ├── data.ts
+│   │   │   ├── edgarClient.ts
+│   │   │   ├── enhancedBaseApiClient.ts
+│   │   │   ├── fecClient.ts
+│   │   │   ├── ncmecClient.ts
+│   │   │   ├── optimizedBaseApiClient.ts
+│   │   │   ├── prisma.ts
+│   │   │   ├── riskAlerts.ts
+│   │   │   ├── unifiedApiClient.ts
+│   │   │   └── validation.ts
+│   │   ├── auth
+│   │   │   ├── auth.ts
+│   │   │   └── jwt.ts
+│   │   ├── cache.ts
+│   │   ├── config
+│   │   │   ├── config.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── firebase.ts
+│   │   │   └── index.ts
+│   │   ├── database
+│   │   │   ├── database.ts
+│   │   │   └── prisma.ts
+│   │   ├── errors
+│   │   │   └── AppError.ts
+│   │   ├── errors.ts
+│   │   ├── firebase.ts
+│   │   ├── logger.ts
+│   │   ├── mailer.ts
+│   │   ├── middleware
+│   │   │   ├── auth.ts
+│   │   │   ├── errorMiddleware.ts
+│   │   │   ├── pageAuth.tsx
+│   │   │   ├── performance.ts
+│   │   │   ├── rateLimit.ts
+│   │   │   ├── security.ts
+│   │   │   ├── validateRequest.ts
+│   │   │   └── withAuth.tsx
+│   │   ├── prisma.ts
+│   │   ├── scoring
+│   │   ├── search
+│   │   ├── serviceWorker.ts
+│   │   └── validation.ts
+│   ├── pages
+│   │   ├── api
+│   │   │   ├── auth
+│   │   │   │   ├── login.ts
+│   │   │   │   ├── logout.ts
+│   │   │   │   ├── [...nextauth].ts
+│   │   │   │   ├── refresh.ts
+│   │   │   │   ├── register.ts
+│   │   │   │   ├── signin.tsx
+│   │   │   │   ├── verify-email.ts
+│   │   │   │   └── verify.ts
+│   │   │   ├── data
+│   │   │   │   ├── alerts
+│   │   │   │   │   └── alerts.ts
+│   │   │   │   ├── cps-agency
+│   │   │   │   │   └── cps-agency.ts
+│   │   │   │   ├── decision-chain
+│   │   │   │   │   └── decision-chain.ts
+│   │   │   │   ├── export-options.ts
+│   │   │   │   ├── foia
+│   │   │   │   │   ├── foia-faqs.ts
+│   │   │   │   │   ├── foia-form-fields.ts
+│   │   │   │   │   └── submit.ts
+│   │   │   │   ├── risk-scores
+│   │   │   │   │   └── risk-scores.ts
+│   │   │   │   └── states-counties.ts
+│   │   │   ├── export-options.ts
+│   │   │   ├── foia
+│   │   │   │   └── status
+│   │   │   ├── jurisdiction
+│   │   │   │   ├── details.ts
+│   │   │   │   └── [id].ts
+│   │   │   ├── logging
+│   │   │   │   └── audit.ts
+│   │   │   ├── risk
+│   │   │   │   ├── alerts.ts
+│   │   │   │   └── risk-alerts.ts
+│   │   │   └── search.ts
+│   │   ├── _app.tsx
+│   │   ├── cps-analysis.tsx
+│   │   ├── dashboard
+│   │   ├── dashboard.tsx
+│   │   ├── decision-chain.tsx
+│   │   ├── foia-generator.tsx
+│   │   ├── index.tsx
+│   │   ├── search
+│   │   │   └── search.ts
+│   │   ├── search.tsx
+│   │   └── tools
+│   ├── services
+│   │   ├── cache
+│   │   ├── email
+│   │   └── firebase
+│   │       └── firebase.ts
+│   ├── styles
+│   │   ├── components
+│   │   ├── global_example_page_theme.css
+│   │   ├── globals.css
+│   │   └── themes
+│   ├── types
+│   │   ├── api
+│   │   │   ├── apiResponse.ts
+│   │   │   ├── auth.ts
+│   │   │   └── search.ts
+│   │   ├── components
+│   │   │   └── dashboard.ts
+│   │   ├── database
+│   │   │   ├── backups
+│   │   │   └── sql
+│   │   │       ├── schema.sql
+│   │   │       └── schema_updates.sql
+│   │   ├── external
+│   │   ├── index.ts
+│   │   └── next-auth.d.ts
+│   └── utils
+│       ├── api
+│       │   ├── asyncHandler.ts
+│       │   └── validateMethod.ts
+│       ├── common
+│       ├── data
+│       └── security
+│           └── sanitizeInput.ts
+├── storage.rules
+├── tailwind.config.js
+├── test-app
+│   ├── e2e
+│   │   └── fullWorkflow.test.ts
+│   ├── e2e-integration-test.js
+│   ├── e2e-integration-test.ts
+│   ├── fixtures
+│   ├── integration
+│   │   ├── apiClients.test.ts
+│   │   ├── courtListener.direct.test.ts
+│   │   ├── courtListener.simple.test.ts
+│   │   ├── courtListener.test.ts
+│   │   ├── enhancedApiClient.test.ts
+│   │   ├── realApiIntegration.test.ts
+│   │   └── unifiedApiClient.simple.test.ts
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── real-functionality
+│   │   ├── cse-legal.test.ts
+│   │   ├── decision-chain.test.ts
+│   │   ├── googleSearch.test.ts
+│   │   ├── legal-cse.test.ts
+│   │   ├── mockLogger.ts
+│   │   ├── ncmec-api.test.ts
+│   │   ├── real-datagov-node.test.ts
+│   │   ├── real-datagov.test.ts
+│   │   └── real-search.test.ts
+│   ├── server.ts
+│   ├── shared-test-utils.ts
+│   ├── test-runner.js
+│   ├── test-runner.ts
+│   ├── unified-api-test.js
+│   ├── unified-api-test.ts
+│   └── unit
+│       ├── api
+│       │   ├── clients
+│       │   │   └── validation.test.ts
+│       │   └── risk-scores.test.ts
+│       ├── components
+│       │   ├── Navbar.test.tsx
+│       │   └── ui.navigation.test.tsx
+│       ├── services
+│       │   ├── cpsAgency.test.ts
+│       │   ├── googleSearch.test.ts
+│       │   └── scoringEngine.test.ts
+│       └── utils
+├── test-results
+│   ├── comprehensive-test-report.md
+│   └── reports
+└── tsconfig.json
+
+104 directories, 246 files

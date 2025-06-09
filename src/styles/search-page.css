@@ -1,0 +1,25 @@
+/* Search Page Specific Styles */
+.search-center-panel {
+  display: block !important;
+  flex-grow: 1;
+  border: 2px solid var(--jet-black);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(1px);
+}
+
+.search-content {
+  max-width: 3xl;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 8rem);
+}
+
+.search-form-section {
+  margin-bottom: 1.5rem;
+}
+
+.search-form-section:last-child {
+  margin-bottom: 0;
+}

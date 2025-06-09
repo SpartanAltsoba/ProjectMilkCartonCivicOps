@@ -1,0 +1,252 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ENUMS
+enum ChildDependencyClassification {
+  CHINS
+  CINA
+  FINS
+  PINS
+  DEPENDENCY
+
+  @@map("child_dependency_classification")
+}
+
+enum CpsSystemType {
+  STATE_LED
+  COUNTY_LED
+  HYBRID
+
+  @@map("cps_system_type")
+}
+
+enum OutcomeType {
+  REUNIFICATION
+  ADOPTION
+  AGED_OUT
+  GUARDIANSHIP
+  OTHER
+
+  @@map("outcome_type")
+}
+
+enum ActorRole {
+  MANDATED_REPORTER
+  INTAKE
+  INVESTIGATOR
+  PROSECUTOR
+  JUDGE
+
+  @@map("actor_role")
+}
+
+enum OfficialRole {
+  LEGISLATOR
+  JUDGE
+  GOVERNOR
+  APPOINTEE
+  OTHER
+
+  @@map("official_role")
+}
+
+// CORE MODELS
+model User {
+  id           Int         @id @default(autoincrement())
+  email        String      @unique
+  username     String      @unique
+  name         String?     // Display name
+  passwordHash String      @map("password_hash")
+  role         String      @default("user") // user, admin, moderator
+  emailVerified Boolean    @default(false) @map("email_verified")
+  isActive     Boolean     @default(true) @map("is_active")
+  tokenVersion String      @default("1") @map("token_version") // For invalidating refresh tokens
+  lastLogin    DateTime?   @map("last_login")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+  auditLogs    AuditLog[]
+  foiaRequests FoiaRequest[]
+
+  @@map("users")
+  @@index([email])
+}
+
+model Region {
+  id           Int           @id @default(autoincrement())
+  stateName    String        @map("state_name")
+  stateCode    String        @map("state_code")
+  countyName   String?       @map("county_name")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  riskScores   RiskScore[]
+  foiaRequests FoiaRequest[]
+  decisionChains DecisionChain[]
+
+  @@unique([stateCode, countyName])
+  @@map("regions")
+}
+
+model RiskScore {
+  id        Int      @id @default(autoincrement())
+  regionId  Int      @map("region_id")
+  score     Decimal  @db.Decimal(5,2)
+  details   Json?
+  createdAt DateTime @default(now()) @map("created_at")
+  region    Region   @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  @@map("risk_scores")
+}
+
+model FoiaRequest {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  regionId    Int      @map("region_id")
+  requestType String   @map("request_type")
+  description String   @db.Text
+  status      String   @default("pending")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  region      Region   @relation(fields: [regionId], references: [id], onDelete: SetNull)
+
+  @@map("foia_requests")
+}
+
+model DecisionChain {
+  id        Int      @id @default(autoincrement())
+  regionId  Int      @map("region_id")
+  title     String
+  data      Json     @db.JsonB
+  createdAt DateTime @default(now()) @map("created_at")
+  region    Region   @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  @@map("decision_chains")
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  action    String
+  userId    Int?     @map("user_id")
+  timestamp DateTime @default(now())
+  details   Json?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("audit_logs")
+}
+
+// EXISTING MODELS (PRESERVED)
+model ScoringDimension {
+  id          Int      @id @default(autoincrement()) @map("dimension_id")
+  name        String   @unique @map("dimension_name")
+  description String?
+  weight      Decimal  @default(1.0)
+  enabled     Boolean  @default(true)
+  criteria    ScoringCriteria[]
+  snapshots   ScoringSnapshot[]
+
+  @@map("scoring_dimensions")
+}
+
+model ScoringCriteria {
+  id             Int      @id @default(autoincrement()) @map("criteria_id")
+  dimensionId    Int      @map("dimension_id")
+  name          String   @map("criteria_name")
+  description    String?
+  dataSource    String   @map("data_source")
+  weight        Decimal  @default(1.0)
+  thresholdType String   @map("threshold_type")
+  thresholdValue Json    @map("threshold_value")
+  enabled       Boolean  @default(true)
+  dimension     ScoringDimension @relation(fields: [dimensionId], references: [id])
+  snapshots     ScoringSnapshot[]
+
+  @@map("scoring_criteria")
+}
+
+model ScoringSnapshot {
+  id              Int      @id @default(autoincrement()) @map("snapshot_id")
+  dimensionId     Int      @map("dimension_id")
+  criteriaId      Int?     @map("criteria_id")
+  entityType      String   @map("entity_type")
+  entityId        Int      @map("entity_id")
+  scoreValue      Decimal  @map("score_value")
+  confidenceScore Decimal? @map("confidence_score")
+  rawValue        Json?    @map("raw_value")
+  dataSources     Json?    @map("data_sources")
+  scoreDate       DateTime @default(now()) @map("score_date")
+  schemaVersion   String?  @map("schema_version")
+  dimension       ScoringDimension @relation(fields: [dimensionId], references: [id])
+  criteria        ScoringCriteria? @relation(fields: [criteriaId], references: [id])
+
+  @@map("scoring_snapshots")
+}
+
+model ApiDataCache {
+  id          Int      @id @default(autoincrement()) @map("cache_id")
+  apiName     String   @map("api_name")
+  entityType  String   @map("entity_type")
+  entityId    Int      @map("entity_id")
+  dataKey     String   @map("data_key")
+  dataValue   Json?    @map("data_value")
+  fetchedAt   DateTime @default(now()) @map("fetched_at")
+  expiresAt   DateTime? @map("expires_at")
+  status      String   @default("active")
+
+  @@unique([apiName, entityType, entityId, dataKey], name: "api_name_entity_type_entity_id_data_key")
+  @@map("api_data_cache")
+}
+
+model ApiIntegration {
+  id              Int      @id @default(autoincrement()) @map("api_integration_id")
+  name            String   @map("api_name")
+  description     String?
+  lastAccessed    DateTime? @map("last_accessed")
+  authCredentialsRef String? @map("auth_credentials_ref")
+  apiVersion      String?  @map("api_version")
+  configParams    Json?    @map("config_params")
+  rateLimitRules  Json?    @map("rate_limit_rules")
+  enabled         Boolean  @default(true)
+
+  @@map("api_integrations")
+}
+
+model NGOOrganization {
+  id                Int      @id @default(autoincrement()) @map("ngo_id")
+  legalName         String   @map("legal_name")
+  ein              String?  @unique
+  headquartersState Int?    @map("headquarters_state")
+  websiteUrl       String?  @map("website_url")
+  missionStatement String?  @map("mission_statement")
+
+  @@map("ngo_organizations")
+}
+
+model Data {
+  id          Int      @id @default(autoincrement())
+  title       String
+  summary     String?
+  content     String?
+  state       String?
+  county      String?
+  publishedAt DateTime @default(now()) @map("published_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("data")
+}
+
+model SystemLog {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  level     String   // INFO, WARN, ERROR
+  message   String   @db.Text
+  metadata  String?  @db.Text  // JSON string for additional data
+  
+  @@map("system_logs")
+  @@index([timestamp, level])
+}

@@ -1,0 +1,112 @@
+{
+  "98101": {
+    "state": "Washington",
+    "county": "King County",
+    "city": "Seattle",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Jay Inslee", "office": "Governor", "party": "Democratic" },
+      { "name": "Dow Constantine", "office": "County Executive", "party": "Nonpartisan" }
+    ],
+    "zipCode": "98101"
+  },
+  "90210": {
+    "state": "California",
+    "county": "Los Angeles County",
+    "city": "Beverly Hills",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Gavin Newsom", "office": "Governor", "party": "Democratic" },
+      { "name": "Hilda Solis", "office": "County Supervisor", "party": "Democratic" }
+    ],
+    "zipCode": "90210"
+  },
+  "10001": {
+    "state": "New York",
+    "county": "New York County",
+    "city": "New York",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Kathy Hochul", "office": "Governor", "party": "Democratic" },
+      { "name": "Eric Adams", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "10001"
+  },
+  "33101": {
+    "state": "Florida",
+    "county": "Miami-Dade County",
+    "city": "Miami",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Ron DeSantis", "office": "Governor", "party": "Republican" },
+      { "name": "Daniella Levine Cava", "office": "County Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "33101"
+  },
+  "75201": {
+    "state": "Texas",
+    "county": "Dallas County",
+    "city": "Dallas",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Greg Abbott", "office": "Governor", "party": "Republican" },
+      { "name": "Clay Jenkins", "office": "County Judge", "party": "Democratic" }
+    ],
+    "zipCode": "75201"
+  },
+  "60601": {
+    "state": "Illinois",
+    "county": "Cook County",
+    "city": "Chicago",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "J.B. Pritzker", "office": "Governor", "party": "Democratic" },
+      { "name": "Brandon Johnson", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "60601"
+  },
+  "30301": {
+    "state": "Georgia",
+    "county": "Fulton County",
+    "city": "Atlanta",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Brian Kemp", "office": "Governor", "party": "Republican" },
+      { "name": "Andre Dickens", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "30301"
+  },
+  "85001": {
+    "state": "Arizona",
+    "county": "Maricopa County",
+    "city": "Phoenix",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Katie Hobbs", "office": "Governor", "party": "Democratic" },
+      { "name": "Kate Gallego", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "85001"
+  },
+  "19101": {
+    "state": "Pennsylvania",
+    "county": "Philadelphia County",
+    "city": "Philadelphia",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Josh Shapiro", "office": "Governor", "party": "Democratic" },
+      { "name": "Cherelle Parker", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "19101"
+  },
+  "80201": {
+    "state": "Colorado",
+    "county": "Denver County",
+    "city": "Denver",
+    "levels": ["locality", "administrativeArea1"],
+    "representatives": [
+      { "name": "Jared Polis", "office": "Governor", "party": "Democratic" },
+      { "name": "Mike Johnston", "office": "Mayor", "party": "Democratic" }
+    ],
+    "zipCode": "80201"
+  }
+}

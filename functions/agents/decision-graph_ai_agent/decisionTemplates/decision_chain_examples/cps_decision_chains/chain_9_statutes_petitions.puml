@@ -1,0 +1,29 @@
+@startuml Chain9-CINA-FINS-PINS
+!theme blueprint
+top to bottom direction
+
+title Chain #9: CINA/FINS/PINS Routes → Court Intervention → Service Gaps → Punitive Outcomes
+
+rectangle "LAWS/POLICIES:\n• State-Specific CINA/FINS/PINS Statutes\n• Juvenile Court Procedures\n• Limited Funding for 'Services' vs. Custody" as L9
+rectangle "POTENTIAL MISUSE:\n• 'Needs' designation triggers court involvement\n• Insufficient actual services provided\n• Risk of placing child into custody anyway" as M9
+
+rectangle "INPUT:\nFamily/Child Behavior or Situation\n(Truancy, Incorrigible Behavior,\nNeglect/Abuse Concern)" as C9_Input
+rectangle "DECISION POINT:\nFiling a CINA/FINS/PINS Petition\n(Who: School, Agency, Parent, or Court)" as C9_Decision
+rectangle "ACTION:\nCourt Orders Services or Supervision\nBut Services May Be Underfunded or Unavailable" as C9_Action
+rectangle "OUTCOME:\nChild/Family Deemed 'Noncompliant'\nIf Services Not Accessed or\nBehavior Persists" as C9_Outcome
+rectangle "FAILURE CASCADE:\nPotential Removal, Detention,\nOr Escalation to Delinquency System" as C9_Failure
+rectangle "PMC Intervention:\n1) Ensure Sufficient Services\n2) Monitor for Overuse of Custody\n3) Advocate for True Family Supports" as C9_PMC
+
+L9 --> M9 : "Statutes can be\npunitive if services\nnot actually provided"
+L9 --> C9_Decision : "CINA/FINS/PINS\npaths vary by state"
+M9 --> C9_Action : "Court involvement\nbecomes default"
+
+C9_Input --> C9_Decision
+C9_Decision --> C9_Action
+C9_Action --> C9_Outcome
+C9_Outcome --> C9_Failure
+
+C9_Action -[dashed]-> C9_PMC : "Push for actual\nfunded interventions"
+C9_Outcome -[dashed]-> C9_PMC : "Prevent detention\nwhen services fail"
+
+@enduml

@@ -1,0 +1,61 @@
+@startuml U.S. Child Protective Services (CPS) System
+' Uncomment and modify any skin parameters as desired, e.g.:
+' skinparam rectangle {
+'   BackgroundColor #FFFFFF
+'   BorderColor #000000
+'   FontColor #000000
+'   FontSize 10
+'   RoundCorner 10
+' }
+' skinparam arrow {
+'   Color #FF0000
+'   Thickness 3
+' }
+top to bottom direction
+
+title U.S. Child Protective Services (CPS) System
+
+' Define each major component as a rectangle or box
+rectangle "1) Mandated Reporter Interface\n • Public-facing entry point\n • Generates reports" as M1
+rectangle "2) Intake & Screening Unit\n • Centralized decision node\n • Validates reports" as M2
+rectangle "3) Investigation & Case Initiation\n • Field caseworkers assess conditions\n • Determines removal/safety plan" as M3
+rectangle "4) Legal & Petitioning Division\n • Coordinates with courts\n • Files for removal or services" as M4
+rectangle "5) Family & Dependency Court Interface\n • Custody hearings, TPR decisions\n • Oversees service compliance" as M5
+rectangle "6) Foster Care Operations & Placement\n • Manages foster/group homes\n • Tracks licensing & referrals" as M6
+rectangle "7) Parent Services & Reunification\n • Court-ordered services\n • Oversees visitation & treatment" as M7
+rectangle "8) Mental & Behavioral Health Referral\n • Routes to therapy/clinical networks\n • Public & contracted services" as M8
+rectangle "9) Runaway Recovery & Child Location\n • Locates missing/runaway youth\n • Coordinates with law enforcement" as M9
+rectangle "10) Contractor Oversight & QA\n • Audits external providers\n • Ensures compliance with standards" as M10
+rectangle "11) Data, Reporting & Compliance\n • Maintains data systems\n • Federal reporting (AFCARS, etc.)" as M11
+rectangle "12) Policy & Legislative Affairs\n • Translates new laws into policy\n • Implements mandates, funding" as M12
+
+' Main process flow
+M1 --> M2 : "Suspected abuse/neglect reports"
+M2 --> M3 : "Screened-in cases"
+M3 --> M4 : "Legal intervention needed"
+M4 --> M5 : "Petition / Court filings"
+
+' Court outcomes lead to placement or services
+M5 --> M6 : "Ordered foster placement"
+M5 --> M7 : "Ordered parent services"
+
+' Services and cross-referrals
+M7 --> M8 : "Referral to behavioral health"
+M6 --> M9 : "For missing / runaway youth"
+
+' Oversight & data reporting
+M6 --> M10
+M7 --> M10
+M8 --> M10
+M9 --> M10
+M6 --> M11
+M7 --> M11
+M8 --> M11
+M9 --> M11
+M10 --> M11
+
+' Policy feedback loop
+M11 --> M12
+M12 --> M11 : "New mandates / requirements"
+
+@enduml

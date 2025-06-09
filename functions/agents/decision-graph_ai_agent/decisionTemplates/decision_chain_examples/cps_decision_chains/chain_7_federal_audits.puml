@@ -1,0 +1,29 @@
+@startuml Chain7-Audits
+!theme blueprint
+top to bottom direction
+
+title Chain #7: Missed Federal Audit → Repeated Failures → Systemic Abuse
+
+rectangle "LAWS/POLICIES:\n• Federal & State Audit Requirements\n(ACF, HHS, etc.)\n• Political Influence" as L7
+rectangle "POTENTIAL MISUSE:\n• Audits waived, overlooked\n• No corrective action plan\n• Abuse continues unchallenged" as M7
+
+rectangle "INPUT:\nScheduled Federal/State Audit\n(Child Welfare Agency,\nContractor Operations)" as C7_Input
+rectangle "DECISION POINT:\nAudit Is Missed/Waived\n(Oversight Body or\nPolitical Pressure)" as C7_Decision
+rectangle "ACTION:\nNo Formal Corrective Action\nIncentive:\n'Save Costs & Avoid Public Scrutiny'" as C7_Action
+rectangle "OUTCOME:\nRepeated Failures Unseen,\nNo Accountability" as C7_Outcome
+rectangle "FAILURE CASCADE:\nSystemic Abuse Continues,\nPerpetrators Unchecked" as C7_Failure
+rectangle "PMC Intervention:\n1) Monitor Gov Filings\n2) Push for Independent Audits\n3) Publish Missed Audit Data" as C7_PMC
+
+L7 --> M7 : "Weak enforcement or\npolitical pressure"
+L7 --> C7_Decision : "Mandated audits exist\nbut can be bypassed"
+M7 --> C7_Action : "Inaction by\nresponsible agencies"
+
+C7_Input --> C7_Decision
+C7_Decision --> C7_Action
+C7_Action --> C7_Outcome
+C7_Outcome --> C7_Failure
+
+C7_Action -[dashed]-> C7_PMC : "Expose missed audits"
+C7_Outcome -[dashed]-> C7_PMC : "Public pressure,\nforce accountability"
+
+@enduml

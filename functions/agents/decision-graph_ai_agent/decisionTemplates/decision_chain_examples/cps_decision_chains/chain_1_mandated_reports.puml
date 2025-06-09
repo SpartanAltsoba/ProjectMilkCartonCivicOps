@@ -1,0 +1,30 @@
+@startuml Chain1-MandatedReporters
+!theme blueprint
+top to bottom direction
+
+title Chain #1: Mandated Reporters → CPS Intake → Removal → TPR → Foster Placement
+
+rectangle "LAWS/POLICIES:\n• CAPTA: Mandated Reporting\n• State Mandated-Reporter Laws\n• ASFA: 15/22‐Month TPR Rule\n• Agency Intake Policy" as L1
+rectangle "POTENTIAL MISUSE:\n• Overzealous or 'check-box' removal\n• Court expedites TPR under ASFA\n• 'Better Safe Than Sorry' used by default" as M1
+
+rectangle "INPUT:\nSuspicion of Abuse/Neglect\n(Mandated Reporter:\nTeacher, Doctor, etc.)" as C1_Input
+rectangle "DECISION POINT:\nScreen Report\n(Who: CPS Intake Worker)\nPolicy: 'Mandated to Investigate'\nTrigger: CAPTA Definition" as C1_Decision
+rectangle "ACTION:\nFile Petition for Removal\n(Who: CPS Caseworker & Agency Attorney)\nIncentive: Avoid Liability,\nMeet Federal/State Timelines" as C1_Action
+rectangle "OUTCOME:\nChild Brought Into Family Court\n(Who: Family Court Judge)\nASFA Timelines Loom" as C1_Outcome
+rectangle "FAILURE CASCADE:\nFast-Tracked TPR,\nChild in Foster Care\nRisk of Foster Abuse or Runaway" as C1_Failure
+rectangle "PMC Intervention:\n1) Enhanced Reporter Training\n2) Oversight & Advocacy\n3) Family Preservation Emphasis" as C1_PMC
+
+' Connect the Laws/Policies and Misuse blocks
+L1 --> M1 : "Statutes can be weaponized\nor strictly enforced"
+L1 --> C1_Decision : "CAPTA mandates screening"
+M1 --> C1_Decision : "Default removal approach"
+
+C1_Input --> C1_Decision
+C1_Decision --> C1_Action
+C1_Action --> C1_Outcome
+C1_Outcome --> C1_Failure
+
+C1_Action -[dashed]-> C1_PMC : "Promote Alt. Response"
+C1_Outcome -[dashed]-> C1_PMC : "Push for Family Reunification"
+
+@enduml

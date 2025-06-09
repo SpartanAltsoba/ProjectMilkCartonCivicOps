@@ -1,0 +1,23 @@
+// The 'civic-trace-ops/public/favicon.ico' file should be a valid ICO file.
+// ICO files can't be represented directly in TypeScript or JavaScript text format.
+// You should create a favicon using a tool like Favicon Generator or a graphics editor
+// and then add the generated favicon.ico file to the 'public' directory of your Next.js project.
+
+// Here's a brief guide on how to create and include a favicon in your Next.js project:
+// 1. Create a favicon image using an image editing tool or an online favicon generator.
+// 2. Save the image as 'favicon.ico'.
+// 3. Place the 'favicon.ico' file in the 'public' directory of your Next.js project.
+// 4. The Next.js framework will automatically serve the favicon from this location.
+
+// Here's the file tree structure for reference:
+// .
+// ├── public
+// │   ├── favicon.ico  <-- Place your ICO file here
+// │   └── images  <-- Directory for other public images
+// ├── pages
+// ├── components
+// ├── lib
+// ├── styles
+// ├── ...  <-- Other project files and directories
+
+// Note: Ensure that you optimize the favicon file size, as it impacts the loading time of your application.

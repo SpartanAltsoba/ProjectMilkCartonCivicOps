@@ -1,0 +1,26 @@
+{
+  "name": "civic-trace-ops-test-app",
+  "version": "1.0.0",
+  "description": "Test suite for CIVIC TRACE OPS",
+  "main": "comprehensive-test.ts",
+  "type": "module",
+  "scripts": {
+    "test:api": "node --loader ts-node/esm api-test.ts",
+    "test:ui": "node --loader ts-node/esm ui-firebase-test.ts",
+    "test:comprehensive": "node --loader ts-node/esm comprehensive-test.ts",
+    "test:api-keys": "node --loader ts-node/esm api-key-test.ts",
+    "test:frontend": "node --loader ts-node/esm frontend-test.ts",
+    "test:all": "npm run test:comprehensive"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "puppeteer": "^21.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/puppeteer": "^7.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

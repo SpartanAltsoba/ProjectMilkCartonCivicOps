@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "civic-trace-ops"
+  },
+  "targets": {
+    "civic-trace-ops": {
+      "hosting": {
+        "production": [
+          "civic-trace-ops"
+        ],
+        "staging": [
+          "civic-trace-ops-staging"
+        ]
+      }
+    }
+  }
+}

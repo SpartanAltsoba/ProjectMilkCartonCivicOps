@@ -1,0 +1,29 @@
+@startuml Chain2-FosterBehavior
+!theme blueprint
+top to bottom direction
+
+title Chain #2: Foster Child → Behavioral Outburst → Isolation/Medication → Escape/Trafficking
+
+rectangle "LAWS/POLICIES:\n• Title IV‐E: Foster Care Funding\n• State Group Home Standards\n• Minimal Oversight of Psychotropic Meds" as L2
+rectangle "POTENTIAL MISUSE:\n• Over‐medication to 'control'\n• Funding fosters group-home reliance\n• Limited external audits" as M2
+
+rectangle "INPUT:\nChild Already in Foster System\n(Background: Trauma)" as C2_Input
+rectangle "DECISION POINT:\nBehavioral Incident\n(Child Acting Out)" as C2_Decision
+rectangle "ACTION:\nStaff Use Isolation/Overmedication\nIncentive: 'Liability Control,\nKeep Incidents Quiet'" as C2_Action
+rectangle "OUTCOME:\nChild Feels Unsafe,\nIncreased Vulnerability" as C2_Outcome
+rectangle "FAILURE CASCADE:\nChild Runs Away,\nHigh Risk of Trafficking" as C2_Failure
+rectangle "PMC Intervention:\n1) Staff De-escalation Training\n2) Oversight of Med Usage\n3) Child-Centered Care" as C2_PMC
+
+L2 --> M2 : "Funding structure + minimal audits"
+L2 --> C2_Action : "Group homes can rely on meds"
+M2 --> C2_Action : "Isolation as 'standard procedure'"
+
+C2_Input --> C2_Decision
+C2_Decision --> C2_Action
+C2_Action --> C2_Outcome
+C2_Outcome --> C2_Failure
+
+C2_Action -[dashed]-> C2_PMC : "Trauma-Informed\nPractice Advocacy"
+C2_Outcome -[dashed]-> C2_PMC : "Rapid-Response for\nRunaways"
+
+@enduml

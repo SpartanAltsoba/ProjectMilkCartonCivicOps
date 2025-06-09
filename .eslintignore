@@ -1,0 +1,14 @@
+node_modules
+public
+logs
+docs
+test-app
+*.d.ts
+*.config.js
+*.puml
+*.jpg
+*.jpeg
+*.png
+*.xml
+decision-graph
+

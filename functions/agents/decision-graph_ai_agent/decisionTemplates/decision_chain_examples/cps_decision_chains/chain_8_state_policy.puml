@@ -1,0 +1,29 @@
+@startuml Chain8-PolicyShift
+!theme blueprint
+top to bottom direction
+
+title Chain #8: Policy Change → CPS Mandate Shift → Surge in Removals → Resource Collapse
+
+rectangle "LAWS/POLICIES:\n• New/Amended State Statutes\n• Zero-Tolerance Approaches\n• Federal IV‐E Reimbursement Limits" as L8
+rectangle "POTENTIAL MISUSE:\n• Broad definitions of neglect\n• System Overload w/o extra funding\n• Blanket removals" as M8
+
+rectangle "INPUT:\nNew State Legislation/Policy\n(Zero‐Tolerance on Neglect)" as C8_Input
+rectangle "DECISION POINT:\nCPS Mandate Shift\n(Agency Directors,\nPolicy Implementation)" as C8_Decision
+rectangle "ACTION:\nAggressive Child Removals\n(Strict Compliance,\nAvoid Liability)" as C8_Action
+rectangle "OUTCOME:\nSurge in Foster Placements,\nOverwhelmed System\n(Insufficient Homes/Staff)" as C8_Outcome
+rectangle "FAILURE CASCADE:\nResource Collapse,\nInadequate Care,\nIncreased Abuse Risk" as C8_Failure
+rectangle "PMC Intervention:\n1) Balanced Legislation\n2) Impact Analysis\n3) Educate Lawmakers\n& Public on Consequences" as C8_PMC
+
+L8 --> M8 : "Expanded definitions => mass removals"
+L8 --> C8_Action : "Strict liability fear"
+M8 --> C8_Action : "No nuance => \nRemovals skyrocket"
+
+C8_Input --> C8_Decision
+C8_Decision --> C8_Action
+C8_Action --> C8_Outcome
+C8_Outcome --> C8_Failure
+
+C8_Decision -[dashed]-> C8_PMC : "Mitigate extremes"
+C8_Action -[dashed]-> C8_PMC : "Highlight unintended\nconsequences"
+
+@enduml
