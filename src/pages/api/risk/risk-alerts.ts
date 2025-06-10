@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { withAuth } from "../../middleware/withAuth";
-import { withErrorHandler } from "../../middleware/withErrorHandler";
-import { fetchRiskAlerts } from "../../lib/api/riskAlerts";
-import { RiskAlertParams } from "../../lib/interfaces/RiskAlertParams";
+import { withAuth } from "../../../middleware/withAuth";
+import { withErrorHandler } from "../../../middleware/withErrorHandler";
+import { fetchRiskAlerts, RiskAlertParams } from "../../../lib/api/riskAlerts";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method !== "GET") {
@@ -27,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   try {
     const alerts = await fetchRiskAlerts(params);
     res.status(200).json({ alerts });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Error fetching risk alerts" });
   }
 };

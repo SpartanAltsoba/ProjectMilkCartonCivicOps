@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from "react";
-import ErrorBoundary from "./ErrorBoundary"; // Import ErrorBoundary from the separate file
+import ErrorBoundary from "../ErrorBoundary"; // Import ErrorBoundary from the parent directory
 
 // Define interfaces for type safety
 interface StateCountySelectorProps {

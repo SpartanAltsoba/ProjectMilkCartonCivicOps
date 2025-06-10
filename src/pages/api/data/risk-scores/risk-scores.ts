@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { withApiWrapper } from "../../../lib/api-wrapper";
-import { SimpleCache } from "../../../lib/cache";
-import { fetchRiskScores } from "../../../lib/api";
+import { withApiWrapper } from "../../../../lib/api/api-wrapper";
+import { SimpleCache } from "../../../../lib/cache";
+import { getRiskScores } from "../../../../lib/api";
 
 async function riskScoresHandler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -33,7 +33,7 @@ async function riskScoresHandler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(200).json(cachedData);
     }
 
-    const scores = await fetchRiskScores(state, county);
+    const scores = await getRiskScores({ state, county });
 
     // Cache the results for 30 minutes
     SimpleCache.set(cacheKey, scores, 30 * 60);

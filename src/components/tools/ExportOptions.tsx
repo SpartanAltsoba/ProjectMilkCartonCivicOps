@@ -14,7 +14,7 @@ interface CheckboxProps {
 
 const Checkbox: React.FC<CheckboxProps> = ({ type, checked, onToggle }) => {
   const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    (_e: ChangeEvent<HTMLInputElement>) => {
       onToggle(type);
     },
     [type, onToggle]

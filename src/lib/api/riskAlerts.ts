@@ -164,12 +164,22 @@ export async function getJurisdictionDetails(regionId: number) {
       },
     });
 
+    // Transform the data to match JurisdictionDetails interface
     return {
-      ...region,
-      currentRiskScore: region.riskScores[0]?.score || null,
-      foiaRequestCount: region.foiaRequests.length || 0,
-      recentDecisions,
-      lastUpdated: region.riskScores[0]?.createdAt || null,
+      id: region.id.toString(),
+      name: region.countyName ? `${region.countyName}, ${region.stateName}` : region.stateName,
+      type: (region.countyName ? "county" : "state") as "county" | "state",
+      parentJurisdiction: region.countyName ? region.stateName : undefined,
+      officials: [], // Would need to be populated from a different table
+      agencies: [], // Would need to be populated from a different table
+      riskFactors: [
+        {
+          factor: "Overall Risk",
+          score: region.riskScores[0]?.score?.toNumber() || 0,
+          description: "Composite risk score based on multiple factors",
+        },
+      ],
+      lastUpdated: region.riskScores[0]?.createdAt?.toISOString() || new Date().toISOString(),
     };
   } catch (error) {
     if (error instanceof Error) {

@@ -1,6 +1,11 @@
-import { QueryResult } from './db';
-import { fetchLegalFrameworks, fetchAgencyHierarchies, fetchPerformanceMetrics, fetchFinancialFlows } from './data-fetchers';
-import { generateKeywords, generateFOIARequest } from './utils';
+import { QueryResult } from "./db";
+import {
+  fetchLegalFrameworks,
+  fetchAgencyHierarchies,
+  fetchPerformanceMetrics,
+  fetchFinancialFlows,
+} from "./data-fetchers";
+import { generateKeywords, generateFOIARequest } from "./utils";
 
 interface AnalysisParams {
   location: string;
@@ -34,7 +39,11 @@ export async function performAnalysis(params: AnalysisParams): Promise<AnalysisR
     const financialFlows = await fetchFinancialFlows(params.location);
 
     // Analyze data to produce decision chains
-    const decisionChains = synthesizeDecisionChains(agencyHierarchies, performanceMetrics, financialFlows);
+    const decisionChains = synthesizeDecisionChains(
+      agencyHierarchies,
+      performanceMetrics,
+      financialFlows
+    );
 
     // Log and return results
     const result: AnalysisResult = {
@@ -50,13 +59,17 @@ export async function performAnalysis(params: AnalysisParams): Promise<AnalysisR
 
     return result;
   } catch (error) {
-    console.error('Error during analysis:', error);
-    throw new Error('Analysis failed. Please try again later.');
+    console.error("Error during analysis:", error);
+    throw new Error("Analysis failed. Please try again later.");
   }
 }
 
 // Generate decision chains based on various metrics and hierarchies
-function synthesizeDecisionChains(agencyHierarchies: any, performanceMetrics: any, financialFlows: any): any {
+function synthesizeDecisionChains(
+  agencyHierarchies: any,
+  performanceMetrics: any,
+  financialFlows: any
+): any {
   // Placeholder for decision chain synthesis logic
   return {};
 }
@@ -75,10 +88,10 @@ export async function createFOIARequest(params: AnalysisParams): Promise<void> {
 
     await submitFOIARequest(foiaRequest);
 
-    console.log('FOIA Request submitted successfully.');
+    console.log("FOIA Request submitted successfully.");
   } catch (error) {
-    console.error('Error creating FOIA request:', error);
-    throw new Error('FOIA request creation failed. Please try again later.');
+    console.error("Error creating FOIA request:", error);
+    throw new Error("FOIA request creation failed. Please try again later.");
   }
 }
 

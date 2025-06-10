@@ -1,6 +1,6 @@
 import Config from "../config";
 import axios, { AxiosResponse } from "axios";
-import { CommitteeData, ContributionData } from "../types";
+import { CommitteeData, ContributionData } from "../types/fec";
 
 class FECClient {
   private readonly baseUrl = "https://api.open.fec.gov/v1";

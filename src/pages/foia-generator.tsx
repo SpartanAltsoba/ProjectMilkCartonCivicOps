@@ -3,7 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { FOIARequest } from "../types/foia";
 
-const Navbar = dynamic(() => import("../components/Navbar"));
+const Navbar = dynamic(() => import("../components/common/Navbar"));
 const Footer = dynamic(() => import("../components/Footer"));
 
 const FOIAGeneratorPage: React.FC = () => {

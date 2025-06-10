@@ -1,0 +1,43 @@
+interface Config {
+  OPENAI_API_KEY: string;
+  GOOGLE_SEARCH_API_KEY: string;
+  GOOGLE_CSE_ID: string;
+  FEC_API_KEY: string;
+  EDGAR_API_KEY: string;
+  COURTLISTENER_TOKEN: string;
+  GOOGLE_CIVIC_API_KEY: string;
+  LOBBY_VIEW_API_KEY: string;
+  DATA_GOV_API_KEY: string;
+  JWT_SECRET: string;
+  NCMEC_CLIENT_ID: string;
+  NCMEC_SECRET_KEY: string;
+  FIREBASE_API_KEY: string;
+  FIREBASE_AUTH_DOMAIN: string;
+  FIREBASE_PROJECT_ID: string;
+  FIREBASE_STORAGE_BUCKET: string;
+  FIREBASE_MESSAGING_SENDER_ID: string;
+  FIREBASE_APP_ID: string;
+}
+
+const config: Config = {
+  FEC_API_KEY: process.env.FEC_API_KEY || "",
+  DATA_GOV_API_KEY: process.env.DATA_GOV_API_KEY || "",
+  FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
+  FIREBASE_AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
+  FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
+  FIREBASE_STORAGE_BUCKET: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
+  FIREBASE_MESSAGING_SENDER_ID: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
+  FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
+  JWT_SECRET: process.env.JWT_SECRET || "",
+  NCMEC_CLIENT_ID: process.env.NCMEC_CLIENT_ID || "",
+  NCMEC_SECRET_KEY: process.env.NCMEC_SECRET_KEY || "",
+  OPENAI_API_KEY: "",
+  GOOGLE_SEARCH_API_KEY: "",
+  GOOGLE_CSE_ID: "",
+  EDGAR_API_KEY: "",
+  COURTLISTENER_TOKEN: "",
+  GOOGLE_CIVIC_API_KEY: "",
+  LOBBY_VIEW_API_KEY: "",
+};
+
+export default config;

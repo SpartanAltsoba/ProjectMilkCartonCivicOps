@@ -45,7 +45,7 @@ async function verifyEmailHandler(req: NextApiRequest, res: NextApiResponse) {
     });
 
     // Log the verification
-    await logger.logUserAction("EMAIL_VERIFIED", user.id, {
+    await logger.logUserAction("EMAIL_VERIFIED", user.id.toString(), {
       email: user.email,
     });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Props type definition
 interface LegalFrameworkDetailsProps {

@@ -195,4 +195,48 @@ export class OptimizedBaseApiClient {
     const response = await this.axiosInstance.patch<T>(endpoint, data, config);
     return response.data;
   }
+
+  async cachedRequest<T>(
+    cacheKey: string,
+    requestFn: () => Promise<T>,
+    ttlHours?: number
+  ): Promise<T> {
+    if (this.cache) {
+      const key = { endpoint: cacheKey, params: {}, headers: {} };
+      const cachedData = await this.cache.get<T>(key);
+      if (cachedData) {
+        return cachedData;
+      }
+    }
+
+    const result = await requestFn();
+
+    if (this.cache && result) {
+      const key = { endpoint: cacheKey, params: {}, headers: {} };
+      await this.cache.set(key, result, ttlHours ? ttlHours * 3600000 : undefined);
+    }
+
+    return result;
+  }
+
+  async batchRequests<T>(
+    requests: (() => Promise<T>)[],
+    concurrency: number = 3,
+    delayMs: number = 1000
+  ): Promise<T[]> {
+    const results: T[] = [];
+
+    for (let i = 0; i < requests.length; i += concurrency) {
+      const batch = requests.slice(i, i + concurrency);
+      const batchResults = await Promise.all(batch.map(req => req()));
+      results.push(...batchResults);
+
+      // Add delay between batches (except for the last batch)
+      if (i + concurrency < requests.length) {
+        await new Promise(resolve => setTimeout(resolve, delayMs));
+      }
+    }
+
+    return results;
+  }
 }

@@ -1,5 +1,9 @@
 import { logger } from "../../lib/logger";
-import { performGoogleSearch, validateSearchParams, formatSearchResults } from "../../lib/googleSearch";
+import {
+  performGoogleSearch,
+  validateSearchParams,
+  formatSearchResults,
+} from "../../lib/googleSearch";
 import { SearchResult, SearchConfig, SearchResponse } from "../../types/search";
 
 interface SearchAgentConfig extends SearchConfig {
@@ -40,7 +44,9 @@ export class SearchAgent {
         enhancedQuery = `${query} (${siteFilters})`;
       }
       if (this.config.excludeDomains?.length) {
-        const excludeFilters = this.config.excludeDomains.map(domain => `-site:${domain}`).join(" ");
+        const excludeFilters = this.config.excludeDomains
+          .map(domain => `-site:${domain}`)
+          .join(" ");
         enhancedQuery = `${enhancedQuery} ${excludeFilters}`;
       }
 
@@ -52,7 +58,9 @@ export class SearchAgent {
       // TODO: Enhance SearchResult interface to include date information
       if (this.config.dateRange) {
         // For now, we'll include all results since we don't have date metadata
-        logger.info("Date range filtering requested but not available in current SearchResult format");
+        logger.info(
+          "Date range filtering requested but not available in current SearchResult format"
+        );
       }
 
       // Limit results if configured
@@ -69,10 +77,12 @@ export class SearchAgent {
           filters: {
             domains: this.config.filterDomains,
             excludedDomains: this.config.excludeDomains,
-            dateRange: this.config.dateRange ? {
-              start: this.config.dateRange.start.toISOString(),
-              end: this.config.dateRange.end.toISOString(),
-            } : undefined,
+            dateRange: this.config.dateRange
+              ? {
+                  start: this.config.dateRange.start.toISOString(),
+                  end: this.config.dateRange.end.toISOString(),
+                }
+              : undefined,
           },
         },
       };
@@ -84,7 +94,6 @@ export class SearchAgent {
       });
 
       return response;
-
     } catch (error) {
       logger.error("Search execution failed", {
         query,
@@ -125,7 +134,6 @@ export class SearchAgent {
         default:
           throw new Error(`Unknown target agent: ${targetAgent}`);
       }
-
     } catch (error) {
       logger.error("Failed to share search results", {
         targetAgent,

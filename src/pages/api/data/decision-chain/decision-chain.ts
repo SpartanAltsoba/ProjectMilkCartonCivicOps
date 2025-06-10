@@ -1,23 +1,24 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { withApiWrapper } from "../../../src/lib/api-wrapper";
-import {
-  validateQuery,
-  validateSession,
-  sendErrorResponse,
-  sendSuccessResponse,
-  ValidationError,
-} from "../../../src/lib/validation";
-import {
-  decisionChainSearchSchema,
-  DecisionChainResult,
-} from "../../../src/lib/validation/search-schemas";
-import { cacheKeys, cacheTTL } from "../../../src/lib/cache";
+import { withApiWrapper } from "../../../../lib/api/api-wrapper";
+import { validateRequest, validateSession } from "../../../../lib/validation";
+import { z } from "zod";
 import { Firestore } from "@google-cloud/firestore";
-import { ResearchMonster } from "../../../src/lib/research-monster";
 
 const firestore = new Firestore();
-const researchMonster = new ResearchMonster();
+
+// Define the schema here since we don't have search-schemas
+const decisionChainSearchSchema = z.object({
+  caseId: z.string().min(1),
+});
+
+function sendErrorResponse(res: NextApiResponse, status: number, message: string, details?: any[]) {
+  return res.status(status).json({ error: message, details });
+}
+
+function sendSuccessResponse(res: NextApiResponse, data: any, message?: string) {
+  return res.status(200).json({ data, message });
+}
 
 async function decisionChainHandler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -31,25 +32,24 @@ async function decisionChainHandler(req: NextApiRequest, res: NextApiResponse) {
       return;
     }
 
-    let validatedQuery;
-    try {
-      validatedQuery = validateQuery(decisionChainSearchSchema, req);
-    } catch (error) {
-      if (error instanceof ValidationError) {
-        return sendErrorResponse(res, 400, error.message, error.details);
-      }
-      return sendErrorResponse(res, 400, "Invalid query parameters");
+    const validatedQuery = validateRequest(decisionChainSearchSchema, req.query, res);
+    if (!validatedQuery) {
+      return;
     }
 
-    const caseData = await researchMonster.getCaseData(validatedQuery.caseId);
-    const narrativeResult = await researchMonster.generateNarrative(caseData);
-
+    // Get data from Firestore
     const docRef = firestore.collection("decisionChains").doc(validatedQuery.caseId);
-    await docRef.set(narrativeResult);
+    const doc = await docRef.get();
+
+    if (!doc.exists) {
+      return sendErrorResponse(res, 404, "Decision chain not found");
+    }
+
+    const narrativeResult = doc.data();
 
     console.log("Decision chain analysis completed", {
       caseId: validatedQuery.caseId,
-      timelineEvents: narrativeResult.timeline.length,
+      timelineEvents: narrativeResult?.timeline?.length ?? 0,
       userEmail: session?.user?.email,
       timestamp: new Date().toISOString(),
     });
@@ -71,7 +71,7 @@ export default withApiWrapper(decisionChainHandler, {
   compression: true,
   cache: {
     enabled: true,
-    ttl: cacheTTL.long,
-    keyGenerator: req => cacheKeys.decisionChain(req.query.caseId as string),
+    ttl: 3600, // 1 hour cache
+    keyGenerator: req => `decision-chain:${req.query.caseId}`,
   },
 });

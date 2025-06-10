@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import ErrorBoundary from "../components/ErrorBoundary";
 import "../styles/globals.css";
 import "../styles/civic-intelligence.css";
+import "../styles/search-page.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,9 +1,9 @@
-import React from 'react';
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
-import { fetchFOIARequestDetails } from '../../lib/api';
-import { FOIARequest } from '../../types';
-import Loader from '../common/Loader';
+import React from "react";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { useRouter } from "next/router";
+import { fetchFOIARequestDetails } from "../../lib/api";
+import { FOIARequest } from "../../types";
+import Loader from "../common/Loader";
 
 interface FOIARequestDetailsProps {
   requestDetails: FOIARequest | null;
@@ -27,7 +27,9 @@ const FOIARequestDetails: React.FC<FOIARequestDetailsProps> = ({ requestDetails 
       <div className="bg-white shadow rounded-md p-6 mb-4">
         <h2 className="text-xl font-medium">Request ID: {id}</h2>
         <p className="mt-2 text-gray-700">Status: {requestDetails.status}</p>
-        <p className="mt-2 text-gray-700">Submitted On: {new Date(requestDetails.submissionDate).toLocaleDateString()}</p>
+        <p className="mt-2 text-gray-700">
+          Submitted On: {new Date(requestDetails.submissionDate).toLocaleDateString()}
+        </p>
         <p className="mt-2 text-gray-700">Requester Information: {requestDetails.requesterName}</p>
         <div className="mt-4">
           <h3 className="text-lg font-medium">Request Details:</h3>
@@ -48,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async context => {
   const { params } = context;
   const id = params?.id as string;
 
@@ -73,14 +75,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 async function fetchAllFOIARequestIds(): Promise<Array<{ params: { id: string } }>> {
   // Replace with actual API calls to fetch all FOIA request IDs
   try {
-    const response = await fetch('/api/foia/requests'); // Example endpoint
+    const response = await fetch("/api/foia/requests"); // Example endpoint
     if (!response.ok) {
-      throw new Error('Failed to fetch FOIA request IDs');
+      throw new Error("Failed to fetch FOIA request IDs");
     }
     const data = await response.json();
     return data.requests.map((request: any) => ({ params: { id: request.id.toString() } }));
   } catch (error) {
-    console.error('Error fetching FOIA request IDs:', error);
+    console.error("Error fetching FOIA request IDs:", error);
     return [];
   }
 }

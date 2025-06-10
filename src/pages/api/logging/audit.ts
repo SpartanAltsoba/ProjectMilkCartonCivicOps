@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { Timestamp } from "firebase-admin/firestore";
 import { withErrorHandler } from "../../../middleware/errorHandler";
 import { logger } from "../../../lib/logger";
 import { db } from "../../../lib/firebase";
+import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 
 type AuditLogEntry = {
   userId: string;
@@ -26,10 +26,8 @@ const auditHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<
     switch (req.method) {
       case "GET": {
         try {
-          const logsSnapshot = await db
-            .collection("audit_logs")
-            .where("userId", "==", userId)
-            .get();
+          const logsQuery = query(collection(db, "audit_logs"), where("userId", "==", userId));
+          const logsSnapshot = await getDocs(logsQuery);
           const logs = logsSnapshot.docs.map(doc => doc.data());
           logger.info("Fetched audit logs for user", { userId });
           res.status(200).json(logs);
@@ -54,11 +52,14 @@ const auditHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<
           const newLogEntry: AuditLogEntry = {
             userId,
             action,
-            timestamp: Timestamp.now().toDate().toISOString(),
+            timestamp: new Date().toISOString(), // Use current date since serverTimestamp() is only set after write
             details: details || {},
           };
 
-          await db.collection("audit_logs").add(newLogEntry);
+          await addDoc(collection(db, "audit_logs"), {
+            ...newLogEntry,
+            timestamp: serverTimestamp(), // This will be set on the server
+          });
 
           logger.info("Created audit log entry", { userId, action });
           res.status(201).json({ message: "Log entry created" });

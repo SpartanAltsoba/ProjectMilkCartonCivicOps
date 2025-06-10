@@ -6,7 +6,7 @@ import { RiskScore, Alert, StatesCounties } from "../types/dashboard";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { fetchStatesCounties, fetchRiskScores, fetchAlerts } from "../api/data";
 
-const Navbar = dynamic(() => import("../components/Navbar"));
+const Navbar = dynamic(() => import("../components/common/Navbar"));
 const StateCountySelector = dynamic(() => import("../components/StateCountySelector"));
 const RiskScoreDashboard = dynamic(() => import("../components/RiskScoreDashboard"));
 const Footer = dynamic(() => import("../components/Footer"));

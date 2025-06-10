@@ -1,14 +1,13 @@
-import { logger } from "./utils/logger";
+import { logger } from "../../../src/lib/logger";
 import { InputValidationError, validateEnvironment } from "./utils/errorHandling";
 import { normalizeLocation, type NormalizedLocation } from "./utils/dataNormalization";
 import { determineLegalFramework, type LegalFrameworkType } from "./utils/legalFramework";
-import { getAllStakeholders } from "./utils/stakeholderIdentification";
-import { generatePUMLDiagram } from "./utils/pumlGenerator";
 import {
-  sourceCitations,
-  generateCitationReport,
-  addMultipleSources,
-} from "./utils/sourceCitations";
+  identifyStakeholders,
+  type StakeholderSearchResult,
+} from "./utils/stakeholderIdentification";
+import { PumlGenerator, type DiagramData } from "./utils/pumlGenerator";
+import { globalSourceCitations, type CitationMetadata } from "./utils/sourceCitations";
 
 /**
  * Input interface for the graph builder
@@ -41,11 +40,7 @@ export interface DecisionGraph {
     confidence: number;
     sources: string[];
   };
-  stakeholders: {
-    agencies: Stakeholder[];
-    contractors: Stakeholder[];
-    representatives: Stakeholder[];
-  };
+  stakeholders: StakeholderSearchResult;
   pumlDiagram: string;
   citations: {
     formatted: string;
@@ -64,6 +59,11 @@ export interface DecisionGraph {
  */
 export class DecisionGraphBuilder {
   private startTime: number = 0;
+  private pumlGenerator: PumlGenerator;
+
+  constructor() {
+    this.pumlGenerator = new PumlGenerator();
+  }
 
   /**
    * Validates the environment and input parameters
@@ -98,7 +98,7 @@ export class DecisionGraphBuilder {
       this.validateInput(input);
 
       // Clear previous citations
-      sourceCitations.clear();
+      globalSourceCitations.clear();
 
       logger.info("Starting decision graph build", {
         location: input.location,
@@ -114,54 +114,98 @@ export class DecisionGraphBuilder {
       const legalFrameworkResult = await determineLegalFramework(location);
 
       // Add legal framework sources to citations
-      addMultipleSources(
-        legalFrameworkResult.sources.map(url => ({ url })),
-        "legal"
-      );
+      legalFrameworkResult.sources.forEach(url => {
+        globalSourceCitations.addSource({
+          url,
+          category: "legal",
+          accessDate: new Date().toISOString(),
+        });
+      });
 
       // Step 3: Identify stakeholders
       logger.debug("Step 3: Identifying stakeholders");
-      const stakeholders = await getAllStakeholders(location, input.scenario);
+      const stakeholders = await identifyStakeholders(location, input.scenario);
 
       // Add stakeholder sources to citations
-      addMultipleSources(
-        stakeholders.agencies.map(s => ({ url: s.source, title: s.name })),
-        "agency"
-      );
-      addMultipleSources(
-        stakeholders.contractors.map(s => ({ url: s.source, title: s.name })),
-        "contractor"
-      );
-      addMultipleSources(
-        stakeholders.representatives.map(s => ({ url: s.source, title: s.name })),
-        "representative"
-      );
+      stakeholders.agencies.forEach(s => {
+        globalSourceCitations.addSource({
+          url: s.source,
+          title: s.name,
+          category: "agency",
+          accessDate: new Date().toISOString(),
+        });
+      });
+
+      stakeholders.contractors.forEach(s => {
+        globalSourceCitations.addSource({
+          url: s.source,
+          title: s.name,
+          category: "contractor",
+          accessDate: new Date().toISOString(),
+        });
+      });
+
+      stakeholders.representatives.forEach(s => {
+        globalSourceCitations.addSource({
+          url: s.source,
+          title: s.name,
+          category: "representative",
+          accessDate: new Date().toISOString(),
+        });
+      });
 
       // Step 4: Generate PUML diagram
       logger.debug("Step 4: Generating PUML diagram");
-      const pumlDiagram = await generatePUMLDiagram(
-        input.scenario,
-        location,
-        stakeholders,
-        legalFrameworkResult.type
-      );
+      const diagramData: DiagramData = {
+        agencies: stakeholders.agencies,
+        contractors: stakeholders.contractors,
+        representatives: stakeholders.representatives,
+        scenario: input.scenario,
+      };
+      const pumlDiagram = await this.pumlGenerator.generateDiagram(diagramData);
 
       // Step 5: Generate citation report
       logger.debug("Step 5: Generating citation report");
-      const citationReport = generateCitationReport();
+      const citationStats = globalSourceCitations.getStatistics();
+      const formattedCitations = globalSourceCitations.generateFormattedCitations();
 
       const processingTimeMs = Date.now() - this.startTime;
 
       const graph: DecisionGraph = {
         location,
-        legalFramework: legalFrameworkResult,
+        legalFramework: {
+          ...legalFrameworkResult,
+          confidence: 0.85, // Default confidence level
+        },
         stakeholders,
         pumlDiagram,
-        citations: citationReport,
+        citations: {
+          formatted: formattedCitations,
+          counts: citationStats,
+          sources: Object.entries(globalSourceCitations.getSourcesByCategory()).reduce(
+            (acc, [category, urls]) => {
+              acc[category] = urls.map((url: string) => {
+                const source = globalSourceCitations
+                  .getDetailedCitations()
+                  .find(s => s.url === url);
+                return {
+                  url,
+                  title: source?.title,
+                  retrievedAt: source?.accessDate || new Date().toISOString(),
+                };
+              });
+              return acc;
+            },
+            {} as Record<string, Array<{ url: string; title?: string; retrievedAt: string }>>
+          ),
+        },
         metadata: {
           generatedAt: new Date().toISOString(),
           processingTimeMs,
-          totalSources: Object.values(citationReport.counts).reduce((sum, count) => sum + count, 0),
+          totalSources: Object.values(citationStats).reduce(
+            (sum: number, count: number) => sum + count,
+            0
+          ),
         },
       };
 
@@ -200,7 +244,7 @@ export class DecisionGraphBuilder {
 
     try {
       this.validateInput(input);
-      sourceCitations.clear();
+      globalSourceCitations.clear();
 
       logger.info("Starting simplified decision graph build", {
         location: input.location,
@@ -214,7 +258,10 @@ export class DecisionGraphBuilder {
 
       return {
         location,
-        legalFramework: legalFrameworkResult,
+        legalFramework: {
+          ...legalFrameworkResult,
+          confidence: 0.85, // Default confidence level
+        },
         metadata: {
           generatedAt: new Date().toISOString(),
           processingTimeMs,

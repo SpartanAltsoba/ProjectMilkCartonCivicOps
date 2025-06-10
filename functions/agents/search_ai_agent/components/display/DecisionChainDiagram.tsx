@@ -1,13 +1,13 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { Diagram, Node } from 'react-hold-diagram'; // Hypothetical library for rendering diagrams
-import '../styles/DecisionChainDiagram.css'; // Local stylesheet for custom styles
+import React from "react";
+import { useEffect, useState } from "react";
+import { Diagram, Node } from "react-hold-diagram"; // Hypothetical library for rendering diagrams
+import "../styles/DecisionChainDiagram.css"; // Local stylesheet for custom styles
 
 interface DecisionChainNode {
   id: string;
   label: string;
   details: string;
-  type: 'decision' | 'action' | 'outcome';
+  type: "decision" | "action" | "outcome";
 }
 
 interface DecisionChainLink {
@@ -32,18 +32,18 @@ const DecisionChainDiagram: React.FC<DecisionChainDiagramProps> = ({ diagramData
         const formattedNodes = diagramData.nodes.map(node => ({
           id: node.id,
           label: node.label,
-          className: `node-${node.type}`
+          className: `node-${node.type}`,
         }));
 
         const formattedLinks = diagramData.links.map(link => ({
           source: link.source,
-          target: link.target
+          target: link.target,
         }));
 
         setNodes(formattedNodes);
         setLinks(formattedLinks);
       } catch (error) {
-        console.error('Error formatting diagram data:', error);
+        console.error("Error formatting diagram data:", error);
       }
     }
   }, [diagramData]);

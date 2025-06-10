@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 import { getSession } from "next-auth/react";
-import { logger } from "../lib/logger";
+import { logger } from "../logger";
 
 const withAuth = (handler: NextApiHandler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {

@@ -1,11 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import type { NextApiRequest, NextApiResponse } from "next";
-import riskScoresHandler from "../pages/api/data/risk-scores";
-import searchHandler from "../pages/api/data/search";
-import loginHandler from "../pages/api/auth/login";
-import registerHandler from "../pages/api/auth/register";
-import auditHandler from "../pages/api/logging/audit";
+import riskScoresHandler from "../src/pages/api/data/risk-scores/risk-scores";
+import searchHandler from "../src/pages/api/search";
+import loginHandler from "../src/pages/api/auth/login";
+import registerHandler from "../src/pages/api/auth/register";
+import auditHandler from "../src/pages/api/logging/audit";
 
 const app = express();
 app.use(bodyParser.json());

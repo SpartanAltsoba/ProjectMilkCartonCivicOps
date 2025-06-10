@@ -1,5 +1,5 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React from "react";
+import dynamic from "next/dynamic";
 
 type ResultsDisplayProps = {
   data: {
@@ -12,26 +12,18 @@ type ResultsDisplayProps = {
 };
 
 // Dynamically load the Chart component as it might not be needed every time
-const PerformanceMetricsChart = dynamic(
-  () => import('./PerformanceMetricsChart'),
-  {
-    ssr: false, // Disable server-side rendering for the chart
-    loading: () => <p>Loading charts...</p>,
-  }
-);
+const PerformanceMetricsChart = dynamic(() => import("./PerformanceMetricsChart"), {
+  ssr: false, // Disable server-side rendering for the chart
+  loading: () => <p>Loading charts...</p>,
+});
 
 const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ data }) => {
   if (!data) {
     return <div className="text-center text-gray-500">No results available.</div>;
   }
 
-  const {
-    legalFrameworks,
-    agencyHierarchy,
-    performanceMetrics,
-    fundingTraces,
-    decisionChains,
-  } = data;
+  const { legalFrameworks, agencyHierarchy, performanceMetrics, fundingTraces, decisionChains } =
+    data;
 
   return (
     <div className="p-4 space-y-8">

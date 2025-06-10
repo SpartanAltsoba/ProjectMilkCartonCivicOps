@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../../lib/prisma";
-import { withErrorHandler } from "../../../lib/middleware/errorMiddleware";
-import { ValidationError } from "../../../lib/errors";
-import { logger } from "../../../lib/logger";
-import { JWTService } from "../../../lib/auth/jwt";
+import { prisma } from "../../../../lib/prisma";
+import { withErrorHandler } from "../../../../lib/middleware/errorMiddleware";
+import { ValidationError } from "../../../../lib/errors";
+import { logger } from "../../../../lib/logger";
+import { JWTService } from "../../../../lib/auth/jwt";
 
 interface FOIARequestBody {
   regionId: number;
@@ -56,7 +56,7 @@ async function submitFOIAHandler(req: NextApiRequest, res: NextApiResponse) {
   });
 
   // Log the FOIA request creation
-  await logger.logUserAction("FOIA_REQUEST_CREATED", decoded.userId, {
+  await logger.logUserAction("FOIA_REQUEST_CREATED", decoded.userId.toString(), {
     foiaRequestId: foiaRequest.id,
     regionId,
     requestType,

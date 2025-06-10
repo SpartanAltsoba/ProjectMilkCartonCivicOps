@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { logger } from "../lib/logger";
+import { logger } from "../../lib/logger";
 
 type AsyncApiHandler = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 

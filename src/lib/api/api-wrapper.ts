@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { securityMiddleware } from "../middleware/security";
-import { SimpleCache } from "./cache";
+import { SimpleCache } from "../cache";
 
 interface CacheOptions {
   enabled: boolean;

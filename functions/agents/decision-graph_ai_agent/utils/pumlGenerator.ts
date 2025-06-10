@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import * as path from "path";
-import { logger } from "functions/lib/logger";
+import { logger } from "../../../lib/logger";
 import { Agency, Contractor, Representative } from "./stakeholderIdentification";
 
 interface PumlGeneratorConfig {

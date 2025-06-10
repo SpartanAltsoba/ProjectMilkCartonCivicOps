@@ -27,7 +27,7 @@ export class LegalSearchAgent extends SearchAgent {
       "supremecourt.gov",
       "uscourts.gov",
       "childwelfare.gov",
-      "acf.hhs.gov"
+      "acf.hhs.gov",
     ];
 
     super({
@@ -44,7 +44,7 @@ export class LegalSearchAgent extends SearchAgent {
   async executeLegalSearch(query: string): Promise<SearchResponse> {
     try {
       // Enhance query with legal-specific terms
-      let enhancedQuery = this.enhanceLegalQuery(query);
+      const enhancedQuery = this.enhanceLegalQuery(query);
 
       logger.info("Executing legal search", {
         originalQuery: query,
@@ -73,7 +73,6 @@ export class LegalSearchAgent extends SearchAgent {
           },
         },
       };
-
     } catch (error) {
       logger.error("Legal search execution failed", {
         query,
@@ -100,7 +99,7 @@ export class LegalSearchAgent extends SearchAgent {
 
     // Execute multiple searches and combine results
     const allResults: SearchResult[] = [];
-    
+
     for (const query of queries) {
       try {
         const response = await this.executeLegalSearch(query);
@@ -151,7 +150,6 @@ export class LegalSearchAgent extends SearchAgent {
 
       // TODO: Implement actual sharing mechanism with decision graph agent
       await this.shareResults(results, "decision-graph");
-
     } catch (error) {
       logger.error("Failed to share legal results with decision graph agent", {
         error: error instanceof Error ? error.message : "Unknown error",
@@ -177,11 +175,16 @@ export class LegalSearchAgent extends SearchAgent {
     if (this.legalConfig.documentTypes?.length) {
       const docTerms = this.legalConfig.documentTypes.map(type => {
         switch (type) {
-          case "statute": return "statute OR law OR code";
-          case "case_law": return "case OR decision OR opinion";
-          case "regulation": return "regulation OR rule OR CFR";
-          case "policy": return "policy OR guidance OR directive";
-          default: return type;
+          case "statute":
+            return "statute OR law OR code";
+          case "case_law":
+            return "case OR decision OR opinion";
+          case "regulation":
+            return "regulation OR rule OR CFR";
+          case "policy":
+            return "policy OR guidance OR directive";
+          default:
+            return type;
         }
       });
       legalTerms.push(`(${docTerms.join(" OR ")})`);
@@ -189,7 +192,7 @@ export class LegalSearchAgent extends SearchAgent {
 
     // Combine original query with legal terms
     const enhancedQuery = [query, ...legalTerms].join(" ");
-    
+
     return enhancedQuery;
   }
 
@@ -201,17 +204,29 @@ export class LegalSearchAgent extends SearchAgent {
 
       // Check for legal indicators
       const legalIndicators = [
-        "law", "statute", "code", "regulation", "rule",
-        "court", "case", "decision", "opinion",
-        "legal", "judicial", "jurisdiction",
-        "child welfare", "cps", "family court",
-        "dependency", "custody", "protection"
+        "law",
+        "statute",
+        "code",
+        "regulation",
+        "rule",
+        "court",
+        "case",
+        "decision",
+        "opinion",
+        "legal",
+        "judicial",
+        "jurisdiction",
+        "child welfare",
+        "cps",
+        "family court",
+        "dependency",
+        "custody",
+        "protection",
       ];
 
-      return legalIndicators.some(indicator => 
-        title.includes(indicator) || 
-        snippet.includes(indicator) || 
-        link.includes(indicator)
+      return legalIndicators.some(
+        indicator =>
+          title.includes(indicator) || snippet.includes(indicator) || link.includes(indicator)
       );
     });
   }
@@ -228,7 +243,11 @@ export class LegalSearchAgent extends SearchAgent {
     });
   }
 
-  private rankLegalResults(results: SearchResult[], location?: string, scenario?: string): SearchResult[] {
+  private rankLegalResults(
+    results: SearchResult[],
+    location?: string,
+    scenario?: string
+  ): SearchResult[] {
     return results.sort((a, b) => {
       const scoreA = this.calculateLegalRelevance(a, location, scenario);
       const scoreB = this.calculateLegalRelevance(b, location, scenario);
@@ -236,7 +255,11 @@ export class LegalSearchAgent extends SearchAgent {
     });
   }
 
-  private calculateLegalRelevance(result: SearchResult, location?: string, scenario?: string): number {
+  private calculateLegalRelevance(
+    result: SearchResult,
+    location?: string,
+    scenario?: string
+  ): number {
     let score = 0;
     const title = result.title.toLowerCase();
     const snippet = result.snippet.toLowerCase();

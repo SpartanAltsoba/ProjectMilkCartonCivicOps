@@ -6,17 +6,17 @@ const app = express();
 app.use(cors({ origin: true }));
 
 interface AuthRequest {
-  email: string;
-  password: string;
+  _email: string;
+  _password: string;
 }
 
 // Auth endpoints
 app.post("/auth/login", async (req: Request<{}, {}, AuthRequest>, res: Response) => {
   try {
-    const { email, password } = req.body;
+    const { _email, _password } = req.body;
     // Add Firebase Auth implementation
     res.json({ success: true });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Authentication failed" });
   }
 });
@@ -24,7 +24,7 @@ app.post("/auth/login", async (req: Request<{}, {}, AuthRequest>, res: Response)
 // Data endpoints
 app.get("/data/risk-scores", async (req: Request, res: Response) => {
   try {
-    const { state, county } = req.query;
+    const { _state, _county } = req.query;
     // Implementation will be moved to Firebase Functions
     res.json({
       data: {
@@ -32,7 +32,7 @@ app.get("/data/risk-scores", async (req: Request, res: Response) => {
         message: "Risk scores endpoint moved to Firebase Functions",
       },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Failed to fetch risk scores" });
   }
 });
@@ -47,7 +47,7 @@ app.get("/data/states-counties", async (req: Request, res: Response) => {
         message: "States and counties endpoint moved to Firebase Functions",
       },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Failed to fetch states and counties" });
   }
 });
@@ -66,7 +66,7 @@ app.get("/data/search", async (req: Request, res: Response) => {
         message: "Search endpoint moved to Firebase Functions",
       },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Search failed" });
   }
 });
@@ -74,7 +74,7 @@ app.get("/data/search", async (req: Request, res: Response) => {
 // External API proxies
 app.get("/api/court-listener/search", async (req: Request, res: Response) => {
   try {
-    const { state, county } = req.query;
+    const { state, _county } = req.query;
     if (!state || typeof state !== "string") {
       res.status(400).json({ error: "State is required" });
       return;
@@ -84,21 +84,21 @@ app.get("/api/court-listener/search", async (req: Request, res: Response) => {
       cases: [],
       message: "Court Listener endpoint moved to Firebase Functions",
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Court Listener search failed" });
   }
 });
 
 app.get("/api/data-gov/child-welfare", async (req: Request, res: Response) => {
   try {
-    const { state } = req.query;
+    const { _state } = req.query;
     // Implementation will be moved to Firebase Functions
     res.json({
       data: {
         message: "Data.gov endpoint moved to Firebase Functions",
       },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({ error: "Data.gov request failed" });
   }
 });

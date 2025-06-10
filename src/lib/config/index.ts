@@ -1,4 +1,6 @@
+import { AxiosHeaderValue } from "axios";
 interface Config {
+  FEC_API_KEY: any | AxiosHeaderValue | undefined;
   COURTLISTENER_TOKEN: string | undefined;
   GOOGLE_SEARCH_API_KEY: string | undefined;
   GOOGLE_CSE_ID: string | undefined;
@@ -28,6 +30,7 @@ const config: Config = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   },
+  FEC_API_KEY: undefined,
 };
 
 export default config;

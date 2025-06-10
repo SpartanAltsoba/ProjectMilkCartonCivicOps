@@ -71,5 +71,5 @@ export interface IStateCounty {
   counties: string[];
 }
 
-// Re-export new dashboard types
-export type { IRiskScore, IAlert, ILoadingState, IRiskScoreDashboardProps } from "./dashboard";
+// Export CPS types
+export type { CPSData, City } from "./cps";

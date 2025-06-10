@@ -1,5 +1,5 @@
-import React from 'react';
-import { HierarchyData } from '../../types';
+import React from "react";
+import { HierarchyData } from "../../types";
 
 interface AgencyStructureDisplayProps {
   hierarchyData: HierarchyData;
@@ -13,7 +13,7 @@ const AgencyStructureDisplay: React.FC<AgencyStructureDisplayProps> = ({ hierarc
         <div className="font-semibold text-gray-800">{node.name}</div>
         {node.children && node.children.length > 0 && (
           <div className="ml-2 mt-2">
-            {node.children.map((child) => renderAgencyNode(child, depth + 1))}
+            {node.children.map(child => renderAgencyNode(child, depth + 1))}
           </div>
         )}
       </div>

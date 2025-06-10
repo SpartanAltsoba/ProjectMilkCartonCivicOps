@@ -9,15 +9,15 @@ const options = {
   providers: [
     Providers.Credentials({
       // The name to display on the sign-in form (e.g. 'Sign in with...')
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {
-        username: { label: 'Username', type: 'text' },
-        password: { label: 'Password', type: 'password' },
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials) => {
+      authorize: async credentials => {
         // Basic validation
         if (!credentials.username || !credentials.password) {
-          throw new Error('Please enter both username and password');
+          throw new Error("Please enter both username and password");
         }
 
         // Fetch user from the database using provided credentials
@@ -25,12 +25,13 @@ const options = {
           where: { username: credentials.username },
         });
 
-        if (user && user.password === credentials.password) { // To be replaced with hashed password checking
+        if (user && user.password === credentials.password) {
+          // To be replaced with hashed password checking
           return { id: user.id, name: user.name, email: user.email };
         }
 
         // Return null if user data could not be fetched
-        throw new Error('Invalid username or password');
+        throw new Error("Invalid username or password");
       },
     }),
     // Add other providers as needed
@@ -53,18 +54,18 @@ const options = {
     },
   },
   pages: {
-    signIn: '/auth/signin', // Custom sign-in page
+    signIn: "/auth/signin", // Custom sign-in page
   },
-  debug: process.env.NODE_ENV === 'development',
+  debug: process.env.NODE_ENV === "development",
   events: {
     async signIn(message) {
-      console.log('User signed in:', message);
+      console.log("User signed in:", message);
     },
     async signOut(message) {
-      console.log('User signed out:', message);
+      console.log("User signed out:", message);
     },
     async error(message) {
-      console.error('Error:', message);
+      console.error("Error:", message);
     },
   },
   // Add database logging or other options as required
@@ -73,7 +74,7 @@ const options = {
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
 export default authHandler;
 
-process.on('SIGTERM', async () => {
+process.on("SIGTERM", async () => {
   await prisma.$disconnect();
   process.exit(0);
 });

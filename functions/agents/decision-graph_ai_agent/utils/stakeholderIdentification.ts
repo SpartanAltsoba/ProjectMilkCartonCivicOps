@@ -1,5 +1,5 @@
-import { logger } from "functions/lib/logger";
-import { performGoogleSearch } from "functions/lib/googleSearch";
+import { logger } from "../../../lib/logger";
+import { performGoogleSearch } from "../../../lib/googleSearch";
 import { NormalizedLocation } from "./dataNormalization";
 
 interface Agency {

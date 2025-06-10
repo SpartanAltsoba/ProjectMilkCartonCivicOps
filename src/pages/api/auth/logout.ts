@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
 import { JWTService } from "../../../lib/auth/jwt";
 import { withErrorHandler } from "../../../lib/middleware/errorMiddleware";
-import { AuthenticationError } from "../../../lib/errors";
 import { logger } from "../../../lib/logger";
 
 async function logoutHandler(req: NextApiRequest, res: NextApiResponse) {
@@ -34,14 +33,14 @@ async function logoutHandler(req: NextApiRequest, res: NextApiResponse) {
       });
 
       // Log the logout
-      await logger.logUserAction("LOGOUT", user.id, {
+      await logger.logUserAction("LOGOUT", user.id.toString(), {
         ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
         userAgent: req.headers["user-agent"],
       });
     }
 
     res.status(200).json({ message: "Logged out successfully" });
-  } catch (error) {
+  } catch (_error) {
     // Even if token verification fails, we still return success
     // This prevents information leakage about token validity
     res.status(200).json({ message: "Logged out successfully" });

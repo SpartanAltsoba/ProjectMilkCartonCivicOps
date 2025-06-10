@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface NavbarProps {
-  currentPage: string;
+  currentPage?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ _currentPage }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentPage }) => {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

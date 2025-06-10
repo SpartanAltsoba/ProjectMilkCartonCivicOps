@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BaseApiClient, ApiError } from "./baseApiClient";
 import { logger } from "../logger";
 import { firestore } from "firebase-admin";
@@ -129,7 +128,7 @@ export class ResearchMonsterClient extends BaseApiClient {
         if (!doc.exists) {
           transaction.set(docRef, data);
         } else {
-          transaction.update(docRef, data);
+          transaction.update(docRef, data as any);
         }
       });
 

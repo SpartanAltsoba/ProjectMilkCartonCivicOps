@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
-import { logger } from "functions/lib/logger";
+import { logger } from "../../../lib/logger";
 import { createError } from "./errorHandling";
 
 export interface ApiResponse<T> {

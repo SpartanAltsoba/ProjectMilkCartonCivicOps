@@ -59,7 +59,7 @@ async function refreshTokenHandler(req: NextApiRequest, res: NextApiResponse) {
     const newRefreshToken = JWTService.generateRefreshToken(tokenPayload, user.tokenVersion);
 
     // Log token refresh
-    await logger.logUserAction("TOKEN_REFRESH", user.id, {
+    await logger.logUserAction("TOKEN_REFRESH", user.id.toString(), {
       ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
       userAgent: req.headers["user-agent"],
     });

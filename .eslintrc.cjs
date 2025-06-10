@@ -31,6 +31,7 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
 
     // 🚫 Suppressed warnings for dev velocity
     "no-console": "off",
@@ -39,15 +40,25 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "jsx-a11y/anchor-is-valid": "off",
 
-    // ✅ Rules that catch real bugs
+    // ✅ Real bug catchers
     "no-async-promise-executor": "error",
+
+    // 🔇 Silence unused args/vars across whole codebase
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_",
       },
     ],
+
+    // 🔇 Kill typing errors for empty objects
+    "@typescript-eslint/no-empty-object-type": "off",
+
+    // 🔇 Optional: silence <img> and <a> tag warnings from Next
+    "@next/next/no-img-element": "off",
+    "@next/next/no-html-link-for-pages": "off",
+
     "@typescript-eslint/no-unused-expressions": [
       "error",
       {

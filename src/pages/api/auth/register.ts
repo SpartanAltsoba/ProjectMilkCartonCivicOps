@@ -79,7 +79,7 @@ async function registerHandler(req: NextApiRequest, res: NextApiResponse) {
   });
 
   // Log user registration
-  await logger.logUserAction("REGISTER", user.id, {
+  await logger.logUserAction("REGISTER", user.id.toString(), {
     email: user.email,
     username: user.username,
     ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,

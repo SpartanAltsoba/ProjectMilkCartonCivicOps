@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import axios from "axios";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 
 interface RiskScore {
   id: string;
@@ -109,7 +109,7 @@ const RiskScoreDashboard: FC<EnhancedRiskScoreDashboardProps> = ({
       {displayedAlerts.length === 0 ? (
         <p className="text-gray-500 text-center py-4">No active alerts</p>
       ) : (
-        <ul className="space-y-3" role="list" aria-labelledby="alerts-title">
+        <ul className="space-y-3" aria-labelledby="alerts-title">
           {displayedAlerts.map(alert => (
             <li
               key={alert.id}
@@ -130,7 +130,7 @@ const RiskScoreDashboard: FC<EnhancedRiskScoreDashboardProps> = ({
   const renderRiskScores = () =>
     riskScores.length > 0 ? (
       <div className="space-y-6">
-        <ul className="divide-y divide-gray-200" role="list" aria-label="Risk scores list">
+        <ul className="divide-y divide-gray-200" aria-label="Risk scores list">
           {riskScores.map(score => (
             <li key={score.id} className="py-4 transition-colors hover:bg-gray-50 rounded-md">
               <div className="flex justify-between items-center">

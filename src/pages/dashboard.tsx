@@ -5,7 +5,7 @@ import { Alert, RiskScore } from "../types/dashboard";
 import withPageAuth from "../middleware/pageAuth";
 
 // Dynamic imports for code splitting
-const Navbar = dynamic(() => import("../components/Navbar"));
+const Navbar = dynamic(() => import("../components/common/Navbar"));
 const RiskScoreDashboard = dynamic(() => import("../components/RiskScoreDashboard"));
 const ExportOptions = dynamic(() => import("../components/ExportOptions"));
 const Footer = dynamic(() => import("../components/Footer"));

@@ -57,7 +57,7 @@ const FOIAForm: React.FC<FOIAFormProps> = ({ formFields, jurisdictionDetails }) 
       });
 
       if (response.ok) {
-        const result = await response.json();
+        const _result = await response.json();
         router.push("/confirmation");
       } else {
         const errorData = await response.json();

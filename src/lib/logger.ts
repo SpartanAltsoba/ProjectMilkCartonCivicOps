@@ -140,6 +140,22 @@ class Logger {
 
     this.info("Performance", performanceData);
   }
+
+  // Utility method for user action logging
+  async logUserAction(
+    action: string,
+    userId: string,
+    additionalData?: Record<string, unknown>
+  ): Promise<void> {
+    const actionData: Record<string, unknown> = {
+      action,
+      userId,
+      timestamp: new Date().toISOString(),
+      ...(additionalData || {}),
+    };
+
+    this.info(`User Action: ${action}`, actionData);
+  }
 }
 
 // Create singleton instance

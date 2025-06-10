@@ -104,7 +104,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         throw new Error(error.error?.message || "Registration failed");
       }
 
-      const data = await response.json();
+      const _data = await response.json();
 
       // Don't auto-login after registration - require email verification
       await logger.info("User registered", { email });

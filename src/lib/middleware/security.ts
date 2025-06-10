@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { sanitizeInput } from "../utils/sanitizeInput";
+import { sanitizeInput } from "../../utils/sanitizeInput";
 
 function sanitizeObject(obj: Record<string, any>): Record<string, any> {
   const sanitized: Record<string, any> = {};

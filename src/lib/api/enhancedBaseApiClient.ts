@@ -1,16 +1,7 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, CancelTokenSource } from "axios";
-import { z } from "zod";
-import { logger } from "../logger";
-import { ApiCache, CacheKeyBuilder } from "./cache";
-import { ApiValidator, ValidationError } from "./validation";
+import axios, { AxiosInstance, AxiosResponse, CancelTokenSource } from "axios";
+import { ApiCache } from "./cache";
 import type { BaseApiClientConfig } from "../types/apiClient";
-import {
-  RequestMetadata,
-  ExtendedAxiosRequestConfig,
-  ApiErrorMetadata,
-  ApiError,
-  EnhancedRequestOptions,
-} from "../types/apiClientTypes";
+import { EnhancedRequestOptions } from "../types/apiClientTypes";
 
 export class EnhancedBaseApiClient {
   private axiosInstance: AxiosInstance;
@@ -29,17 +20,54 @@ export class EnhancedBaseApiClient {
     this.setupInterceptors();
   }
 
-  // ... rest of the code ...
+  private setupInterceptors(): void {
+    // Setup request interceptor
+    this.axiosInstance.interceptors.request.use(
+      config => {
+        console.log(`Making request to: ${config.url}`);
+        return config;
+      },
+      error => {
+        console.error("Request error:", error);
+        return Promise.reject(error);
+      }
+    );
+
+    // Setup response interceptor
+    this.axiosInstance.interceptors.response.use(
+      response => {
+        console.log(`Response received from: ${response.config.url}`);
+        return response;
+      },
+      error => {
+        console.error("Response error:", error);
+        return Promise.reject(error);
+      }
+    );
+  }
+
+  private handleError(error: any): Error {
+    // Basic error handling
+    if (error.response) {
+      return new Error(`API Error: ${error.response.status} - ${error.response.statusText}`);
+    } else if (error.request) {
+      return new Error("Network Error: No response received");
+    } else {
+      return new Error(`Request Error: ${error.message}`);
+    }
+  }
 
   protected async request<T>(options: EnhancedRequestOptions): Promise<T> {
-    // ... rest of the code ...
+    const abortController = new AbortController();
+    const requestConfig = {
+      ...options,
+      url: options.endpoint,
+      signal: abortController.signal,
+    };
+
     try {
-      const response: AxiosResponse<T> = await this.axiosInstance.request({
-        url: options.endpoint,
-        cancelToken: cancelTokenSource.token,
-        ...config,
-      });
-      // ... rest of the code ...
+      const response: AxiosResponse<T> = await this.axiosInstance.request(requestConfig);
+      return response.data;
     } catch (error) {
       throw this.handleError(error);
     }

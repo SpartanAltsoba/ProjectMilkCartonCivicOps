@@ -34,3 +34,14 @@ export async function fetchExportOptions(): Promise<ExportOption[]> {
     throw new Error("Failed to fetch export options");
   }
 }
+
+// Re-export from riskAlerts
+export { fetchRiskAlerts, type RiskAlert, type RiskAlertParams } from "./riskAlerts";
+
+// Re-export from data
+export {
+  getRiskScores,
+  getHighRiskAlerts,
+  getRiskScoreStats,
+  fetchStatesAndCounties,
+} from "./data";

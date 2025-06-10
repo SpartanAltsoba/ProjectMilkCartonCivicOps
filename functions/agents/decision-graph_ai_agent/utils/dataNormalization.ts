@@ -1,4 +1,4 @@
-import { logger } from "functions/lib/logger";
+import { logger } from "../../../lib/logger";
 
 interface NormalizedLocation {
   state: string;

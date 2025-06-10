@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { logUserAction } from "../middleware/logger";
 import Head from "next/head";
-import "../styles/search-page.css";
 
 // Dynamic imports for code splitting
 const Navbar = dynamic(() => import("../components/Navbar"));

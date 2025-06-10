@@ -1,10 +1,27 @@
-import { logger } from "../logger";
+import { logger as _logger } from "../logger";
 
-// ... (rest of the existing code)
+export class ApiError extends Error {
+  constructor(
+    public status: number,
+    message: string,
+    public data?: any
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
 
 interface ApiClientConfig {
   userAgents?: string[];
   delayBetweenRequests?: number;
+  baseUrl?: string;
+  defaultHeaders?: Record<string, string>;
+  retry?: {
+    maxRetries: number;
+    initialDelay: number;
+    maxDelay: number;
+    backoffFactor: number;
+  };
 }
 
 export class BaseApiClient {
@@ -71,7 +88,10 @@ export class BaseApiClient {
     let nextPage: string | null = url;
 
     while (nextPage) {
-      const response = await this.get<{ data: U[]; nextPage: string | null }>(nextPage, options);
+      const response: { data: U[]; nextPage: string | null } = await this.get<{
+        data: U[];
+        nextPage: string | null;
+      }>(nextPage, options);
       results = [...results, ...response.data];
       nextPage = response.nextPage;
     }
@@ -85,5 +105,24 @@ export class BaseApiClient {
 
   private delay(): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, this.delayBetweenRequests));
+  }
+
+  protected setDefaultHeader(key: string, value: string): void {
+    // This is a placeholder method for setting default headers
+    // In a real implementation, this would update the default headers
+    console.log(`Setting default header: ${key} = ${value}`);
+  }
+
+  protected buildQueryString(params: Record<string, string | undefined>): string {
+    const searchParams = new URLSearchParams();
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== "") {
+        searchParams.append(key, value);
+      }
+    });
+
+    const queryString = searchParams.toString();
+    return queryString ? `?${queryString}` : "";
   }
 }

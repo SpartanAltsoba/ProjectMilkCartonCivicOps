@@ -29,7 +29,7 @@ export class PolicySearchAgent extends SearchAgent {
       "cdc.gov",
       "justice.gov",
       "ed.gov",
-      "usda.gov"
+      "usda.gov",
     ];
 
     super({
@@ -46,7 +46,7 @@ export class PolicySearchAgent extends SearchAgent {
   async executePolicySearch(query: string): Promise<SearchResponse> {
     try {
       // Enhance query with policy-specific terms
-      let enhancedQuery = this.enhancePolicyQuery(query);
+      const enhancedQuery = this.enhancePolicyQuery(query);
 
       logger.info("Executing policy search", {
         originalQuery: query,
@@ -76,7 +76,6 @@ export class PolicySearchAgent extends SearchAgent {
           },
         },
       };
-
     } catch (error) {
       logger.error("Policy search execution failed", {
         query,
@@ -106,7 +105,7 @@ export class PolicySearchAgent extends SearchAgent {
 
     // Execute multiple searches and combine results
     const allResults: SearchResult[] = [];
-    
+
     for (const query of queries) {
       try {
         const response = await this.executePolicySearch(query);
@@ -154,7 +153,7 @@ export class PolicySearchAgent extends SearchAgent {
     }
 
     const allResults: SearchResult[] = [];
-    
+
     for (const query of baseQueries) {
       try {
         const response = await this.executePolicySearch(query);
@@ -170,7 +169,7 @@ export class PolicySearchAgent extends SearchAgent {
     return {
       results: rankedResults.slice(0, 10),
       metadata: {
-        query: `Federal child welfare regulations${topic ? ` - ${topic}` : ''}`,
+        query: `Federal child welfare regulations${topic ? ` - ${topic}` : ""}`,
         totalResults: rankedResults.length,
         searchTime: 0,
         filters: {
@@ -198,7 +197,6 @@ export class PolicySearchAgent extends SearchAgent {
 
         await this.shareResults(results, agent);
       }
-
     } catch (error) {
       logger.error("Failed to share policy results", {
         error: error instanceof Error ? error.message : "Unknown error",
@@ -230,7 +228,7 @@ export class PolicySearchAgent extends SearchAgent {
 
     // Combine original query with policy terms
     const enhancedQuery = [query, ...policyTerms].join(" ");
-    
+
     return enhancedQuery;
   }
 
@@ -242,17 +240,28 @@ export class PolicySearchAgent extends SearchAgent {
 
       // Check for policy indicators
       const policyIndicators = [
-        "policy", "regulation", "rule", "guidance", "directive",
-        "cfr", "federal register", "code of federal regulations",
-        "policy manual", "guidelines", "standards",
-        "child welfare", "cps", "family services",
-        "title iv-e", "asfa", "capta"
+        "policy",
+        "regulation",
+        "rule",
+        "guidance",
+        "directive",
+        "cfr",
+        "federal register",
+        "code of federal regulations",
+        "policy manual",
+        "guidelines",
+        "standards",
+        "child welfare",
+        "cps",
+        "family services",
+        "title iv-e",
+        "asfa",
+        "capta",
       ];
 
-      return policyIndicators.some(indicator => 
-        title.includes(indicator) || 
-        snippet.includes(indicator) || 
-        link.includes(indicator)
+      return policyIndicators.some(
+        indicator =>
+          title.includes(indicator) || snippet.includes(indicator) || link.includes(indicator)
       );
     });
   }
@@ -269,7 +278,11 @@ export class PolicySearchAgent extends SearchAgent {
     });
   }
 
-  private rankPolicyResults(results: SearchResult[], location?: string, topic?: string): SearchResult[] {
+  private rankPolicyResults(
+    results: SearchResult[],
+    location?: string,
+    topic?: string
+  ): SearchResult[] {
     return results.sort((a, b) => {
       const scoreA = this.calculatePolicyRelevance(a, location, topic);
       const scoreB = this.calculatePolicyRelevance(b, location, topic);
@@ -277,7 +290,11 @@ export class PolicySearchAgent extends SearchAgent {
     });
   }
 
-  private calculatePolicyRelevance(result: SearchResult, location?: string, topic?: string): number {
+  private calculatePolicyRelevance(
+    result: SearchResult,
+    location?: string,
+    topic?: string
+  ): number {
     let score = 0;
     const title = result.title.toLowerCase();
     const snippet = result.snippet.toLowerCase();

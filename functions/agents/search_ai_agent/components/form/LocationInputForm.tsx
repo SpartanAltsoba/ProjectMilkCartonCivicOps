@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface LocationInputFormProps {
   onSubmit: (location: string) => void;
 }
 
 const LocationInputForm: React.FC<LocationInputFormProps> = ({ onSubmit }) => {
-  const [location, setLocation] = useState('');
-  const [error, setError] = useState('');
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
@@ -15,9 +15,9 @@ const LocationInputForm: React.FC<LocationInputFormProps> = ({ onSubmit }) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!location.trim()) {
-      setError('Location cannot be empty.');
+      setError("Location cannot be empty.");
     } else {
-      setError('');
+      setError("");
       onSubmit(location.trim());
     }
   };
@@ -26,7 +26,9 @@ const LocationInputForm: React.FC<LocationInputFormProps> = ({ onSubmit }) => {
     <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 shadow-md rounded-lg">
       <h2 className="text-xl font-bold mb-4">Enter Location for Analysis</h2>
       <div className="mb-4">
-        <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location</label>
+        <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">
+          Location
+        </label>
         <input
           type="text"
           id="location"
@@ -36,7 +38,11 @@ const LocationInputForm: React.FC<LocationInputFormProps> = ({ onSubmit }) => {
           placeholder="e.g., Los Angeles County"
           aria-describedby="locationError"
         />
-        {error && <p id="locationError" className="text-red-500 text-xs mt-1">{error}</p>}
+        {error && (
+          <p id="locationError" className="text-red-500 text-xs mt-1">
+            {error}
+          </p>
+        )}
       </div>
       <div className="flex items-center justify-between">
         <button

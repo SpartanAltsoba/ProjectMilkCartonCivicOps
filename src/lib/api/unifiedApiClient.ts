@@ -1,7 +1,7 @@
 import { courtListenerClientV2, CourtCase } from "./courtListenerClientV2";
 import { dataGovClientV2 } from "./dataGovClientV2";
 import { logger } from "../logger";
-import { sanitizeInput } from "../utils/sanitizeInput";
+import { sanitizeInput } from "../../utils/sanitizeInput";
 
 // Use CourtCase as Case for consistency
 type Case = CourtCase;

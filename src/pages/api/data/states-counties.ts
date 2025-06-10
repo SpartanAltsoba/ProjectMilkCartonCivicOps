@@ -3,7 +3,7 @@ import { fetchStatesAndCounties } from "../../../lib/api";
 import { asyncHandler } from "../../../utils/asyncHandler";
 import { logger } from "../../../lib/logger";
 import { validateMethod } from "../../../utils/validateMethod";
-import { Firestore } from "../../../services/firebase";
+import { Firestore } from "../../../services/firebase/firebase";
 import { StatesAndCountiesResponse } from "../../../types/apiResponse";
 
 const firestore = new Firestore();
@@ -21,7 +21,7 @@ const statesCountiesHandler = async (
     // Store the scraped data in Firestore
     await firestore.storeStatesAndCounties(response.data);
 
-    return res.status(200).json(response.data);
+    return res.status(200).json({ data: response.data });
   } catch (error) {
     const err = error instanceof Error ? error : new Error(String(error));
     logger.error("Error fetching states and counties", err);

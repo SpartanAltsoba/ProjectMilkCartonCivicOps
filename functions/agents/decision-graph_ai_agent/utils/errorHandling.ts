@@ -1,4 +1,22 @@
-import { logger } from "functions/lib/logger";
+import { logger } from "../../../lib/logger";
+
+export class InputValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "InputValidationError";
+  }
+}
+
+/**
+ * Validates that required environment variables are present
+ */
+export function validateEnvironment(requiredVars: string[]): void {
+  const missing = requiredVars.filter(varName => !process.env[varName]);
+
+  if (missing.length > 0) {
+    throw new InputValidationError(`Missing required environment variables: ${missing.join(", ")}`);
+  }
+}
 
 interface ApiErrorResponse {
   success: false;

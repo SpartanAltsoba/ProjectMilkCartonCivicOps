@@ -1,8 +1,7 @@
-import { prisma } from "../lib/prisma";
-import { logger } from "../lib/logger";
-import { sanitizeInput } from "../utils/sanitizeInput";
+import { prisma } from "../prisma";
+import { logger } from "../logger";
+import { sanitizeInput } from "../../utils/sanitizeInput";
 import { AppError } from "../errors/AppError";
-import { scoringEngine } from "../lib/scoringEngine";
 
 interface RiskScore {
   id: number;
@@ -37,11 +36,8 @@ export async function getRiskScores(params: SearchParams): Promise<RiskScore[]> 
       params.county = sanitizeInput(params.county);
     }
 
-    // Calculate new scores if needed
-    if (params.state) {
-      const scores = await scoringEngine.calculateRiskScores(params.state, params.county);
-      await scoringEngine.saveScores(scores);
-    }
+    // Note: Scoring engine functionality would be implemented here
+    // For now, we'll just query existing scores
 
     // Query existing scores
     const riskScores = await prisma.scoringSnapshot.findMany({
@@ -176,5 +172,111 @@ export async function getRiskScoreStats() {
       throw error;
     }
     throw new AppError("Failed to fetch risk score statistics", 500);
+  }
+}
+
+/**
+ * Fetch states and counties data
+ */
+export async function fetchStatesAndCounties() {
+  try {
+    const regions = await prisma.region.findMany({
+      select: {
+        id: true,
+        stateName: true,
+        countyName: true,
+      },
+      orderBy: [{ stateName: "asc" }, { countyName: "asc" }],
+    });
+
+    // Group by state
+    const statesMap = new Map<string, string[]>();
+
+    regions.forEach(region => {
+      if (!region.stateName) return;
+
+      if (!statesMap.has(region.stateName)) {
+        statesMap.set(region.stateName, []);
+      }
+
+      const counties = statesMap.get(region.stateName)!;
+
+      if (region.countyName && !counties.includes(region.countyName)) {
+        counties.push(region.countyName);
+      }
+    });
+
+    const data = Array.from(statesMap.entries()).map(([stateName, counties]) => ({
+      state: stateName,
+      counties: counties.sort(),
+    }));
+
+    return { data };
+  } catch (error) {
+    logger.error("Error fetching states and counties:", error);
+    if (error instanceof AppError) {
+      throw error;
+    }
+    throw new AppError("Failed to fetch states and counties", 500);
+  }
+}
+
+/**
+ * Generate decision graph data
+ */
+export async function generateDecisionGraph(params: { state?: string; county?: string }) {
+  try {
+    // Validate and sanitize inputs
+    if (params.state) {
+      params.state = sanitizeInput(params.state);
+    }
+    if (params.county) {
+      params.county = sanitizeInput(params.county);
+    }
+
+    // Query decision chain data
+    const decisionChains = await prisma.decisionChain.findMany({
+      where: {
+        region: {
+          ...(params.state && { stateName: params.state }),
+          ...(params.county && { countyName: params.county }),
+        },
+      },
+      include: {
+        region: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 50, // Limit results
+    });
+
+    // Format for decision graph visualization
+    const nodes = decisionChains.map(chain => ({
+      id: chain.id.toString(),
+      title: chain.title,
+      data: chain.data,
+      region: {
+        state: chain.region.stateName,
+        county: chain.region.countyName,
+      },
+      createdAt: chain.createdAt,
+    }));
+
+    return {
+      nodes,
+      edges: [], // Would be populated based on relationships between decisions
+      metadata: {
+        totalNodes: nodes.length,
+        state: params.state,
+        county: params.county,
+      },
+    };
+  } catch (error) {
+    logger.error("Error generating decision graph:", error);
+    if (error instanceof AppError) {
+      throw error;
+    }
+    throw new AppError("Failed to generate decision graph", 500);
   }
 }

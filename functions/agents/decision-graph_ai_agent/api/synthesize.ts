@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import { logger } from "functions/lib/logger";
+import { logger } from "../../../lib/logger";
 import { handleApiError, createError, validateRequired } from "../utils/errorHandling";
 import { runDecisionGraphAgent } from "../runDecisionGraphAgent";
 import type {

@@ -26,7 +26,7 @@ const CPSAnalysisPage: React.FC<CPSAnalysisPageProps> = ({ initialData, city }) 
       try {
         const newData = await ResearchMonster.scrapeData(city);
         setData(newData);
-      } catch (err) {
+      } catch (_err) {
         setError("Failed to fetch data. Please try again later.");
       }
     };
@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   try {
     initialData = await firebaseAdmin.fetchCPSData(city);
-  } catch (err) {
+  } catch (_err) {
     return {
       notFound: true,
     };

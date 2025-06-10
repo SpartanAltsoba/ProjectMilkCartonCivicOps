@@ -1,7 +1,11 @@
 import { logger } from "../../lib/logger";
 import { SearchResult, SearchResponse } from "../../types/search";
 import { runLegalSearchAgent, searchChildWelfareLaw } from "./runLegalSearchAgent";
-import { runPolicySearchAgent, searchChildWelfarePolicy, searchFederalRegulations } from "./runPolicySearchAgent";
+import {
+  runPolicySearchAgent,
+  searchChildWelfarePolicy,
+  searchFederalRegulations,
+} from "./runPolicySearchAgent";
 import { runSearchAgent } from "./runSearchAgent";
 
 interface IntegrationConfig {
@@ -113,7 +117,12 @@ export class SearchIntegration {
           location: this.config.location,
           scenario: this.config.scenario,
           timestamp: new Date().toISOString(),
-          totalResults: this.getTotalResults(generalResults, legalResults, policyResults, federalResults),
+          totalResults: this.getTotalResults(
+            generalResults,
+            legalResults,
+            policyResults,
+            federalResults
+          ),
         },
       };
 
@@ -128,7 +137,6 @@ export class SearchIntegration {
       });
 
       return response;
-
     } catch (error) {
       logger.error("Integrated search failed", {
         error: error instanceof Error ? error.message : "Unknown error",
@@ -145,8 +153,12 @@ export class SearchIntegration {
       const decisionGraphData = {
         location: this.config.location,
         scenario: this.config.scenario,
-        legalAuthorities: results.agentInputs.decisionGraph.filter(item => item.type === "legal_authority"),
-        policyReferences: results.agentInputs.decisionGraph.filter(item => item.type === "policy_document"),
+        legalAuthorities: results.agentInputs.decisionGraph.filter(
+          item => item.type === "legal_authority"
+        ),
+        policyReferences: results.agentInputs.decisionGraph.filter(
+          item => item.type === "policy_document"
+        ),
         stakeholders: this.extractStakeholders(results.searchResults.general),
         jurisdiction: this.config.location,
       };
@@ -157,7 +169,6 @@ export class SearchIntegration {
 
       // TODO: Implement actual sharing with decision graph agent
       // await runDecisionGraphAgent(decisionGraphData);
-
     } catch (error) {
       logger.error("Failed to share with decision graph agent", { error });
       throw error;
@@ -184,7 +195,6 @@ export class SearchIntegration {
 
       // TODO: Implement actual sharing with FOIA agent
       // await runFoiaAgent(foiaData);
-
     } catch (error) {
       logger.error("Failed to share with FOIA agent", { error });
       throw error;
@@ -192,10 +202,10 @@ export class SearchIntegration {
   }
 
   private async executeGeneralSearch(): Promise<SearchResponse> {
-    const query = this.config.scenario 
+    const query = this.config.scenario
       ? `${this.config.location} child welfare ${this.config.scenario}`
       : `${this.config.location} child welfare system`;
-    
+
     return runSearchAgent(query, {
       maxResults: 15,
       filterDomains: ["gov", "edu", "org"],
@@ -352,8 +362,10 @@ export class SearchIntegration {
     const snippet = result.snippet.toLowerCase();
 
     // Location relevance
-    if (title.includes(this.config.location.toLowerCase()) || 
-        snippet.includes(this.config.location.toLowerCase())) {
+    if (
+      title.includes(this.config.location.toLowerCase()) ||
+      snippet.includes(this.config.location.toLowerCase())
+    ) {
       score += 3;
     }
 
@@ -376,23 +388,30 @@ export class SearchIntegration {
   private containsNgoReferences(result: SearchResult): boolean {
     const text = `${result.title} ${result.snippet}`.toLowerCase();
     const ngoIndicators = [
-      "contractor", "nonprofit", "ngo", "organization",
-      "services", "provider", "agency", "foundation"
+      "contractor",
+      "nonprofit",
+      "ngo",
+      "organization",
+      "services",
+      "provider",
+      "agency",
+      "foundation",
     ];
     return ngoIndicators.some(indicator => text.includes(indicator));
   }
 
   private extractStakeholders(searchResponse: SearchResponse): string[] {
     const stakeholders = new Set<string>();
-    
+
     searchResponse.results.forEach(result => {
       const text = `${result.title} ${result.snippet}`.toLowerCase();
-      
+
       // Extract common stakeholder types
       if (text.includes("court")) stakeholders.add("Family Court");
       if (text.includes("cps") || text.includes("child protective")) stakeholders.add("CPS");
       if (text.includes("sheriff") || text.includes("police")) stakeholders.add("Law Enforcement");
-      if (text.includes("school") || text.includes("education")) stakeholders.add("School District");
+      if (text.includes("school") || text.includes("education"))
+        stakeholders.add("School District");
       if (text.includes("health") || text.includes("medical")) stakeholders.add("Health Services");
     });
 
@@ -401,10 +420,10 @@ export class SearchIntegration {
 
   private extractAgencies(searchResponse: SearchResponse): string[] {
     const agencies = new Set<string>();
-    
+
     searchResponse.results.forEach(result => {
       const text = `${result.title} ${result.snippet}`.toLowerCase();
-      
+
       // Extract government agencies
       if (text.includes("department") && text.includes("children")) {
         agencies.add("Department of Children and Families");
@@ -436,6 +455,6 @@ export const executeIntegratedSearch = async (
     scenario,
     includeAgents,
   });
-  
+
   return integration.executeIntegratedSearch();
 };

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // Define a type for component props
 interface AnalysisSummaryProps {
   summary: {
     keywords: string[];
-    progress: number;  // progress as a percentage
-    note?: string;    // optional note from analysis
+    progress: number; // progress as a percentage
+    note?: string; // optional note from analysis
   };
 }
 
@@ -13,8 +13,8 @@ const AnalysisSummary: React.FC<AnalysisSummaryProps> = ({ summary }) => {
   // Helper function to format the progress
   const formatProgress = (progress: number): string => {
     // Ensure progress is within 0-100 range
-    if (progress < 0) return '0%';
-    if (progress > 100) return '100%';
+    if (progress < 0) return "0%";
+    if (progress > 100) return "100%";
     return `${progress.toFixed(1)}%`;
   };
 
@@ -26,7 +26,9 @@ const AnalysisSummary: React.FC<AnalysisSummaryProps> = ({ summary }) => {
         <h4 className="text-lg font-medium">Keywords</h4>
         <ul className="list-disc pl-5">
           {summary.keywords.map((keyword, index) => (
-            <li key={index} className="text-gray-700">{keyword}</li>
+            <li key={index} className="text-gray-700">
+              {keyword}
+            </li>
           ))}
         </ul>
       </div>

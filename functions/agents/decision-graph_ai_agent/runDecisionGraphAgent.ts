@@ -1,4 +1,4 @@
-import { logger } from "functions/lib/logger";
+import { logger } from "../../lib/logger";
 import { normalizeLocation, NormalizedLocation } from "./utils/dataNormalization";
 import { determineLegalFramework, LegalFrameworkResult } from "./utils/legalFramework";
 import { identifyStakeholders, StakeholderSearchResult } from "./utils/stakeholderIdentification";

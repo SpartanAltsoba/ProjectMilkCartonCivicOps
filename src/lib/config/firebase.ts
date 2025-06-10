@@ -1,7 +1,7 @@
 import { initializeApp, getApps, cert, App } from "firebase-admin/app";
 import { getFirestore, Firestore } from "firebase-admin/firestore";
 import { getAuth, Auth } from "firebase-admin/auth";
-import { logger } from "./logger";
+import { logger } from "../logger";
 
 // Initialize Firebase Admin SDK
 let app: App;

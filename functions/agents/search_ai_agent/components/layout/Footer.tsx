@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import { FaTwitter, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import React from "react";
+import Link from "next/link";
+import { FaTwitter, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 // Define the types for the component props
 interface FooterProps {
@@ -24,19 +24,44 @@ const Footer: React.FC<FooterProps> = ({ contactInfo, socialLinks }) => {
           {/* Contact Information */}
           <div>
             <p className="font-bold">Contact Us</p>
-            <p>Email: <a href={`mailto:${contactInfo.email}`} className="underline">{contactInfo.email}</a></p>
-            <p>Phone: <a href={`tel:${contactInfo.phone}`} className="underline">{contactInfo.phone}</a></p>
+            <p>
+              Email:{" "}
+              <a href={`mailto:${contactInfo.email}`} className="underline">
+                {contactInfo.email}
+              </a>
+            </p>
+            <p>
+              Phone:{" "}
+              <a href={`tel:${contactInfo.phone}`} className="underline">
+                {contactInfo.phone}
+              </a>
+            </p>
           </div>
 
           {/* Social Media Links */}
           <div className="flex space-x-4">
-            <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-2xl">
+            <a
+              href={socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl"
+            >
               <FaTwitter aria-label="Twitter" />
             </a>
-            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-2xl">
+            <a
+              href={socialLinks.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl"
+            >
               <FaFacebookF aria-label="Facebook" />
             </a>
-            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-2xl">
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl"
+            >
               <FaLinkedinIn aria-label="LinkedIn" />
             </a>
           </div>
@@ -47,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({ contactInfo, socialLinks }) => {
           <Link href="/privacy-policy">
             <a className="underline">Privacy Policy</a>
           </Link>
-          {' | '}
+          {" | "}
           <Link href="/terms-of-service">
             <a className="underline">Terms of Service</a>
           </Link>

@@ -1,10 +1,11 @@
-import { db } from "../lib/firebase";
-import { logger } from "../lib/logger";
+import { db } from "../../lib/firebase";
+import { logger } from "../../lib/logger";
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 export class Firestore {
   async getCollection(collectionName: string) {
     try {
-      const snapshot = await db.collection(collectionName).get();
+      const snapshot = await getDocs(collection(db, collectionName));
       return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       logger.error(`Error getting collection ${collectionName}:`, error);
@@ -14,7 +15,7 @@ export class Firestore {
 
   async addDocument(collectionName: string, data: any) {
     try {
-      const docRef = await db.collection(collectionName).add(data);
+      const docRef = await addDoc(collection(db, collectionName), data);
       logger.info(`Document added to ${collectionName}`, { id: docRef.id });
       return docRef.id;
     } catch (error) {
@@ -25,7 +26,7 @@ export class Firestore {
 
   async updateDocument(collectionName: string, docId: string, data: any) {
     try {
-      await db.collection(collectionName).doc(docId).update(data);
+      await updateDoc(doc(db, collectionName, docId), data);
       logger.info(`Document updated in ${collectionName}`, { id: docId });
     } catch (error) {
       logger.error(`Error updating document in ${collectionName}:`, error);
@@ -35,7 +36,7 @@ export class Firestore {
 
   async deleteDocument(collectionName: string, docId: string) {
     try {
-      await db.collection(collectionName).doc(docId).delete();
+      await deleteDoc(doc(db, collectionName, docId));
       logger.info(`Document deleted from ${collectionName}`, { id: docId });
     } catch (error) {
       logger.error(`Error deleting document from ${collectionName}:`, error);

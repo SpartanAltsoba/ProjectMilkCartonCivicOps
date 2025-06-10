@@ -1,5 +1,3 @@
-import Config from "../config";
-import axios from "axios";
 import { Firestore } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
@@ -58,13 +56,49 @@ class NCMECClient {
 
   private async getMockData(
     state: string,
-    county: string = "All Counties",
-    type: "statistics" | "recovery" = "statistics"
-  ): Promise<Statistics | Recovery> {
-    // Mock data generation logic here...
+    _county: string = "All Counties",
+    _type: "statistics" | "recovery" = "statistics"
+  ): Promise<Statistics> {
+    // Mock data for statistics
+    return {
+      state,
+      county: _county,
+      reportingPeriod: "2024",
+      lastUpdated: new Date().toISOString(),
+      totalReports: 1000,
+      missingChildren: 800,
+      endangeredRunaways: 400,
+      familyAbductions: 200,
+      nonFamilyAbductions: 50,
+      lostInjuredOtherwise: 150,
+      recoveryRate: 0.85,
+      averageRecoveryTime: 72,
+    };
   }
 
-  async getCaseStatistics(state: string, county?: string): Promise<Statistics> {
+  private async getMockRecoveryData(
+    state: string,
+    _county: string = "All Counties"
+  ): Promise<Recovery> {
+    return {
+      state,
+      county: _county,
+      reportingPeriod: "2024",
+      lastUpdated: new Date().toISOString(),
+      totalRecovered: 850,
+      recoveredAlive: 845,
+      recoveredDeceased: 5,
+      averageTimeToRecovery: 48,
+      recoveryMethods: {
+        lawEnforcement: 400,
+        familyFriends: 250,
+        selfReturn: 150,
+        other: 50,
+      },
+    };
+  }
+
+  async getCaseStatistics(state: string, county: string = "All Counties"): Promise<Statistics> {
     try {
       console.log(`Fetching NCMEC statistics for ${state}${county ? `, ${county}` : ""}`);
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -75,23 +109,23 @@ class NCMECClient {
     }
   }
 
-  async getRecoveryData(state: string, county?: string): Promise<Recovery> {
+  async getRecoveryData(state: string, county: string = "All Counties"): Promise<Recovery> {
     try {
       console.log(`Fetching NCMEC recovery data for ${state}${county ? `, ${county}` : ""}`);
       await new Promise(resolve => setTimeout(resolve, 500));
-      return this.getMockData(state, county, "recovery");
+      return this.getMockRecoveryData(state, county);
     } catch (error) {
       console.error("Error fetching NCMEC recovery data:", error);
-      return this.getMockData(state, county, "recovery");
+      return this.getMockRecoveryData(state, county);
     }
   }
 
-  async getRiskIndicators(state: string, county?: string): Promise<RiskIndicators> {
+  async getRiskIndicators(state: string, county: string = "All Counties"): Promise<RiskIndicators> {
     const stats = await this.getCaseStatistics(state, county);
     const recovery = await this.getRecoveryData(state, county);
     return {
-      state: state,
-      county: county,
+      state,
+      county,
       riskScore: this.calculateRiskScore(stats, recovery),
       indicators: {
         highReportVolume: stats.totalReports > 500,
@@ -103,12 +137,18 @@ class NCMECClient {
     };
   }
 
-  private calculateRiskScore(stats: Statistics, recovery: Recovery): number {
-    // Risk score calculation logic here...
+  private calculateRiskScore(_stats: Statistics, _recovery: Recovery): number {
+    // Mock risk score calculation
+    return 75;
   }
 
-  private generateRecommendations(stats: Statistics, recovery: Recovery): string[] {
-    // Recommendation generation logic here...
+  private generateRecommendations(_stats: Statistics, _recovery: Recovery): string[] {
+    // Mock recommendations
+    return [
+      "Increase community awareness programs",
+      "Enhance coordination with law enforcement",
+      "Implement preventive education in schools",
+    ];
   }
 }
 

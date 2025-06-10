@@ -68,7 +68,7 @@ const ZipcodeTraceMap: React.FC<ZipcodeTraceMapProps> = ({ zipCode, onDataLoaded
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedOfficial, setSelectedOfficial] = useState<CivicOfficial | null>(null);
-  const [selectedAgency, setSelectedAgency] = useState<AgencyAffiliation | null>(null);
+  const [_selectedAgency, setSelectedAgency] = useState<AgencyAffiliation | null>(null);
   const [activeTab, setActiveTab] = useState<"officials" | "agencies" | "metrics">("officials");
 
   useEffect(() => {

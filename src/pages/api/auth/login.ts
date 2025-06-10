@@ -66,7 +66,7 @@ async function loginHandler(req: NextApiRequest, res: NextApiResponse) {
   });
 
   // Log successful login
-  await logger.logUserAction("LOGIN", user.id, {
+  await logger.logUserAction("LOGIN", user.id.toString(), {
     ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
     userAgent: req.headers["user-agent"],
   });

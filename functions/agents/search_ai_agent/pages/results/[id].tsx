@@ -1,16 +1,16 @@
-import { GetServerSideProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Header from '../../components/layout/Header';
-import Footer from '../../components/layout/Footer';
-import ResultsOverview from '../../components/display/ResultsOverview';
-import LegalFrameworkDetails from '../../components/display/LegalFrameworkDetails';
-import AgencyStructureDisplay from '../../components/display/AgencyStructureDisplay';
-import PerformanceMetricsChart from '../../components/display/PerformanceMetricsChart';
-import FundingTraceMap from '../../components/interactive/FundingTraceMap';
-import DecisionChainDiagram from '../../components/display/DecisionChainDiagram';
-import { fetchAnalysisDetails } from '../../lib/analysis';
-import { ResultData } from '../../types';
+import { GetServerSideProps, NextPage } from "next";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
+import ResultsOverview from "../../components/display/ResultsOverview";
+import LegalFrameworkDetails from "../../components/display/LegalFrameworkDetails";
+import AgencyStructureDisplay from "../../components/display/AgencyStructureDisplay";
+import PerformanceMetricsChart from "../../components/display/PerformanceMetricsChart";
+import FundingTraceMap from "../../components/interactive/FundingTraceMap";
+import DecisionChainDiagram from "../../components/display/DecisionChainDiagram";
+import { fetchAnalysisDetails } from "../../lib/analysis";
+import { ResultData } from "../../types";
 
 interface ResultsPageProps {
   results: ResultData | null;
@@ -52,23 +52,23 @@ const ResultsPage: NextPage<ResultsPageProps> = ({ results, error }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const { id } = context.params;
 
   try {
     const results = await fetchAnalysisDetails(id as string);
-    
+
     return {
       props: {
         results,
       },
     };
   } catch (error) {
-    console.error('Failed to fetch analysis details:', error);
+    console.error("Failed to fetch analysis details:", error);
     return {
       props: {
         results: null,
-        error: error instanceof Error ? error.message : 'An unexpected error occurred',
+        error: error instanceof Error ? error.message : "An unexpected error occurred",
       },
     };
   }
