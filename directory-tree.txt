@@ -1,0 +1,38 @@
+.
+├── api
+│   └── auth
+│       └── index.ts
+├── .blackboxrules
+├── components
+│   ├── AgentOutputCardComponent.tsx
+│   ├── AuthFormComponent.tsx
+│   ├── DashboardComponent.tsx
+│   ├── FileUploadComponent.tsx
+│   ├── JobStatusComponent.tsx
+│   ├── OverlayMapComponent.tsx
+│   ├── RedirectComponent.tsx
+│   └── UserSettingsComponent.tsx
+├── directory-tree.txt
+├── .env
+├── hooks
+│   ├── useAuth.ts
+│   ├── useFirestore.ts
+│   └── useStorage.ts
+├── lib
+│   ├── auth.ts
+│   ├── db.ts
+│   ├── firebase.ts
+│   └── storage.ts
+├── pages
+│   ├── case
+│   │   └── [caseId].tsx
+│   ├── dashboard.tsx
+│   ├── index.tsx
+│   ├── login.tsx
+│   └── settings.tsx
+├── README.md
+├── styles
+│   └── globals.css
+└── tsconfig.json
+
+9 directories, 27 files
