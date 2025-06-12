@@ -1,53 +1,25 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import AuthFormComponent from '../components/AuthFormComponent';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../lib/firebase';
 
-interface LoginPageProps {
-  initialFormState?: string;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ initialFormState = 'login' }) => {
-  // Initialize Firebase app
-  initializeApp(firebaseConfig);
-  const auth = getAuth();
-  const [formState, setFormState] = useState(initialFormState);
+const LoginPage: React.FC = () => {
   const [error, setError] = useState('');
-  const router = useRouter();
 
-  const handleAuth = async (email: string, password: string) => {
-    try {
-      if (formState === 'login') {
-        await signInWithEmailAndPassword(auth, email, password);
-      } else {
-        await createUserWithEmailAndPassword(auth, email, password);
-      }
-      // Redirect to the dashboard upon successful authentication
-      router.push('/dashboard');
-    } catch (error: any) {
-      // Set error messages
-      setError(error.message);
-    }
+  const handleError = (error: Error) => {
+    setError(error.message);
   };
 
-  const toggleFormState = () => {
-    setFormState(formState === 'login' ? 'register' : 'login');
-    setError(''); // Clear the error message when switching forms
+  const handleSuccess = () => {
+    setError(''); // Clear any previous errors on successful auth
   };
 
   return (
     <div className="login-page">
-      <h1>{formState === 'login' ? 'Login' : 'Register'}</h1>
+      <h1>Authentication</h1>
       <AuthFormComponent
-        onSubmit={handleAuth}
-        onError={(message: string) => setError(message)}
+        onSubmit={handleSuccess}
+        onError={handleError}
       />
       {error && <p className="error">{error}</p>}
-      <button onClick={toggleFormState} className="toggle-form">
-        {formState === 'login' ? 'Switch to Register' : 'Switch to Login'}
-      </button>
     </div>
   );
 };

@@ -1,0 +1,58 @@
+.card {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.summary {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.findingsSection,
+.recommendationsSection {
+  margin: 1rem 0;
+}
+
+.findingsSection h4,
+.recommendationsSection h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.findingsSection ul,
+.recommendationsSection ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.riskIndicator {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+}
+
+.riskLevel {
+  font-weight: bold;
+}
+
+/* Risk level colors */
+.low {
+  border-left: 4px solid #4caf50;
+}
+
+.medium {
+  border-left: 4px solid #ff9800;
+}
+
+.high {
+  border-left: 4px solid #f44336;
+}

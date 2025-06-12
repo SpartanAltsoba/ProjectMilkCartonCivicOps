@@ -1,18 +1,24 @@
 import { useState, useEffect, useCallback } from 'react';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { firestore } from '../lib/firebase';
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-// Custom hook to handle Firestore interactions
+interface FirestoreDocument {
+  id: string;
+  [key: string]: any;
+}
+
+// Custom hook to handle Firestore interactions (web version)
 export function useFirestore(collectionName: string) {
-  const [documents, setDocuments] = useState<FirebaseFirestoreTypes.DocumentData[]>([]);
+  const [documents, setDocuments] = useState<FirestoreDocument[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetchDocuments = useCallback(async () => {
     setLoading(true);
     try {
-      const snapshot = await firestore().collection(collectionName).get();
-      const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const ref = collection(firestore, collectionName);
+      const snapshot = await getDocs(ref);
+      const docs = snapshot.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }));
       setDocuments(docs);
     } catch (err) {
       console.error('Error fetching documents:', err);
@@ -29,7 +35,8 @@ export function useFirestore(collectionName: string) {
   const addDocument = async (newDoc: object) => {
     setLoading(true);
     try {
-      const docRef = await firestore().collection(collectionName).add(newDoc);
+      const ref = collection(firestore, collectionName);
+      const docRef = await addDoc(ref, newDoc);
       setDocuments(prevDocs => [...prevDocs, { id: docRef.id, ...newDoc }]);
     } catch (err) {
       console.error('Error adding document:', err);
@@ -42,7 +49,8 @@ export function useFirestore(collectionName: string) {
   const updateDocument = async (id: string, updatedData: object) => {
     setLoading(true);
     try {
-      await firestore().collection(collectionName).doc(id).update(updatedData);
+      const docRef = doc(firestore, collectionName, id);
+      await updateDoc(docRef, updatedData);
       setDocuments(prevDocs => prevDocs.map(doc => (doc.id === id ? { ...doc, ...updatedData } : doc)));
     } catch (err) {
       console.error('Error updating document:', err);
@@ -55,7 +63,8 @@ export function useFirestore(collectionName: string) {
   const deleteDocument = async (id: string) => {
     setLoading(true);
     try {
-      await firestore().collection(collectionName).doc(id).delete();
+      const docRef = doc(firestore, collectionName, id);
+      await deleteDoc(docRef);
       setDocuments(prevDocs => prevDocs.filter(doc => doc.id !== id));
     } catch (err) {
       console.error('Error deleting document:', err);

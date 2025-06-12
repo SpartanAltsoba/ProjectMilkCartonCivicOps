@@ -7,19 +7,19 @@ interface RedirectComponentProps {
 }
 
 const RedirectComponent: React.FC<RedirectComponentProps> = ({ destination }) => {
-  const { user, isLoading } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
     // Only redirect if not loading
-    if (!isLoading) {
+    if (!loading) {
       if (user) {
         router.push(destination || '/dashboard');
       } else {
         router.push('/login');
       }
     }
-  }, [user, isLoading, router, destination]);
+  }, [user, loading, router, destination]);
 
   return null;
 };

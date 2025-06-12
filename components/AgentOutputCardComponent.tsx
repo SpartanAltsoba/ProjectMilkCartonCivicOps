@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from '../styles/AgentOutputCardComponent.module.css';
 
 interface AgentOutputCardComponentProps {
@@ -19,7 +18,6 @@ const AgentOutputCardComponent: React.FC<AgentOutputCardComponentProps> = ({ age
     if (findings.length === 0) {
       return <p>No findings available.</p>;
     }
-
     return (
       <ul>
         {findings.map((finding, index) => (
@@ -33,7 +31,6 @@ const AgentOutputCardComponent: React.FC<AgentOutputCardComponentProps> = ({ age
     if (recommendations.length === 0) {
       return <p>No recommendations available.</p>;
     }
-
     return (
       <ul>
         {recommendations.map((recommendation, index) => (
@@ -60,16 +57,6 @@ const AgentOutputCardComponent: React.FC<AgentOutputCardComponentProps> = ({ age
       </div>
     </div>
   );
-};
-
-AgentOutputCardComponent.propTypes = {
-  agentData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    findings: PropTypes.arrayOf(PropTypes.string).isRequired,
-    recommendations: PropTypes.arrayOf(PropTypes.string).isRequired,
-    riskLevel: PropTypes.oneOf(['low', 'medium', 'high']).isRequired,
-  }).isRequired,
 };
 
 export default AgentOutputCardComponent;

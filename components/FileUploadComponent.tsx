@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { useStorage } from '../hooks/useStorage';
+import useStorage from '../hooks/useStorage';
 import { useFirestore } from '../hooks/useFirestore';
 
 interface FileUploadComponentProps {
@@ -15,7 +15,7 @@ const FileUploadComponent: React.FC<FileUploadComponentProps> = ({ onUpload, fil
 
   const { user } = useAuth();
   const { uploadFile } = useStorage();
-  const { addDocument } = useFirestore();
+  const { addDocument } = useFirestore('jobs');
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.files ? e.target.files[0] : null;
@@ -31,8 +31,10 @@ const FileUploadComponent: React.FC<FileUploadComponentProps> = ({ onUpload, fil
   const handleUpload = async () => {
     if (!file) return;
     try {
-      const fileUrl = await uploadFile(file, user?.uid || 'anonymous', setProgress);
-      await addDocument('uploads', {
+      // Only two arguments: file and userId (no setProgress)
+      const fileUrl = await uploadFile(file, user?.uid || 'anonymous');
+      // Add document to 'jobs' collection (since you did useFirestore('jobs'))
+      await addDocument({
         name: file.name,
         url: fileUrl,
         createdAt: new Date(),

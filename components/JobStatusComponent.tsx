@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../lib/firebase';
+import { firestore } from '../lib/firebase'; // adjust this import if your Firestore export is named differently
 import { doc, onSnapshot } from 'firebase/firestore';
 
 interface JobStatusComponentProps {
@@ -10,13 +10,15 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({ jobId }) => {
   const [status, setStatus] = useState<string>('Loading...');
 
   useEffect(() => {
-    const jobDocRef = doc(db, 'jobs', jobId);
+    if (!jobId) return;
+
+    const jobDocRef = doc(firestore, 'jobs', jobId);
     const unsubscribe = onSnapshot(
       jobDocRef,
-      (doc) => {
-        if (doc.exists()) {
-          const data = doc.data();
-          setStatus(data?.status || 'Unknown');
+      (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setStatus(data?.status ?? 'Unknown');
         } else {
           setStatus('Job not found');
         }
@@ -27,7 +29,6 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({ jobId }) => {
       }
     );
 
-    // Clean up subscription on unmount
     return () => unsubscribe();
   }, [jobId]);
 

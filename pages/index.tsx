@@ -1,43 +1,26 @@
-import { GetServerSideProps } from 'next';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getAuthStatus } from '../lib/auth';
+import { useAuth } from '../hooks/useAuth';
 
-interface IndexPageProps {
-  isAuthenticated: boolean;
-}
-
-const RedirectComponent: React.FC<{ destination: string }> = ({ destination }) => {
+const IndexPage: React.FC = () => {
   const router = useRouter();
+  const { user, loading } = useAuth();
 
   useEffect(() => {
-    router.replace(destination);
-  }, [destination]);
+    if (!loading) {
+      if (user) {
+        router.replace('/dashboard');
+      } else {
+        router.replace('/login');
+      }
+    }
+  }, [user, loading, router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return null;
-};
-
-const IndexPage: React.FC<IndexPageProps> = ({ isAuthenticated }) => {
-  const destination = isAuthenticated ? '/dashboard' : '/login';
-  return <RedirectComponent destination={destination} />;
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const isAuthenticated = await getAuthStatus();
-    return {
-      props: {
-        isAuthenticated,
-      },
-    };
-  } catch (error) {
-    console.error('Failed to retrieve authentication status:', error);
-    return {
-      props: {
-        isAuthenticated: false,
-      },
-    };
-  }
 };
 
 export default IndexPage;

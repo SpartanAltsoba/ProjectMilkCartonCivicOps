@@ -2,11 +2,11 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { NextPage } from 'next';
-import { getFirestore, doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { useAuth } from '../../hooks/useAuth';
-import { JobStatusComponent } from '../../components/JobStatusComponent';
-import { AgentOutputCardComponent } from '../../components/AgentOutputCardComponent';
-import { initializeFirebase } from '../../lib/firebase';
+import JobStatusComponent from '../../components/JobStatusComponent';
+import AgentOutputCardComponent from '../../components/AgentOutputCardComponent';
+import { firestore } from '../../lib/firebase';
 import styles from '../../styles/Case.module.css';
 
 interface CaseDetailsProps {
@@ -28,8 +28,7 @@ const CaseDetails: NextPage<CaseDetailsProps> = () => {
       return;
     }
 
-    const db = getFirestore(initializeFirebase());
-    const caseDocRef = doc(db, 'cases', caseId);
+    const caseDocRef = doc(firestore, 'cases', caseId);
 
     const unsubscribe = onSnapshot(caseDocRef, (doc) => {
       if (doc.exists()) {
@@ -55,7 +54,7 @@ const CaseDetails: NextPage<CaseDetailsProps> = () => {
   return (
     <div className={styles.caseDetails}>
       <h1>Case Details for {caseId}</h1>
-      <JobStatusComponent jobId={caseId} status={caseData.status} />
+      <JobStatusComponent jobId={caseId} />
       {caseData.agentOutputs && caseData.agentOutputs.map((output: any, index: number) => (
         <AgentOutputCardComponent key={index} agentData={output} />
       ))}

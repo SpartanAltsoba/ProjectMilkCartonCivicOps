@@ -9,8 +9,8 @@ import Head from 'next/head';
 
 const Dashboard: NextPage = () => {
   const router = useRouter();
-  const { user, loading, error } = useAuth();
-  const { jobs, fetchJobs, jobsLoading, jobsError } = useFirestore();
+  const { user, loading } = useAuth();
+  const { documents: jobs, loading: jobsLoading, error: jobsError, fetchDocuments: fetchJobs } = useFirestore('jobs');
 
   useEffect(() => {
     if (!loading && !user) {
@@ -24,8 +24,8 @@ const Dashboard: NextPage = () => {
     return <div className="loading">Loading...</div>;
   }
 
-  if (error || jobsError) {
-    return <div className="error">Error: {error?.message || jobsError?.message}</div>;
+  if (jobsError) {
+    return <div className="error">Error: {jobsError}</div>;
   }
 
   return (
@@ -38,7 +38,7 @@ const Dashboard: NextPage = () => {
         <h1>Welcome to your Dashboard</h1>
         <DashboardComponent />
         {jobs?.map((job) => (
-          <JobStatusComponent key={job.id} jobId={job.id} status={job.status} />
+          <JobStatusComponent key={job.id} jobId={job.id} />
         ))}
       </div>
       <style jsx>{`

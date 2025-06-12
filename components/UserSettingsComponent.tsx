@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { auth, firestore } from '../lib/firebase';
 import { useAuth } from '../hooks/useAuth';
 import styles from '../styles/UserSettingsComponent.module.css';
@@ -29,10 +31,10 @@ const UserSettingsComponent: React.FC<UserSettingsComponentProps> = ({ userData 
     try {
       if (!user) throw new Error('User not authenticated');
       setIsSaving(true);
-      await user.updateProfile({
+      await updateProfile(user, {
         displayName,
       });
-      await firestore.collection('users').doc(user.uid).set({
+      await setDoc(doc(firestore, 'users', user.uid), {
         displayName,
         privacySettings: {
           shareDataWithAgents,

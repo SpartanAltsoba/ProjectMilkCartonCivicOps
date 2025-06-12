@@ -1,28 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { useAuth } from '../hooks/useAuth';
-import { UserSettingsComponent } from '../components/UserSettingsComponent';
-import { withProtected } from '../lib/auth';
+import UserSettingsComponent from '../components/UserSettingsComponent';
 
 const SettingsPage: NextPage = () => {
-  const { user, loading, error } = useAuth();
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+
+  if (!user) return null; // Will redirect to login
 
   return (
     <div className="settings-container">
-      {user ? (
-        <UserSettingsComponent userData={user} />
-      ) : (
-        <div>Please log in to manage your settings.</div>
-      )}
+      <UserSettingsComponent userData={{
+        email: user.email || '',
+        displayName: user.displayName || '',
+        privacySettings: { shareDataWithAgents: false }
+      }} />
     </div>
   );
 };
 
-// Ensure the page is only accessible to authenticated users
-export default withProtected(SettingsPage);
+export default SettingsPage;
 
 // styles.css
 // You might want to add or import some CSS to style your page better

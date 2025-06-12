@@ -1,6 +1,6 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from './firebase';
+import { firestore } from './firebase';
 
 // Utility class for handling Firebase Storage operations
 export default class StorageService {
@@ -53,7 +53,7 @@ export default class StorageService {
                     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
                         try {
                             // Save metadata to Firestore
-                            await addDoc(collection(db, 'files'), { ...metadata, downloadURL });
+                            await addDoc(collection(firestore, 'files'), { ...metadata, downloadURL });
                             resolve(downloadURL);
                         } catch (firestoreError) {
                             reject('Failed to save metadata to Firestore: ' + firestoreError);
