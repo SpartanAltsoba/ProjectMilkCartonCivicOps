@@ -1,0 +1,87 @@
+[
+  {
+    "id": "stage_kg_schema_snapshot",
+    "name": "Schema Snapshot",
+    "trigger": "graph_initialization_required",
+    "component": "GraphSet",
+    "description": "Define base node types and relationships among Individuals, Vendors, NGOs, PACs, Agencies, and Legislators.",
+    "inputs_required": ["scenario_hash"],
+    "operations": [
+      "Define nodes: :Individual, :Vendor, :NGO, :Agency, :PAC, :Legislator {term_start, term_end}",
+      "Define edges:",
+      ":Individual-[:OFFICER_OF]->:Vendor",
+      ":Vendor-[:CONTRACTS]->:Agency",
+      ":Vendor-[:AFFILIATED_WITH]->:NGO",
+      ":NGO-[:FUNDED_BY]->:Agency",
+      ":PAC<-[:DONOR]-:Individual",
+      ":Vendor-[:LOBBIED]->:Legislator"
+    ],
+    "on_success": {
+      "log": ["Graph node/edge types defined"]
+    },
+    "on_failure": {
+      "log": ["schema_definition_error"]
+    },
+    "outputs_produced": ["initialized_graph_schema"],
+    "next_stage": "stage_kg_edge_props"
+  },
+  {
+    "id": "stage_kg_edge_props",
+    "name": "Temporal Edge Properties",
+    "trigger": "relationships_defined",
+    "component": "GraphSet",
+    "description": "Assign temporal and contextual metadata to edges, such as USD amount, time range, legal citation, and confidence.",
+    "inputs_required": ["graph_edges"],
+    "operations": [
+      "Add edge properties: amount_usd, start_date, end_date, statute_ref, source, confidence"
+    ],
+    "on_success": {
+      "log": ["successful edge prop assignment"]
+    },
+    "on_failure": {
+      "log": ["missing property warning"]
+    },
+    "outputs_produced": ["edge_properties_applied"],
+    "next_stage": "stage_kg_derivation"
+  },
+  {
+    "id": "stage_kg_derivation",
+    "name": "Derivation Tags",
+    "trigger": "edge_properties_assigned",
+    "component": "GraphSet",
+    "description": "Tag edges and nodes with source derivation labels such as api:edgar or scrape:alabama.house.gov.",
+    "inputs_required": ["data_source"],
+    "operations": [
+      "Apply tag: source={origin}",
+      "Log derivation source"
+    ],
+    "on_success": {
+      "log": ["derivation source logged"]
+    },
+    "on_failure": {
+      "log": ["source_tag_missing"]
+    },
+    "outputs_produced": ["tagged_graph"],
+    "next_stage": "stage_kg_metadata"
+  },
+  {
+    "id": "stage_kg_metadata",
+    "name": "Graph Metadata",
+    "trigger": "derivation_tagged",
+    "component": "GraphSet",
+    "description": "Attach scenario_hash to graph transaction batch and log or enable rollback if transaction fails.",
+    "inputs_required": ["scenario_hash"],
+    "operations": [
+      "Label transaction batch with scenario_hash",
+      "If error: enable rollback tracking with scenario_hash"
+    ],
+    "on_success": {
+      "log": ["batch commit success"]
+    },
+    "on_failure": {
+      "log": ["rollback triggered"]
+    },
+    "outputs_produced": ["committed_graph_metadata"],
+    "next_stage": null
+  }
+]

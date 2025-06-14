@@ -1,0 +1,107 @@
+{
+  "plan": "Implementation Order and Exit Criteria",
+  "version": "v1.0",
+  "sprints": [
+    {
+      "id": "S-1",
+      "title": "EntityIndex & ID Harmonizer",
+      "component": "EntityIndex",
+      "tasks": [
+        "Implement Pydantic schema",
+        "Write unit tests"
+      ],
+      "exit_criteria": [
+        "100% IDs produce deterministic entity_key",
+        "Collision tests pass"
+      ],
+      "on_failure": "Log test failures"
+    },
+    {
+      "id": "S-2",
+      "title": "Recon v1 (CSE + FEC adapters)",
+      "component": "ReconWorker",
+      "tasks": [
+        "Implement CSE + FEC adapters"
+      ],
+      "exit_criteria": [
+        "Coverage ≥ 80% on Alabama sample",
+        "P95 latency < 8s"
+      ],
+      "on_failure": "Log coverage or latency issues"
+    },
+    {
+      "id": "S-3",
+      "title": "Graph Schema & Correlation Agent",
+      "component": "CorrelationAgent",
+      "tasks": [
+        "Implement Cypher acceptance tests"
+      ],
+      "exit_criteria": [
+        "Cypher acceptance tests pass",
+        "No orphan critical nodes on sample"
+      ],
+      "on_failure": "Log test or node issues"
+    },
+    {
+      "id": "S-4",
+      "title": "Analyst MVP (rule-only + sample ML pipeline)",
+      "component": "AnalystWorker",
+      "tasks": [
+        "Implement rule-only logic",
+        "Implement sample ML pipeline"
+      ],
+      "exit_criteria": [
+        "Flag recall ≥ 0.75",
+        "Precision ≥ 0.9 on gold dataset"
+      ],
+      "on_failure": "Log recall or precision failures"
+    },
+    {
+      "id": "S-5",
+      "title": "Advisory Templates (Top-20 actions); render engine",
+      "component": "AdvisoryWorker",
+      "tasks": [
+        "Implement Top-20 actions",
+        "Build render engine"
+      ],
+      "exit_criteria": [
+        "All templates render with zero placeholder gaps",
+        "PDF + DOCX formats supported"
+      ],
+      "on_failure": "Log rendering or gap issues"
+    },
+    {
+      "id": "S-6",
+      "title": "UI Wiring – Decision-Chain renderer; live COA pop-outs",
+      "component": "DecisionChainUI",
+      "tasks": [
+        "Implement Decision-Chain renderer",
+        "Enable live COA pop-outs"
+      ],
+      "exit_criteria": [
+        "Run Cypress end-to-end 'parent happy path'"
+      ],
+      "cypress_result": {
+        "on_success": "Log successful UI test",
+        "on_failure": "Log UI test failure"
+      },
+      "on_failure": "Log wiring issues"
+    },
+    {
+      "id": "S-7",
+      "title": "Self-Test Harness & Replay-able Fixtures",
+      "component": "SelfTestHarness",
+      "tasks": [
+        "Implement automated nightly canary"
+      ],
+      "exit_criteria": [
+        "0 critical failures for 5 days"
+      ],
+      "canary_result": {
+        "on_success": "Log successful self-test",
+        "on_failure": "Log critical failures"
+      },
+      "on_failure": "Log harness issues"
+    }
+  ]
+}

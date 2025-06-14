@@ -1,0 +1,94 @@
+{
+  "models": {
+    "ReconWorker": {
+      "primary_model": "gpt-4o-2024-05-13",
+      "tasks": [
+        "query generation",
+        "JSON extraction",
+        "retrieval QA"
+      ],
+      "supporting_services": [
+        {
+          "service": "text-embedding-3-large",
+          "purpose": "semantic deduplication"
+        },
+        {
+          "service": "moderation-latest",
+          "purpose": "content safety screening"
+        }
+      ],
+      "on_success": "Log successful Recon task",
+      "on_failure": "Log dedup or moderation failure"
+    },
+    "CorrelationWorker": {
+      "primary_model": "gpt-4o-2024-05-13",
+      "tasks": [
+        "entity disambiguation",
+        "relationship inference",
+        "cycle detection"
+      ],
+      "fallback_model": "gpt-3.5-turbo-1106",
+      "supporting_services": [
+        {
+          "service": "text-embedding-3-large",
+          "purpose": "entity similarity checks"
+        }
+      ],
+      "on_success": "Log successful Correlation task",
+      "on_failure": "Log fallback execution or mapping error"
+    },
+    "AnalystWorker": {
+      "primary_model": "gpt-4o-2024-05-13",
+      "tasks": [
+        "legal and ethical reasoning",
+        "compliance synthesis",
+        "flag logic construction"
+      ],
+      "function_calls": ["populate RiskVector"],
+      "fallback_model": "gpt-4",
+      "triage_services": [
+        {
+          "model": "gpt-3.5-turbo-instruct-0914",
+          "purpose": "risk scoring fallback"
+        },
+        {
+          "model": "XGBoost",
+          "purpose": "first-pass numerical triage"
+        }
+      ],
+      "on_success": "Log successful Analyst task",
+      "on_failure": "Log scoring or flag failure"
+    },
+    "AdvisoryWorker": {
+      "primary_model": "gpt-4o-2024-05-13",
+      "tasks": [
+        "course of action generation",
+        "persuasive writing with role-specific tone",
+        "template rendering"
+      ],
+      "fallback_model": "gpt-3.5-turbo-0125",
+      "imagery_service": {
+        "model": "dall-e-3",
+        "purpose": "illustrations or visual evidence if needed"
+      },
+      "on_success": "Log successful Advisory task",
+      "on_failure": "Log template or render failure"
+    },
+    "GlobalServices": {
+      "shared_models": [
+        {
+          "name": "text-embedding-3-large",
+          "purpose": "vector store for semantic search"
+        },
+        {
+          "name": "whisper-1",
+          "purpose": "speech-to-text transcription"
+        },
+        {
+          "name": "tts-1-hd",
+          "purpose": "high-quality text-to-speech"
+        }
+      ]
+    }
+  }
+}

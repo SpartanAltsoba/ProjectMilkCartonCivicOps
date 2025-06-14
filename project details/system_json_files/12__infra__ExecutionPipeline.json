@@ -1,0 +1,104 @@
+{
+  "pipeline": "Execution Pipeline",
+  "version": "v1.0",
+  "stages": [
+    {
+      "stage": "0.1",
+      "name": "Trigger Ingest",
+      "components": ["ScenarioRouter", "Trigger", "Logger", "RetryQueue"],
+      "inputs": ["scenario_type", "jurisdiction", "timestamp"],
+      "flow": [
+        "Parse incoming payload",
+        "Validate request schema and auth"
+      ],
+      "paths": {
+        "invalid_request": {
+          "code": "4xx",
+          "actions": ["Log validation failure", "Return error to user"]
+        },
+        "server_error": {
+          "code": "5xx",
+          "actions": ["Enqueue request with retry_count=0", "Return retry notice"]
+        },
+        "valid_request": {
+          "actions": [
+            "Extract scenario_type and jurisdiction",
+            "Log successful ingestion"
+          ]
+        }
+      }
+    },
+    {
+      "stage": "0.2",
+      "name": "Scenario Fingerprint",
+      "components": ["IdNormalizer", "Logger"],
+      "inputs": ["EIN", "DUNS", "CIK", "timestamp"],
+      "flow": [
+        "Clean and standardize IDs",
+        "Generate SHA-256 hash"
+      ],
+      "paths": {
+        "collision": {
+          "actions": [
+            "Log DuplicateScenario",
+            "Signal merge/abort to Router"
+          ]
+        },
+        "unique": {
+          "actions": [
+            "Log unique scenario_hash",
+            "Return scenario_hash"
+          ]
+        }
+      }
+    },
+    {
+      "stage": "0.3",
+      "name": "Job Record Init",
+      "components": ["DataVault", "Logger", "EventBus"],
+      "flow": [
+        "Begin transaction in DataVault",
+        "Insert scenario_hash, metadata, FSM_state=Recon"
+      ],
+      "paths": {
+        "transaction_failure": {
+          "actions": [
+            "Rollback transaction",
+            "Retry and log"
+          ]
+        },
+        "success": {
+          "actions": [
+            "Emit ScenarioCreated (event)",
+            "Log successful persist"
+          ]
+        }
+      }
+    },
+    {
+      "stage": "0.4",
+      "name": "Dispatcher",
+      "components": ["OrchestratorFSM", "EventBus", "Redis Queue", "Logger", "RetryQueue"],
+      "flow": [
+        "Receive ScenarioCreated event",
+        "Validate payload",
+        "Enqueue Recon job with metadata"
+      ],
+      "paths": {
+        "enqueue_failure": {
+          "actions": [
+            "Increment retry_count",
+            "If retry_count > retry_max → dead-letter queue + admin escalation",
+            "Else re-enqueue with retry_count++"
+          ]
+        },
+        "success": {
+          "actions": [
+            "Log successful enqueue",
+            "Confirm job queued"
+          ]
+        }
+      }
+    }
+  ]
+}

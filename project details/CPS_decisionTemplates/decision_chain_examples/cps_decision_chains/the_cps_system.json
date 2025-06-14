@@ -1,0 +1,123 @@
+{
+  "id": "us_cps_system",
+  "name": "U.S. Child Protective Services (CPS) System",
+  "nodes": [
+    {
+      "id": "M1",
+      "label": "1) Mandated Reporter Interface",
+      "details": [
+        "Public-facing entry point",
+        "Generates reports"
+      ]
+    },
+    {
+      "id": "M2",
+      "label": "2) Intake & Screening Unit",
+      "details": [
+        "Centralized decision node",
+        "Validates reports"
+      ]
+    },
+    {
+      "id": "M3",
+      "label": "3) Investigation & Case Initiation",
+      "details": [
+        "Field caseworkers assess conditions",
+        "Determines removal/safety plan"
+      ]
+    },
+    {
+      "id": "M4",
+      "label": "4) Legal & Petitioning Division",
+      "details": [
+        "Coordinates with courts",
+        "Files for removal or services"
+      ]
+    },
+    {
+      "id": "M5",
+      "label": "5) Family & Dependency Court Interface",
+      "details": [
+        "Custody hearings, TPR decisions",
+        "Oversees service compliance"
+      ]
+    },
+    {
+      "id": "M6",
+      "label": "6) Foster Care Operations & Placement",
+      "details": [
+        "Manages foster/group homes",
+        "Tracks licensing & referrals"
+      ]
+    },
+    {
+      "id": "M7",
+      "label": "7) Parent Services & Reunification",
+      "details": [
+        "Court-ordered services",
+        "Oversees visitation & treatment"
+      ]
+    },
+    {
+      "id": "M8",
+      "label": "8) Mental & Behavioral Health Referral",
+      "details": [
+        "Routes to therapy/clinical networks",
+        "Public & contracted services"
+      ]
+    },
+    {
+      "id": "M9",
+      "label": "9) Runaway Recovery & Child Location",
+      "details": [
+        "Locates missing/runaway youth",
+        "Coordinates with law enforcement"
+      ]
+    },
+    {
+      "id": "M10",
+      "label": "10) Contractor Oversight & QA",
+      "details": [
+        "Audits external providers",
+        "Ensures compliance with standards"
+      ]
+    },
+    {
+      "id": "M11",
+      "label": "11) Data, Reporting & Compliance",
+      "details": [
+        "Maintains data systems",
+        "Federal reporting (AFCARS, etc.)"
+      ]
+    },
+    {
+      "id": "M12",
+      "label": "12) Policy & Legislative Affairs",
+      "details": [
+        "Translates new laws into policy",
+        "Implements mandates, funding"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "M1", "to": "M2", "label": "Suspected abuse/neglect reports" },
+    { "from": "M2", "to": "M3", "label": "Screened-in cases" },
+    { "from": "M3", "to": "M4", "label": "Legal intervention needed" },
+    { "from": "M4", "to": "M5", "label": "Petition / Court filings" },
+    { "from": "M5", "to": "M6", "label": "Ordered foster placement" },
+    { "from": "M5", "to": "M7", "label": "Ordered parent services" },
+    { "from": "M7", "to": "M8", "label": "Referral to behavioral health" },
+    { "from": "M6", "to": "M9", "label": "For missing / runaway youth" },
+    { "from": "M6", "to": "M10" },
+    { "from": "M7", "to": "M10" },
+    { "from": "M8", "to": "M10" },
+    { "from": "M9", "to": "M10" },
+    { "from": "M6", "to": "M11" },
+    { "from": "M7", "to": "M11" },
+    { "from": "M8", "to": "M11" },
+    { "from": "M9", "to": "M11" },
+    { "from": "M10", "to": "M11" },
+    { "from": "M11", "to": "M12" },
+    { "from": "M12", "to": "M11", "label": "New mandates / requirements" }
+  ]
+}

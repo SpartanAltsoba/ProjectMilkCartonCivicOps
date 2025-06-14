@@ -1,0 +1,106 @@
+{
+  "id": "chain_5",
+  "name": "NGO/Contractor → Minimize Reports → Unreported Abuse → Ongoing Harm",
+  "nodes": [
+    {
+      "id": "L5",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "Title IV‐E: Per Diem Funding",
+        "CAPTA: Mandatory Reporting",
+        "Contractor Terms w/ State"
+      ]
+    },
+    {
+      "id": "M5",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Underreport to keep placements",
+        "Weak oversight or audits",
+        "Profit motive overshadowing safety"
+      ]
+    },
+    {
+      "id": "C5_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Child in Care of Private NGO/Contractor",
+        "Funded Per Diem"
+      ]
+    },
+    {
+      "id": "C5_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Incident of Potential Abuse",
+        "Staff/Management Observes"
+      ]
+    },
+    {
+      "id": "C5_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Underreport or Dismiss",
+        "Incentive: Maximize Retention",
+        "Minimize Red Flags"
+      ]
+    },
+    {
+      "id": "C5_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Abuse Remains Hidden",
+        "No Official Intervention"
+      ]
+    },
+    {
+      "id": "C5_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Child Continues Suffering",
+        "Systemic Harm Normalized"
+      ]
+    },
+    {
+      "id": "C5_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Whistleblower Protections",
+        "Independent Audits",
+        "Enforce Mandated Reporting for Contractors"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L5", "to": "M5", "label": "Profit motive + limited oversight" },
+    { "from": "L5", "to": "C5_Action", "label": "Mandated reporting easily ignored" },
+    { "from": "M5", "to": "C5_Action", "label": "Maintain bed occupancy" },
+    { "from": "C5_Input", "to": "C5_Decision" },
+    { "from": "C5_Decision", "to": "C5_Action" },
+    { "from": "C5_Action", "to": "C5_Outcome" },
+    { "from": "C5_Outcome", "to": "C5_Failure" },
+    { "from": "C5_Action", "to": "C5_PMC", "type": "dashed", "label": "Anonymous tip line,\nreporting channels" },
+    { "from": "C5_Outcome", "to": "C5_PMC", "type": "dashed", "label": "Push repeated audits" }
+  ],
+  "coa_link": "course_5.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_5_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

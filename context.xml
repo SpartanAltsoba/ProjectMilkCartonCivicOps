@@ -1,0 +1,154 @@
+<DOCUMENT filename="context.xml">
+    <Context>
+        <Project name="Research Monster" weight="0.85">
+            <Description>Focus on research and data transparency with legal and political emphasis.</Description>
+            <Keywords>
+                <Keyword name="transparency" weight="0.30" />
+                <Keyword name="research" weight="0.25" />
+                <Keyword name="data" weight="0.20" />
+                <Keyword name="public" weight="0.15" />
+            </Keywords>
+            <Scoring>
+                <Dimension name="Legality" weight="0.30" score="0.9" />
+                <Dimension name="Political Influence" weight="0.25" score="0.7" />
+                <Dimension name="COI" weight="0.15" score="0.4" />
+                <Dimension name="Financial Anomaly" weight="0.15" score="0.5" />
+                <Dimension name="Procedural Risk" weight="0.15" score="0.3" />
+            </Scoring>
+            <RiskVector>0.67</RiskVector>
+            <Links>
+                <Link url="https://www.researchmonster.org" />
+                <Link url="https://data.gov" />
+                <Link url="https://www.usa.gov/research" />
+                <Link url="https://www.edgar.gov" />
+                <Link url="https://www.irs.gov" />
+                <Link url="https://www.sec.gov/search-filings" />
+            </Links>
+        </Project>
+        <Project name="Transparency Defender" weight="0.80">
+            <Description>Focus on compliance and reporting with COI and procedural risk emphasis.</Description>
+            <Keywords>
+                <Keyword name="transparency" weight="0.25" />
+                <Keyword name="compliance" weight="0.20" />
+                <Keyword name="data" weight="0.20" />
+                <Keyword name="public" weight="0.15" />
+            </Keywords>
+            <Scoring>
+                <Dimension name="COI" weight="0.25" score="0.8" />
+                <Dimension name="Procedural Risk" weight="0.20" score="0.6" />
+                <Dimension name="Legality" weight="0.20" score="0.5" />
+                <Dimension name="Financial Anomaly" weight="0.20" score="0.4" />
+                <Dimension name="Political Influence" weight="0.15" score="0.3" />
+            </Scoring>
+            <RiskVector>0.59</RiskVector>
+            <Links>
+                <Link url="https://transparencydefender.gov" />
+                <Link url="https://www.justice.gov" />
+                <Link url="https://www.transparency.gov" />
+                <Link url="https://www.courtlistener.com" />
+                <Link url="https://www.fec.gov" />
+                <Link url="https://www.usaspending.gov" />
+            </Links>
+        </Project>
+        <Project name="Legislative Network" weight="0.75">
+            <Description>Focus on legislative and contractual data across states.</Description>
+            <Keywords>
+                <Keyword name="legislation" weight="0.30" />
+                <Keyword name="contracts" weight="0.25" />
+                <Keyword name="public" weight="0.20" />
+                <Keyword name="transparency" weight="0.15" />
+            </Keywords>
+            <Scoring>
+                <Dimension name="Legality" weight="0.30" score="0.7" />
+                <Dimension name="Procedural Risk" weight="0.25" score="0.6" />
+                <Dimension name="COI" weight="0.20" score="0.5" />
+                <Dimension name="Financial Anomaly" weight="0.15" score="0.4" />
+                <Dimension name="Political Influence" weight="0.10" score="0.3" />
+            </Scoring>
+            <RiskVector>0.58</RiskVector>
+            <Links>
+                <Link url="https://akleg.gov" />
+                <Link url="https://assembly.state.ny.us" />
+                <Link url="https://capitol.texas.gov" />
+                <Link url="https://code.dccouncil.gov" />
+                <Link url="https://gencourt.state.nh.us" />
+                <Link url="https://house.mo.gov" />
+                <Link url="https://justia.com" />
+                <Link url="https://kslegislature.gov/li" />
+                <Link url="https://law.cornell.edu" />
+                <Link url="https://le.utah.gov" />
+                <Link url="https://leg.colorado.gov" />
+                <Link url="https://leg.wa.gov" />
+                <Link url="https://legis.delaware.gov" />
+                <Link url="https://legis.la.gov/legis/home.aspx" />
+                <Link url="https://legis.wisconsin.gov" />
+                <Link url="https://legislature.ky.gov" />
+                <Link url="https://legislature.maine.gov" />
+                <Link url="https://legislature.vermont.gov" />
+                <Link url="https://mgaleg.maryland.gov/mgawebsite" />
+                <Link url="https://nebraskalegislature.gov" />
+                <Link url="https://pacer.uscourts.gov" />
+                <Link url="https://projects.propublica.org/nonprofits" />
+                <Link url="https://sam.gov" />
+                <Link url="https://sdlegislature.gov" />
+                <Link url="https://senate.mo.gov" />
+                <Link url="https://virginiageneralassembly.gov" />
+                <Link url="https://www.arkleg.state.ar.us" />
+                <Link url="https://www.assembly.ca.gov" />
+                <Link url="https://www.azleg.gov" />
+                <Link url="https://www.capitol.hawaii.gov" />
+                <Link url="https://www.capitol.tn.gov" />
+                <Link url="https://www.cfda.gov" />
+                <Link url="https://www.cga.ct.gov" />
+                <Link url="https://www.childwelfare.gov" />
+                <Link url="https://www.corporationwiki.com" />
+                <Link url="https://www.councilofnonprofits.org" />
+                <Link url="https://www.factcheck.org" />
+                <Link url="https://www.fec.gov" />
+                <Link url="https://www.federalregister.gov" />
+                <Link url="https://www.flsenate.gov" />
+                <Link url="https://www.followthemoney.org" />
+                <Link url="https://www.grants.gov" />
+                <Link url="https://www.guidestar.org" />
+                <Link url="https://www.ilga.gov" />
+                <Link url="https://www.in.gov/legislative" />
+                <Link url="https://www.irs.gov" />
+                <Link url="https://www.justice.gov" />
+                <Link url="https://www.leg.mt.gov" />
+                <Link url="https://www.leg.state.mn.us" />
+                <Link url="https://www.leg.state.nv.us" />
+                <Link url="https://www.legis.ga.gov" />
+                <Link url="https://www.legis.iowa.gov" />
+                <Link url="https://www.legis.nd.gov" />
+                <Link url="https://www.legis.state.pa.us" />
+                <Link url="https://www.legislature.idaho.gov" />
+                <Link url="https://www.legislature.mi.gov" />
+                <Link url="https://www.legislature.ms.gov" />
+                <Link url="https://www.legislature.ohio.gov" />
+                <Link url="https://www.legislature.state.al.us" />
+                <Link url="https://www.lobbyview.org" />
+                <Link url="https://www.mass.gov/legis" />
+                <Link url="https://www.myfloridahouse.gov" />
+                <Link url="https://www.ncleg.gov" />
+                <Link url="https://www.ncsl.org" />
+                <Link url="https://www.njleg.state.nj.us" />
+                <Link url="https://www.nmlegis.gov" />
+                <Link url="https://www.nysenate.gov" />
+                <Link url="https://www.oklegislature.gov" />
+                <Link url="https://www.opencorporates.com" />
+                <Link url="https://www.opensecrets.org" />
+                <Link url="https://www.oregonlegislature.gov" />
+                <Link url="https://www.rilegislature.gov" />
+                <Link url="https://www.scstatehouse.gov" />
+                <Link url="https://www.sec.gov/search-filings" />
+                <Link url="https://www.sen.ca.gov" />
+                <Link url="https://www.usaspending.gov" />
+                <Link url="https://www.wvlegislature.gov" />
+                <Link url="https://www.wyoleg.gov" />
+            </Links>
+        </Project>
+    </Context>
+    <Meta>
+        <UpdateTimestamp>2025-06-12T21:35:00+04</UpdateTimestamp>
+    </Meta>
+</DOCUMENT>

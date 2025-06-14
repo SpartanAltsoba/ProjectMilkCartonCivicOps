@@ -127,8 +127,66 @@
   text-decoration: underline;
 }
 
+/* New styles for query input and analysis button */
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.queryInput {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.queryInput:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.newAnalysisButton {
+  background: #0070f3;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.newAnalysisButton:hover:not(:disabled) {
+  background: #0051a2;
+}
+
+.newAnalysisButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #ffebee;
+  color: #d32f2f;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ffcdd2;
+}
+
 @media (max-width: 768px) {
   .dashboardContainer {
+    padding: 1rem;
+  }
+
+  .dashboard {
     padding: 1rem;
   }
 
@@ -140,5 +198,9 @@
 
   .statsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .queryInput {
+    max-width: 100%;
   }
 }

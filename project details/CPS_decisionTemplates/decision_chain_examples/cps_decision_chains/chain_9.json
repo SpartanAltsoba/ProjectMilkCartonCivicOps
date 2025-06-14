@@ -1,0 +1,105 @@
+{
+  "id": "chain_9",
+  "name": "CINA/FINS/PINS Routes → Court Intervention → Service Gaps → Punitive Outcomes",
+  "nodes": [
+    {
+      "id": "L9",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "State-Specific CINA/FINS/PINS Statutes",
+        "Juvenile Court Procedures",
+        "Limited Funding for 'Services' vs. Custody"
+      ]
+    },
+    {
+      "id": "M9",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "'Needs' designation triggers court involvement",
+        "Insufficient actual services provided",
+        "Risk of placing child into custody anyway"
+      ]
+    },
+    {
+      "id": "C9_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Family/Child Behavior or Situation",
+        "Truancy, Incorrigible Behavior, Neglect/Abuse Concern"
+      ]
+    },
+    {
+      "id": "C9_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Filing a CINA/FINS/PINS Petition",
+        "Who: School, Agency, Parent, or Court"
+      ]
+    },
+    {
+      "id": "C9_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Court Orders Services or Supervision",
+        "But Services May Be Underfunded or Unavailable"
+      ]
+    },
+    {
+      "id": "C9_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Child/Family Deemed 'Noncompliant'",
+        "If Services Not Accessed or Behavior Persists"
+      ]
+    },
+    {
+      "id": "C9_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Potential Removal, Detention",
+        "Or Escalation to Delinquency System"
+      ]
+    },
+    {
+      "id": "C9_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Ensure Sufficient Services",
+        "Monitor for Overuse of Custody",
+        "Advocate for True Family Supports"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L9", "to": "M9", "label": "Statutes can be\npunitive if services\nnot actually provided" },
+    { "from": "L9", "to": "C9_Decision", "label": "CINA/FINS/PINS\npaths vary by state" },
+    { "from": "M9", "to": "C9_Action", "label": "Court involvement\nbecomes default" },
+    { "from": "C9_Input", "to": "C9_Decision" },
+    { "from": "C9_Decision", "to": "C9_Action" },
+    { "from": "C9_Action", "to": "C9_Outcome" },
+    { "from": "C9_Outcome", "to": "C9_Failure" },
+    { "from": "C9_Action", "to": "C9_PMC", "type": "dashed", "label": "Push for actual\nfunded interventions" },
+    { "from": "C9_Outcome", "to": "C9_PMC", "type": "dashed", "label": "Prevent detention\nwhen services fail" }
+  ],
+  "coa_link": "course_9.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_9_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

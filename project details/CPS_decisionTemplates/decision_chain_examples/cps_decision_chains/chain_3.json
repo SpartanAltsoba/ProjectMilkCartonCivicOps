@@ -1,0 +1,105 @@
+{
+  "id": "chain_3",
+  "name": "Runaway Child → Police Response → 'Voluntary' Classification → Child Lost",
+  "nodes": [
+    {
+      "id": "L3",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "State/Local Police Protocols",
+        "Federal 'Missing Children' Directives (But Often Under-Enforced)",
+        "Budget/Resource Constraints"
+      ]
+    },
+    {
+      "id": "M3",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Youth labeled 'Voluntary Runaway'",
+        "Minimal follow-up if 'not endangered'",
+        "Child remains missing"
+      ]
+    },
+    {
+      "id": "C3_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Runaway Child",
+        "Unknown Circumstances"
+      ]
+    },
+    {
+      "id": "C3_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Police Response to Missing Child Report"
+      ]
+    },
+    {
+      "id": "C3_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Classify as 'Voluntary Runaway'",
+        "Low Priority",
+        "Minimal Resource Allocation"
+      ]
+    },
+    {
+      "id": "C3_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "No Official Recovery Effort",
+        "Child Not Pursued"
+      ]
+    },
+    {
+      "id": "C3_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Child Falls Off Radar",
+        "Potential Exploitation"
+      ]
+    },
+    {
+      "id": "C3_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Collaboration w/ Law Enforcement",
+        "Mandated Follow-up Protocols",
+        "Data Sharing (NCMEC)"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L3", "to": "M3", "label": "Loose or selective enforcement" },
+    { "from": "L3", "to": "C3_Action", "label": "No impetus for thorough search" },
+    { "from": "M3", "to": "C3_Action", "label": "De-prioritized cases" },
+    { "from": "C3_Input", "to": "C3_Decision" },
+    { "from": "C3_Decision", "to": "C3_Action" },
+    { "from": "C3_Action", "to": "C3_Outcome" },
+    { "from": "C3_Outcome", "to": "C3_Failure" },
+    { "from": "C3_Action", "to": "C3_PMC", "type": "dashed", "label": "Push for mandatory\nrecovery protocols" },
+    { "from": "C3_Outcome", "to": "C3_PMC", "type": "dashed", "label": "National Alerts &\nHotline" }
+  ],
+  "coa_link": "course_3.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_3_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

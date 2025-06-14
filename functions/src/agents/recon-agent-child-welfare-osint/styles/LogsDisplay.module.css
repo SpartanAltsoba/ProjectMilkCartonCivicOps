@@ -1,0 +1,25 @@
+.logsDisplay {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logEntry {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 0;
+  margin-bottom: 8px;
+}
+
+.logEntry:last-child {
+  border-bottom: none;
+}
+
+.logEntry p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.logEntry strong {
+  color: #333;
+  font-weight: 600;
+}

@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  datavault_service:
+    image: postgres:14
+    container_name: civicops_postgres
+    environment:
+      POSTGRES_DB: civic_trace_db
+      POSTGRES_USER: civicops_admin
+      POSTGRES_PASSWORD: CivicOps_Db_2025_Secure!
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  graphset_service:
+    image: neo4j:5
+    container_name: civicops_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/GraphOps_2025@secure
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    restart: unless-stopped
+
+  redis_queue_service:
+    image: redis:6
+    container_name: civicops_redis
+    command: redis-server --requirepass R3d1s!Ops@2025_secure
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  recon_worker:
+    build:
+      context: ./workers/ReconWorker
+    container_name: civicops_recon_worker
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis_queue_service
+      - graphset_service
+      - datavault_service
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+  neo4j_data:
+  redis_data:

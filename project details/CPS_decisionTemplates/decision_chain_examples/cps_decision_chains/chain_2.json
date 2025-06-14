@@ -1,0 +1,106 @@
+{
+  "id": "chain_2",
+  "name": "Foster Child → Behavioral Outburst → Isolation/Medication → Escape/Trafficking",
+  "nodes": [
+    {
+      "id": "L2",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "Title IV‐E: Foster Care Funding",
+        "State Group Home Standards",
+        "Minimal Oversight of Psychotropic Meds"
+      ]
+    },
+    {
+      "id": "M2",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Over‐medication to 'control'",
+        "Funding fosters group-home reliance",
+        "Limited external audits"
+      ]
+    },
+    {
+      "id": "C2_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Child Already in Foster System",
+        "Background: Trauma"
+      ]
+    },
+    {
+      "id": "C2_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Behavioral Incident",
+        "Child Acting Out"
+      ]
+    },
+    {
+      "id": "C2_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Staff Use Isolation/Overmedication",
+        "Incentive: Liability Control",
+        "Keep Incidents Quiet"
+      ]
+    },
+    {
+      "id": "C2_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Child Feels Unsafe",
+        "Increased Vulnerability"
+      ]
+    },
+    {
+      "id": "C2_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Child Runs Away",
+        "High Risk of Trafficking"
+      ]
+    },
+    {
+      "id": "C2_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Staff De-escalation Training",
+        "Oversight of Med Usage",
+        "Child-Centered Care"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L2", "to": "M2", "label": "Funding structure + minimal audits" },
+    { "from": "L2", "to": "C2_Action", "label": "Group homes can rely on meds" },
+    { "from": "M2", "to": "C2_Action", "label": "Isolation as 'standard procedure'" },
+    { "from": "C2_Input", "to": "C2_Decision" },
+    { "from": "C2_Decision", "to": "C2_Action" },
+    { "from": "C2_Action", "to": "C2_Outcome" },
+    { "from": "C2_Outcome", "to": "C2_Failure" },
+    { "from": "C2_Action", "to": "C2_PMC", "type": "dashed", "label": "Trauma-Informed\nPractice Advocacy" },
+    { "from": "C2_Outcome", "to": "C2_PMC", "type": "dashed", "label": "Rapid-Response for\nRunaways" }
+  ],
+  "coa_link": "course_2.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_2_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

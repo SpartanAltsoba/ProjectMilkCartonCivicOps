@@ -1,0 +1,83 @@
+{
+  "summary": "This file defines the execution sequence of Guardian agents by scenario type. It includes primary and fallback routes, error-handling escalation logic, and human-in-the-loop overrides. Used by orchestrator FSM and UI status panels.",
+  "scenario_routes": {
+    "standard_intake": {
+      "trigger_source": ["user_input", "webhook", "cron"],
+      "start_agent": "ReconWorker",
+      "execution_flow": [
+        {
+          "agent": "ReconWorker",
+          "on_success": "CorrelationWorker",
+          "on_failure": "RetryQueue"
+        },
+        {
+          "agent": "CorrelationWorker",
+          "on_success": "AnalystWorker",
+          "on_failure": "RetryQueue"
+        },
+        {
+          "agent": "AnalystWorker",
+          "on_success": "AdvisoryWorker",
+          "on_failure": "LogOnly"
+        },
+        {
+          "agent": "AdvisoryWorker",
+          "on_success": "COA_RenderEngine",
+          "on_failure": "TemplateRetry"
+        }
+      ]
+    },
+    "geo_targeted_recon": {
+      "trigger_source": ["county_query", "jurisdiction_lookup"],
+      "start_agent": "DataFetcher",
+      "execution_flow": [
+        {
+          "agent": "DataFetcher",
+          "on_success": "ReconWorker",
+          "on_failure": "ThrottleBackoff"
+        },
+        {
+          "agent": "ReconWorker",
+          "on_success": "CorrelationWorker",
+          "on_failure": "RetryQueue"
+        }
+      ]
+    },
+    "legal_review": {
+      "trigger_source": ["analyst_flag", "user_override"],
+      "start_agent": "AnalystWorker",
+      "execution_flow": [
+        {
+          "agent": "AnalystWorker",
+          "on_success": "AdvisoryWorker",
+          "on_failure": "LogOnly"
+        },
+        {
+          "agent": "AdvisoryWorker",
+          "on_success": "COA_RenderEngine",
+          "on_failure": "ManualEscalation"
+        }
+      ]
+    }
+  },
+  "fallback_routing": {
+    "RetryQueue": {
+      "max_retries": 3,
+      "backoff_strategy": "exponential",
+      "fallback_agent": "HumanOperator"
+    },
+    "TemplateRetry": {
+      "max_retries": 1,
+      "fallback_agent": "ManualDraftGenerator"
+    }
+  },
+  "routing_metadata": {
+    "allowed_roles": {
+      "ReconWorker": ["system", "parent", "advocate"],
+      "AnalystWorker": ["system", "legal", "advocate"],
+      "AdvisoryWorker": ["system", "parent", "attorney"]
+    },
+    "trace_visibility": true,
+    "log_format": "guardian_event_log_v2"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "ngo_involvement": [
+    {
+      "component": "Mandated Reporting & Intake",
+      "involvement_level": "Indirect",
+      "typical_ngos": [
+        "School systems run by nonprofits",
+        "Hospital systems",
+        "Clergy institutions"
+      ],
+      "risks": [
+        "Overreporting due to liability fears",
+        "Bias",
+        "Poor training"
+      ]
+    },
+    {
+      "component": "Legal Petitioning / Removal Authorization",
+      "involvement_level": "Rare",
+      "typical_ngos": [
+        "CASA",
+        "Some legal advocacy orgs"
+      ],
+      "risks": [
+        "CASA/GAL may support removals based on limited info"
+      ]
+    },
+    {
+      "component": "Family & Dependency Court",
+      "involvement_level": "High",
+      "typical_ngos": [
+        "Court-appointed legal aid",
+        "CASA/GAL",
+        "Supervised visitation centers"
+      ],
+      "risks": [
+        "Conflicts of interest",
+        "Minimal parent support"
+      ]
+    },
+    {
+      "component": "Foster Care Operations",
+      "involvement_level": "Extremely High",
+      "typical_ngos": [
+        "Bethany",
+        "KVC",
+        "Youth Villages"
+      ],
+      "risks": [
+        "Per diem incentives to retain placements",
+        "Neglect of quality"
+      ]
+    },
+    {
+      "component": "Runaway & Recovery Response",
+      "involvement_level": "Moderate",
+      "typical_ngos": [
+        "NGO-operated shelters",
+        "Hotline recovery services"
+      ],
+      "risks": [
+        "Inconsistent tracking/reporting",
+        "Poor conditions"
+      ]
+    },
+    {
+      "component": "Parent Service Access / Compliance Monitoring",
+      "involvement_level": "Very High",
+      "typical_ngos": [
+        "Parenting classes",
+        "Substance abuse treatment",
+        "Counseling",
+        "Supervised visitation providers"
+      ],
+      "risks": [
+        "Service bottlenecks",
+        "Low-quality vendors",
+        "Billing fraud"
+      ]
+    },
+    {
+      "component": "Mental & Behavioral Health Pipeline",
+      "involvement_level": "Very High",
+      "typical_ngos": [
+        "Nonprofit clinics",
+        "Religious-affiliated organizations"
+      ],
+      "risks": [
+        "Overdiagnosis",
+        "Inappropriate medication",
+        "Waitlists"
+      ]
+    },
+    {
+      "component": "Contractor Oversight & Audits",
+      "involvement_level": "Self-involved (they are the entities audited)",
+      "typical_ngos": [
+        "State-hired NGOs as service providers"
+      ],
+      "risks": [
+        "Regulatory capture",
+        "Entities receiving funds may also influence oversight"
+      ]
+    },
+    {
+      "component": "Policy Implementation / Legislative Advocacy",
+      "involvement_level": "High",
+      "typical_ngos": [
+        "Casey Family Programs",
+        "Child welfare think tanks",
+        "Lobbying orgs"
+      ],
+      "risks": [
+        "Policy capture",
+        "Lobby for more removals = more business"
+      ]
+    },
+    {
+      "component": "CINA / FINS / PINS",
+      "involvement_level": "Moderate",
+      "typical_ngos": [
+        "Family preservation NGOs",
+        "Wraparound services",
+        "Juvenile justice nonprofits"
+      ],
+      "risks": [
+        "Court-ordered programs not accessible",
+        "Ineffective interventions"
+      ]
+    }
+  ]
+}

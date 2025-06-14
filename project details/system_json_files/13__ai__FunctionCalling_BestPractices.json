@@ -1,0 +1,64 @@
+{
+  "title": "Function-Calling Best Practices",
+  "version": "v1.0",
+  "flow": {
+    "trigger": "User initiates task",
+    "orchestrator_logic": [
+      "Select appropriate GPT-4o variant (mini or mid)",
+      {
+        "condition": "warm pool available",
+        "actions": [
+          "Call upsert_fact function via GPT-4o-mini",
+          {
+            "function_definition": {
+              "name": "upsert_fact",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "entity_id": { "type": "string" },
+                  "fact_type": { "enum": ["contract", "statute_ref", "donation"] },
+                  "payload": { "type": "object" }
+                },
+                "required": ["entity_id", "fact_type", "payload"]
+              }
+            }
+          },
+          "Pipe results directly to database (no regex)"
+        ]
+      },
+      {
+        "condition": "warm pool exceeds concurrency",
+        "actions": [
+          "Cold-start GPT-4o-mid",
+          "Call upsert_fact function",
+          "Pipe results directly to database"
+        ]
+      },
+      {
+        "condition": "function error",
+        "actions": [
+          "Enqueue retry to RetryQueue",
+          "Log failure"
+        ]
+      },
+      {
+        "condition": "function success",
+        "actions": [
+          "Log successful upsert"
+        ]
+      }
+    ]
+  },
+  "deployment_tips": {
+    "pooling_strategy": "Run warm pools of GPT-4o-mini and GPT-4o-mid in parallel",
+    "cold_start_policy": "Only use cold-start if concurrency exceeds warm pool budget",
+    "performance_goal": "Maintain P95 latency < 2 seconds",
+    "fallbacks": ["gpt-3.5-turbo-1106"],
+    "observability": [
+      "Generate OpenAPI schema + async workers",
+      "Paste pipeline into PlantUML for visual CI pairing",
+      "Map agent playbooks to CI test suites, dashboards, ticket labels",
+      "Ensure deterministic, audible, near-real-time feedback"
+    ]
+  }
+}

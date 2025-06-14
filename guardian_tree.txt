@@ -1,0 +1,350 @@
+[4.0K]  .
+├── [8.0K]  annotations.xml
+├── [4.0K]  api
+│   ├── [4.0K]  analyze
+│   │   └── [3.5K]  index.ts
+│   ├── [4.0K]  auth
+│   │   └── [1.3K]  index.ts
+│   ├── [4.0K]  data
+│   │   ├── [ 31K]  case_management_systems.json
+│   │   ├── [ 27K]  decision_tools.json
+│   │   └── [ 78K]  vendor_contracts.json
+│   └── [4.0K]  utils
+│       ├── [2.1K]  gptContentAnalysis.ts
+│       ├── [4.5K]  localDataAnalysis.ts
+│       └── [1.7K]  webScraping.ts
+├── [ 14M]  bfg-1.14.0.jar
+├── [7.1K]  .blackboxrules
+├── [4.0K]  components
+│   ├── [1.6K]  AgentOutputCardComponent.tsx
+│   ├── [2.5K]  AuthFormComponent.tsx
+│   ├── [5.4K]  DashboardComponent.tsx
+│   ├── [2.4K]  FileUploadComponent.tsx
+│   ├── [3.1K]  JobStatusComponent.tsx
+│   ├── [1.6K]  OverlayMapComponent.tsx
+│   ├── [ 638]  RedirectComponent.tsx
+│   └── [3.0K]  UserSettingsComponent.tsx
+├── [8.1K]  context.xml
+├── [8.6K]  directory-tree.txt
+├── [4.0K]  dist
+│   ├── [4.0K]  core
+│   │   ├── [1.4K]  fsm_state_machine.d.ts
+│   │   ├── [6.7K]  fsm_state_machine.js
+│   │   ├── [4.8K]  fsm_state_machine.js.map
+│   │   ├── [1.7K]  job_queue.d.ts
+│   │   ├── [7.1K]  job_queue.js
+│   │   └── [5.9K]  job_queue.js.map
+│   ├── [ 225]  main.d.ts
+│   ├── [5.6K]  main.js
+│   ├── [5.0K]  main.js.map
+│   ├── [4.0K]  models
+│   │   ├── [2.9K]  entity_index.d.ts
+│   │   ├── [4.3K]  entity_index.js
+│   │   ├── [3.0K]  entity_index.js.map
+│   │   ├── [1.2K]  neo4j_entity_store.d.ts
+│   │   ├── [ 10K]  neo4j_entity_store.js
+│   │   └── [6.4K]  neo4j_entity_store.js.map
+│   ├── [4.0K]  pipeline
+│   │   ├── [1.4K]  pipeline_coordinator.d.ts
+│   │   ├── [7.1K]  pipeline_coordinator.js
+│   │   ├── [5.2K]  pipeline_coordinator.js.map
+│   │   └── [4.0K]  __tests__
+│   │       ├── [  11]  pipeline_coordinator.functional.d.ts
+│   │       ├── [5.7K]  pipeline_coordinator.functional.js
+│   │       └── [5.1K]  pipeline_coordinator.functional.js.map
+│   └── [4.0K]  workers
+│       ├── [2.2K]  advisory_worker.d.ts
+│       ├── [ 12K]  advisory_worker.js
+│       ├── [7.9K]  advisory_worker.js.map
+│       ├── [1.7K]  analyst_worker.d.ts
+│       ├── [ 11K]  analyst_worker.js
+│       ├── [7.5K]  analyst_worker.js.map
+│       ├── [ 765]  correlation_worker.d.ts
+│       ├── [7.4K]  correlation_worker.js
+│       ├── [4.9K]  correlation_worker.js.map
+│       ├── [1.1K]  recon_worker.d.ts
+│       ├── [ 13K]  recon_worker.js
+│       ├── [9.3K]  recon_worker.js.map
+│       └── [4.0K]  __tests__
+│           ├── [  11]  advisory_worker.functional.d.ts
+│           ├── [8.4K]  advisory_worker.functional.js
+│           ├── [7.2K]  advisory_worker.functional.js.map
+│           ├── [  11]  analyst_worker.functional.d.ts
+│           ├── [8.7K]  analyst_worker.functional.js
+│           ├── [7.3K]  analyst_worker.functional.js.map
+│           ├── [  11]  correlation_worker.functional.d.ts
+│           ├── [5.9K]  correlation_worker.functional.js
+│           ├── [4.7K]  correlation_worker.functional.js.map
+│           ├── [  11]  recon_worker.functional.d.ts
+│           ├── [5.2K]  recon_worker.functional.js
+│           └── [4.2K]  recon_worker.functional.js.map
+├── [1.2K]  docker-compose.yaml
+├── [2.3K]  .env
+├── [4.0K]  .firebase
+│   ├── [3.3K]  hosting.b3V0.cache
+│   └── [ 553]  hosting.cHVibGlj.cache
+├── [ 755]  firebase.json
+├── [  67]  .firebaserc
+├── [ 563]  firestore.indexes.json
+├── [ 731]  firestore.rules
+├── [4.0K]  functions
+│   ├── [ 153]  .gitignore
+│   ├── [4.0K]  lib
+│   │   ├── [ 826]  index.js
+│   │   ├── [ 233]  index.js.map
+│   │   └── [156K]  tsconfig.tsbuildinfo
+│   ├── [ 744]  package.json
+│   ├── [285K]  package-lock.json
+│   ├── [4.0K]  secrets
+│   │   ├── [1.8K]  .env
+│   │   └── [2.4K]  serviceAccountKey.json
+│   ├── [4.0K]  src
+│   │   ├── [4.0K]  agents
+│   │   │   └── [4.0K]  recon-agent-child-welfare-osint
+│   │   │       ├── [4.0K]  api
+│   │   │       │   └── [2.4K]  analyze.ts
+│   │   │       ├── [4.0K]  components
+│   │   │       │   ├── [ 888]  Footer.tsx
+│   │   │       │   ├── [1.0K]  Header.tsx
+│   │   │       │   ├── [ 661]  LogsDisplay.tsx
+│   │   │       │   ├── [2.2K]  QueryForm.tsx
+│   │   │       │   ├── [1.1K]  ResultsDisplay.tsx
+│   │   │       │   └── [1.6K]  UsageInstructions.tsx
+│   │   │       ├── [4.0K]  pages
+│   │   │       │   ├── [2.8K]  analysis.tsx
+│   │   │       │   ├── [1.2K]  index.tsx
+│   │   │       │   └── [1.8K]  logs.tsx
+│   │   │       ├── [3.4K]  README.md
+│   │   │       ├── [4.0K]  styles
+│   │   │       │   ├── [ 501]  Footer.module.css
+│   │   │       │   ├── [2.3K]  globals.css
+│   │   │       │   └── [ 326]  LogsDisplay.module.css
+│   │   │       └── [4.0K]  utils
+│   │   │           ├── [2.1K]  gptContentAnalysis.ts
+│   │   │           ├── [1.7K]  localDataAnalysis.ts
+│   │   │           └── [1.7K]  webScraping.ts
+│   │   ├── [4.0K]  data
+│   │   │   ├── [ 31K]  case_management_systems.json
+│   │   │   ├── [ 27K]  decision_tools.json
+│   │   │   └── [ 78K]  vendor_contracts.json
+│   │   └── [4.2K]  index.ts
+│   └── [ 587]  tsconfig.json
+├── [4.0K]  .github
+│   └── [4.0K]  workflows
+│       └── [ 706]  firebase-hosting-pull-request.yml
+├── [ 369]  .gitignore
+├── [   0]  guardian_tree.txt
+├── [4.0K]  hooks
+│   ├── [1.5K]  useAuth.tsx
+│   ├── [2.6K]  useFirestore.ts
+│   └── [1.9K]  useStorage.ts
+├── [2.8K]  implementation_plan.md
+├── [ 393]  jest.config.js
+├── [ 438]  jest.setup.js
+├── [ 275]  jest.setup.ts
+├── [4.0K]  lib
+│   ├── [1.5K]  auth.ts
+│   ├── [1.7K]  db.ts
+│   ├── [1.1K]  firebase.ts
+│   └── [2.8K]  storage.ts
+│   ├── [  20]  package.json
+│   ├── [   2]  react-loadable-manifest.json
+│   ├── [4.0K]  server
+│   │   ├── [ 33K]  _error.js
+│   │   ├── [  47]  interception-route-rewrite-manifest.js
+│   │   ├── [ 813]  middleware-build-manifest.js
+│   │   ├── [  83]  middleware-manifest.json
+│   │   ├── [  35]  middleware-react-loadable-manifest.js
+│   │   ├── [ 113]  next-font-manifest.js
+│   │   ├── [  77]  next-font-manifest.json
+│   │   ├── [4.0K]  pages
+│   │   │   ├── [4.0K]  api
+│   │   │   │   └── [ 59K]  analyze.js
+│   │   │   ├── [ 19K]  _app.js
+│   │   │   ├── [125K]  dashboard.js
+│   │   │   ├── [2.0K]  _document.js
+│   │   │   ├── [ 32K]  _error.js
+│   │   │   └── [ 37K]  index.js
+│   │   ├── [ 138]  pages-manifest.json
+│   │   ├── [4.0K]  vendor-chunks
+│   │   │   ├── [714K]  next.js
+│   │   │   └── [6.3K]  @swc.js
+│   │   ├── [9.3K]  webpack-api-runtime.js
+│   │   └── [9.3K]  webpack-runtime.js
+│   ├── [4.0K]  static
+│   │   ├── [4.0K]  chunks
+│   │   │   ├── [3.8K]  _error.js
+│   │   │   ├── [4.8M]  main.js
+│   │   │   ├── [4.0K]  pages
+│   │   │   │   ├── [4.8M]  _app.js
+│   │   │   │   ├── [268K]  dashboard.js
+│   │   │   │   ├── [3.3K]  _error.js
+│   │   │   │   └── [ 12K]  index.js
+│   │   │   ├── [110K]  polyfills.js
+│   │   │   ├── [ 77K]  react-refresh.js
+│   │   │   └── [ 47K]  webpack.js
+│   │   ├── [4.0K]  development
+│   │   │   ├── [ 318]  _buildManifest.js
+│   │   │   └── [  76]  _ssgManifest.js
+│   │   └── [4.0K]  webpack
+│   │       ├── [ 476]  3b248a4475e7d302.webpack.hot-update.json
+│   │       ├── [  22]  633457081244afec._.hot-update.json
+│   │       ├── [  49]  9e585e82d47c6b4c.webpack.hot-update.json
+│   │       ├── [  31]  b9eb248c87b1f832.webpack.hot-update.json
+│   │       ├── [  31]  c7d43bfcbbf45990.webpack.hot-update.json
+│   │       ├── [4.0K]  pages
+│   │       │   ├── [ 25K]  dashboard.3b248a4475e7d302.hot-update.js
+│   │       │   └── [ 32K]  dashboard.9e585e82d47c6b4c.hot-update.js
+│   │       ├── [ 858]  webpack.3b248a4475e7d302.hot-update.js
+│   │       ├── [ 858]  webpack.9e585e82d47c6b4c.hot-update.js
+│   │       ├── [ 858]  webpack.b9eb248c87b1f832.hot-update.js
+│   │       └── [ 858]  webpack.c7d43bfcbbf45990.hot-update.js
+│   └── [272K]  trace
+├── [ 192]  next.config.js
+├── [ 230]  next-env.d.ts
+├── [4.0K]  out
+│   ├── [4.0K]  404
+│   │   └── [2.1K]  index.html
+│   ├── [2.1K]  404.html
+│   ├── [4.0K]  case
+│   │   ├── [4.0K]  [caseId]
+│   │   │   └── [1.5K]  index.html
+│   │   └── [1.5K]  [caseId].html
+│   ├── [4.0K]  dashboard
+│   │   └── [1.5K]  index.html
+│   ├── [1.5K]  dashboard.html
+│   ├── [1.3K]  index.html
+│   ├── [4.0K]  login
+│   │   └── [2.1K]  index.html
+│   ├── [2.1K]  login.html
+│   ├── [4.0K]  _next
+│   │   ├── [4.0K]  9eBtb_GKmolQ4kiL-1Ydm
+│   │   └── [4.0K]  static
+│   │       ├── [4.0K]  9eBtb_GKmolQ4kiL-1Ydm
+│   │       │   ├── [ 735]  _buildManifest.js
+│   │       │   └── [  77]  _ssgManifest.js
+│   │       ├── [4.0K]  chunks
+│   │       │   ├── [137K]  framework-64ad27b21261a9ce.js
+│   │       │   ├── [114K]  main-7046a94b7b77176e.js
+│   │       │   ├── [4.0K]  pages
+│   │       │   │   ├── [375K]  _app-ad4a5e0e8bc9b141.js
+│   │       │   │   ├── [4.0K]  case
+│   │       │   │   │   └── [6.1K]  [caseId]-6ba3e979362e3540.js
+│   │       │   │   ├── [ 17K]  dashboard-41a6011655803409.js
+│   │       │   │   ├── [ 247]  _error-7a92967bea80186d.js
+│   │       │   │   ├── [ 575]  index-1ad086da14ddbf56.js
+│   │       │   │   ├── [ 10K]  login-30f877599a8a58e0.js
+│   │       │   │   └── [3.1K]  settings-e87d9acb2abe8c53.js
+│   │       │   ├── [110K]  polyfills-42372ed130431b0a.js
+│   │       │   └── [1.6K]  webpack-ee7e63bc15b31913.js
+│   │       └── [4.0K]  css
+│   │           ├── [5.0K]  3f3320fa026e17ee.css
+│   │           ├── [5.2K]  59b2499b3454a0e6.css
+│   │           ├── [1.5K]  95ee40c752910818.css
+│   │           ├── [1.2K]  c31ba6674b613a62.css
+│   │           └── [2.7K]  ef3245a2d260b3f7.css
+│   ├── [4.0K]  settings
+│   │   └── [1.4K]  index.html
+│   └── [1.4K]  settings.html
+├── [1.1K]  package.json
+├── [262K]  package-lock.json
+├── [4.0K]  pages
+│   ├── [4.0K]  api
+│   │   └── [8.3K]  analyze.ts
+│   ├── [ 292]  _app.tsx
+│   ├── [4.0K]  case
+│   │   └── [1.8K]  [caseId].tsx
+│   ├── [1.8K]  dashboard.tsx
+│   ├── [ 519]  index.tsx
+│   ├── [ 701]  login.tsx
+│   └── [ 917]  settings.tsx
+├── [4.0K]  project details
+│   ├── [4.0K]  CPS_decisionTemplates
+│   │   └── [4.0K]  decision_chain_examples
+│   │       └── [4.0K]  cps_decision_chains
+│   │           ├── [3.1K]  chain_1.json
+│   │           ├── [2.8K]  chain_2.json
+│   │           ├── [2.8K]  chain_3.json
+│   │           ├── [2.8K]  chain_4.json
+│   │           ├── [2.8K]  chain_5.json
+│   │           ├── [2.8K]  chain_6.json
+│   │           ├── [2.8K]  chain_7.json
+│   │           ├── [2.9K]  chain_8.json
+│   │           ├── [3.1K]  chain_9.json
+│   │           ├── [4.5K]  cps_investigation.json
+│   │           ├── [3.2K]  ngo_roles.json
+│   │           └── [3.3K]  the_cps_system.json
+│   ├── [3.6K]  cps_system.md
+│   └── [4.0K]  system_json_files
+│       ├── [2.9K]  01__core__TheSystem.json
+│       ├── [3.0K]  02__agent__ReconWorker.json
+│       ├── [2.6K]  03__agent__DataFetcher.json
+│       ├── [4.0K]  04__process__DeterministicFSM.json
+│       ├── [2.0K]  05__agent__CorrelationWorker.json
+│       ├── [2.8K]  06__schema__KnowledgeGraph.json
+│       ├── [2.1K]  07__agent__AnalystWorker.json
+│       ├── [2.7K]  08__agent__AdvisoryWorker.json
+│       ├── [1.6K]  09__logic__CourseOfActionRules.json
+│       ├── [2.0K]  10__infra__ObservabilityStack.json
+│       ├── [2.8K]  11__infra__ImplementationOrder.json
+│       ├── [2.6K]  12__infra__ExecutionPipeline.json
+│       ├── [1.9K]  13__ai__FunctionCalling_BestPractices.json
+│       ├── [1.9K]  14__ai__GoogleCSE_Config.json
+│       ├── [2.6K]  15__ai__ModelsInSystem.json
+│       ├── [2.0K]  16__infra__SelfHealing_Framework.json
+│       ├── [3.0K]  17__schema__TypesAndEnums.json
+│       ├── [3.1K]  18__schema__EntitySchema.json
+│       ├── [2.3K]  19__logic__FailureToCOAMap.json
+│       ├── [2.4K]  20__logic__GuardianExecutionMap.json
+│       ├── [2.1K]  21__telemetry__ChainTelemetry.json
+│       ├── [3.1K]  22__schema__StatuteViolations.json
+│       ├── [2.6K]  23__schema__JurisdictionProfiles.json
+│       ├── [3.1K]  24__schema__LogEventSchema.json
+│       ├── [4.4K]  decision_chain_manifest.json
+│       └── [9.0K]  GuardianFileMap.json
+├── [ 12K]  project_structure.txt
+├── [4.0K]  public
+│   ├── [2.1K]  404.html
+│   ├── [4.0K]  case
+│   │   └── [1.5K]  [caseId].html
+│   ├── [1.5K]  dashboard.html
+│   ├── [1.3K]  index.html
+│   ├── [2.1K]  login.html
+│   └── [1.4K]  settings.html
+├── [4.5K]  README.md
+├── [4.0K]  src
+│   ├── [4.0K]  core
+│   │   ├── [ 12K]  data_fetcher.ts
+│   │   ├── [4.9K]  document_store.ts
+│   │   ├── [5.5K]  fsm_state_machine.ts
+│   │   ├── [5.3K]  id_linker.ts
+│   │   └── [6.8K]  job_queue.ts
+│   ├── [4.0K]  interfaces
+│   │   └── [8.2K]  user_interface.ts
+│   ├── [3.3K]  main.ts
+│   ├── [4.0K]  models
+│   │   ├── [6.2K]  entity_index.ts
+│   │   └── [7.0K]  neo4j_entity_store.ts
+│   ├── [4.0K]  pipeline
+│   │   └── [7.1K]  pipeline_coordinator.ts
+│   ├── [4.0K]  services
+│   │   └── [3.3K]  openai_service.ts
+│   └── [4.0K]  workers
+│       ├── [8.1K]  advisory_worker.ts
+│       ├── [ 12K]  analyst_worker.ts
+│       ├── [9.2K]  correlation_worker.ts
+│       └── [5.2K]  recon_worker.ts
+├── [ 315]  storage.rules
+├── [4.0K]  styles
+│   ├── [ 822]  AgentOutputCardComponent.module.css
+│   ├── [1.4K]  AuthFormComponent.module.css
+│   ├── [3.3K]  Case.module.css
+│   ├── [3.0K]  Dashboard.module.css
+│   ├── [1.8K]  globals.css
+│   ├── [1009]  JobStatusComponent.module.css
+│   └── [2.4K]  UserSettingsComponent.module.css
+├── [6.5K]  system_walkthrough.md
+├── [3.4K]  task_log.md
+├── [ 545]  tsconfig.json
+
+133 directories, 356 files

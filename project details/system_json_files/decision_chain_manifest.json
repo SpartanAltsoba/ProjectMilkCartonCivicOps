@@ -1,0 +1,131 @@
+{
+  "chain_1.json": {
+    "title": "Mandated Reporters → CPS Intake → Removal → TPR",
+    "category": "TPR / Removal Path",
+    "primary_agent": "AnalystWorker",
+    "linked_system_files": [
+      "17__schema__TypesAndEnums.json",
+      "07__agent__AnalystWorker.json",
+      "08__agent__AdvisoryWorker.json",
+      "19__logic__FailureToCOAMap.json",
+      "22__schema__StatuteViolations.json"
+    ]
+  },
+  "chain_2.json": {
+    "title": "Foster Child → Behavioral Outburst → Isolation/Medication → Escape",
+    "category": "Foster System Abuse",
+    "primary_agent": "AnalystWorker",
+    "linked_system_files": [
+      "17__schema__TypesAndEnums.json",
+      "07__agent__AnalystWorker.json",
+      "23__schema__JurisdictionProfiles.json",
+      "22__schema__StatuteViolations.json",
+      "18__schema__EntitySchema.json"
+    ]
+  },
+  "chain_3.json": {
+    "title": "Runaway Child → Police Response → 'Voluntary' Classification",
+    "category": "Runaway Risk / System Gaps",
+    "primary_agent": "ReconWorker",
+    "linked_system_files": [
+      "17__schema__TypesAndEnums.json",
+      "20__logic__GuardianExecutionMap.json",
+      "23__schema__JurisdictionProfiles.json",
+      "22__schema__StatuteViolations.json"
+    ]
+  },
+  "chain_4.json": {
+    "title": "Parent Lacks Services → Labeled Noncompliant → TPR",
+    "category": "Due Process / Poverty Bias",
+    "primary_agent": "AnalystWorker",
+    "linked_system_files": [
+      "07__agent__AnalystWorker.json",
+      "19__logic__FailureToCOAMap.json",
+      "22__schema__StatuteViolations.json",
+      "18__schema__EntitySchema.json"
+    ]
+  },
+  "chain_5.json": {
+    "title": "NGO/Contractor → Minimize Reports → Unreported Abuse",
+    "category": "Vendor Misconduct / Negligent Oversight",
+    "primary_agent": "CorrelationWorker",
+    "linked_system_files": [
+      "05__agent__CorrelationWorker.json",
+      "06__schema__KnowledgeGraph.json",
+      "18__schema__EntitySchema.json",
+      "22__schema__StatuteViolations.json"
+    ]
+  },
+  "chain_6.json": {
+    "title": "Mental Health Crisis → Underfunded Clinic → Escalation",
+    "category": "Behavioral Health Neglect",
+    "primary_agent": "ReconWorker",
+    "linked_system_files": [
+      "02__agent__ReconWorker.json",
+      "03__agent__DataFetcher.json",
+      "23__schema__JurisdictionProfiles.json",
+      "21__telemetry__ChainTelemetry.json"
+    ]
+  },
+  "chain_7.json": {
+    "title": "Missed Federal Audit → Repeated Failures → Systemic Abuse",
+    "category": "Oversight / Regulatory Capture",
+    "primary_agent": "AnalystWorker",
+    "linked_system_files": [
+      "16__infra__SelfHealing_Framework.json",
+      "22__schema__StatuteViolations.json",
+      "19__logic__FailureToCOAMap.json"
+    ]
+  },
+  "chain_8.json": {
+    "title": "Policy Change → CPS Mandate Shift → Resource Collapse",
+    "category": "Policy-Driven Harm",
+    "primary_agent": "ReconWorker",
+    "linked_system_files": [
+      "20__logic__GuardianExecutionMap.json",
+      "23__schema__JurisdictionProfiles.json",
+      "12__infra__ExecutionPipeline.json"
+    ]
+  },
+  "chain_9.json": {
+    "title": "CINA/FINS/PINS Path → Court Intervention → Punitive Outcomes",
+    "category": "Court Overreach / Service Gaps",
+    "primary_agent": "AdvisoryWorker",
+    "linked_system_files": [
+      "08__agent__AdvisoryWorker.json",
+      "22__schema__StatuteViolations.json",
+      "19__logic__FailureToCOAMap.json",
+      "23__schema__JurisdictionProfiles.json"
+    ]
+  },
+  "cps_investigation.json": {
+    "title": "CPS Investigation: Screening → Decision Flow",
+    "category": "CPS Protocol Logic",
+    "primary_agent": "ReconWorker",
+    "linked_system_files": [
+      "20__logic__GuardianExecutionMap.json",
+      "04__process__DeterministicFSM.json",
+      "21__telemetry__ChainTelemetry.json",
+      "24__schema__LogEventSchema.json"
+    ]
+  },
+  "ngo_roles.json": {
+    "title": "NGO Involvement Across CPS Lifecycle",
+    "category": "System Mapping / Influence",
+    "primary_agent": "CorrelationWorker",
+    "linked_system_files": [
+      "06__schema__KnowledgeGraph.json",
+      "18__schema__EntitySchema.json"
+    ]
+  },
+  "the_cps_system.json": {
+    "title": "Full CPS System Topology Map",
+    "category": "Structural Overview",
+    "primary_agent": "System",
+    "linked_system_files": [
+      "01__core__TheSystem.json",
+      "23__schema__JurisdictionProfiles.json",
+      "06__schema__KnowledgeGraph.json"
+    ]
+  }
+}

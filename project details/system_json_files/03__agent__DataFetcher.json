@@ -1,0 +1,79 @@
+[
+  {
+    "id": "stage_3_1",
+    "name": "Priority Ladder",
+    "trigger": "fetch_required",
+    "component": "DataFetcher",
+    "description": "Escalate through data fetch tiers until coverage_needed[] is satisfied or all tiers are exhausted.",
+    "inputs_required": ["coverage_needed[]", "annotations.xml"],
+    "operations": [
+      "Tier-0: Query CuratedDB (local vetted vendor lists)",
+      "Tier-1: Google CSE with BOOST/EXCLUDE labels",
+      "Tier-2: Structured APIs (CourtListener, FEC, Civic, EDGAR, USAspending)",
+      "Tier-3: Scrape white-listed legislative/NGO sites",
+      "Tier-4: Use Playwright/Chrome headless if needed"
+    ],
+    "fallback_logic": {
+      "coverage_threshold": "< 95%",
+      "rate_limit_handling": "skip headless if constrained"
+    },
+    "tier_failures_handling": [
+      "on_failure_tier_X: escalate_to_next_tier",
+      "on_success_tier_X: log tier hit"
+    ],
+    "on_success": {
+      "log": ["Tier hit", "Tier used", "Latency"]
+    },
+    "on_failure": {
+      "log": ["Log ladder exhausted"]
+    },
+    "outputs_produced": ["raw_documents"],
+    "next_stage": "stage_4_2"
+  },
+  {
+    "id": "stage_3_2",
+    "name": "ID Canonicalisation",
+    "trigger": "raw_documents_ready",
+    "component": "IdLinker",
+    "description": "Standardize entity identifiers by hashing sorted ID list and writing to EntityIndex.",
+    "inputs_required": ["identifiers: ein, cik, uei, fec_id, lei, duns"],
+    "operations": [
+      "filter(None, ID list)",
+      "generate entity_key using sha256(json.dumps(sorted(ids)))",
+      "update EntityIndex with entity_key, primary_id, alt_ids[], name_norm, jurisdiction",
+      "enforce single-writer semantics"
+    ],
+    "on_success": {
+      "log": ["Entity index updated"]
+    },
+    "on_failure": {
+      "log": ["Indexing failure"]
+    },
+    "outputs_produced": ["entity_key", "EntityIndex updated"],
+    "next_stage": "stage_4_3"
+  },
+  {
+    "id": "stage_3_3",
+    "name": "Document Fingerprinting",
+    "trigger": "documents_ready_for_storage",
+    "component": "DocumentStore",
+    "description": "Normalize and hash documents, storing with uniqueness constraint for deduplication.",
+    "inputs_required": ["text_documents"],
+    "operations": [
+      "strip HTML",
+      "collapse whitespace",
+      "Unicode NFKC normalization",
+      "convert to lowercase",
+      "compute doc_hash = sha256(text_norm.encode())",
+      "store with uniqueness constraint (scenario_hash + doc_hash)"
+    ],
+    "on_success": {
+      "log": ["doc_hash generated", "document stored"]
+    },
+    "on_failure": {
+      "log": ["storage_failure"]
+    },
+    "outputs_produced": ["doc_hash", "document_fingerprint"],
+    "next_stage": null
+  }
+]

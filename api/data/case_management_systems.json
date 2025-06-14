@@ -1,0 +1,415 @@
+[
+  {
+    "State/Territory": "Alabama",
+    "System": "Family, Adult and Child Tracking System (FACTS)",
+    "Vendor": "State of Alabama (custom SACWIS developed ~2008)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:0‡acf.gov](https://acf.gov/sites/default/files/documents/cb/al-cfsp-10-14.pdf#:~:text=,including%20efforts%20towards%20improved)"
+  },
+  {
+    "State/Territory": "Alaska",
+    "System": "Online Resource for the Children of Alaska (ORCA)",
+    "Vendor": "State of Alaska (custom SACWIS)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Arizona",
+    "System": "Guardian (replaced legacy CHILDS in 2021)",
+    "Vendor": "Microsoft (built cloud-based system) with Public Consulting Group [oai_citation:1‡imprintnews.org](https://imprintnews.org/child-welfare-2/discovered-documents-prompt-halt-child-welfare-cases-arizona/243856#:~:text=Two%20years%20ago%2C%20the%20Arizona,supporting%20information%20sharing%20and%20collaboration) [oai_citation:2‡imprintnews.org](https://imprintnews.org/child-welfare-2/discovered-documents-prompt-halt-child-welfare-cases-arizona/243856#:~:text=federal%20money%2C%20bringing%20in%20Public,launched%20in%20February%20of%202021)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:3‡imprintnews.org](https://imprintnews.org/child-welfare-2/discovered-documents-prompt-halt-child-welfare-cases-arizona/243856#:~:text=Two%20years%20ago%2C%20the%20Arizona,supporting%20information%20sharing%20and%20collaboration) [oai_citation:4‡imprintnews.org](https://imprintnews.org/child-welfare-2/discovered-documents-prompt-halt-child-welfare-cases-arizona/243856#:~:text=federal%20money%2C%20bringing%20in%20Public,launched%20in%20February%20of%202021)"
+  },
+  {
+    "State/Territory": "Arkansas",
+    "System": "Children’s Reporting and Information System (CHRIS)",
+    "Vendor": "Adapted from Oklahoma’s KIDS system (maintained by AR DHS) [oai_citation:5‡humanservices.arkansas.gov](https://humanservices.arkansas.gov/wp-content/uploads/710-20-0041_Exhibit_26_-_Draft_DCFS_Data_Quality_Plan.pdf#:~:text=The%20Arkansas%20SACWIS%20system%2C%20called,Arkansas%20modified%20KIDS%20based%20on)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:6‡humanservices.arkansas.gov](https://humanservices.arkansas.gov/wp-content/uploads/710-20-0041_Exhibit_26_-_Draft_DCFS_Data_Quality_Plan.pdf#:~:text=The%20Arkansas%20SACWIS%20system%2C%20called,Arkansas%20modified%20KIDS%20based%20on)"
+  },
+  {
+    "State/Territory": "California",
+    "System": [
+      "Child Welfare Services/Case Management System (CWS/CMS)",
+      "Child Welfare Services – California Automated Response and Engagement System (CWS-CARES, in development)"
+    ],
+    "Vendor": "CWS/CMS by IBM (1990s); CWS-CARES on Salesforce platform (state CWDS-led project) [oai_citation:7‡bcp.dof.ca.gov](https://bcp.dof.ca.gov/2526/FY2526_ORG0530_BCP8140.pdf#:~:text=making%20it%20a%20more%20efficient,being%20of%20California%E2%80%99s%20children%2C%20youth) [oai_citation:8‡bcp.dof.ca.gov](https://bcp.dof.ca.gov/2526/FY2526_ORG0530_BCP8140.pdf#:~:text=the%20CWS,being%20of%20California%E2%80%99s%20children%2C%20youth)",
+    "Scope": "Statewide (CWS/CMS operational; CARES in phased pilot) [oai_citation:9‡lao.ca.gov](https://lao.ca.gov/Publications/Report/5006#:~:text=match%20at%20L149%20CWS,CCWIS%20requirements%20seek%20to%20improve)",
+    "Source": " [oai_citation:10‡bcp.dof.ca.gov](https://bcp.dof.ca.gov/2526/FY2526_ORG0530_BCP8140.pdf#:~:text=making%20it%20a%20more%20efficient,being%20of%20California%E2%80%99s%20children%2C%20youth) [oai_citation:11‡bcp.dof.ca.gov](https://bcp.dof.ca.gov/2526/FY2526_ORG0530_BCP8140.pdf#:~:text=,CDI%29%20that%20together)"
+  },
+  {
+    "State/Territory": "Colorado",
+    "System": "Trails (modernized 2018–2020)",
+    "Vendor": "CGI (modernization lead) [oai_citation:12‡cgi.com](https://www.cgi.com/en/cgi-selected-lead-modernization-colorado-child-welfare-system#:~:text=CGI%20%28NYSE%3A%20GIB%29%20%28TSX%3A%20GIB,risk%20populations%20statewide) [oai_citation:13‡cgi.com](https://www.cgi.com/en/cgi-selected-lead-modernization-colorado-child-welfare-system#:~:text=approach%2C%20CGI%20was%20previously%20selected,of%20the%20Trails%20system%20modernization)",
+    "Scope": "Statewide (all 64 counties) [oai_citation:14‡cgi.com](https://www.cgi.com/en/cgi-selected-lead-modernization-colorado-child-welfare-system#:~:text=Colorado%20to%20lead%20the%20next,risk%20populations%20statewide)",
+    "Source": " [oai_citation:15‡cgi.com](https://www.cgi.com/en/cgi-selected-lead-modernization-colorado-child-welfare-system#:~:text=CGI%20%28NYSE%3A%20GIB%29%20%28TSX%3A%20GIB,risk%20populations%20statewide) [oai_citation:16‡cgi.com](https://www.cgi.com/en/cgi-selected-lead-modernization-colorado-child-welfare-system#:~:text=approach%2C%20CGI%20was%20previously%20selected,of%20the%20Trails%20system%20modernization)"
+  },
+  {
+    "State/Territory": "Connecticut",
+    "System": [
+      "LINK (legacy SACWIS)",
+      "CT-KIND (new CCWIS in development)"
+    ],
+    "Vendor": "Connecticut DCF (legacy LINK); new CCWIS vendor information not publicly available",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Delaware",
+    "System": "For Our Children’s Ultimate Success (FOCUS) – CCWIS (replaced FACTS II) [oai_citation:17‡jobapscloud.com](https://jobapscloud.com/DE/sup/bulpreview.asp?R1=050123&R2=MADZ15&R3=370100#:~:text=This%20position%20is%20within%20the,application%20support%20staff%20to%20determine)",
+    "Vendor": "Delaware DSCYF (built on Salesforce platform) [oai_citation:18‡jobapscloud.com](https://jobapscloud.com/DE/sup/bulpreview.asp?R1=050123&R2=MADZ15&R3=370100#:~:text=This%20position%20is%20within%20the,application%20support%20staff%20to%20determine)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:19‡jobapscloud.com](https://jobapscloud.com/DE/sup/bulpreview.asp?R1=050123&R2=MADZ15&R3=370100#:~:text=This%20position%20is%20within%20the,application%20support%20staff%20to%20determine)"
+  },
+  {
+    "State/Territory": "District of Columbia",
+    "System": "FACES.NET (SACWIS)",
+    "Vendor": "DC CFSA (custom .NET system)",
+    "Scope": "District-wide (all child welfare cases)",
+    "Source": " [oai_citation:20‡ddot.dc.gov](https://ddot.dc.gov/sites/default/files/dc/sites/cfsa/publication/attachments/FACES_NET_Pre-Service_Manual.pdf#:~:text=%5BPDF%5D%20faces.net%20pre,Welfare%20Information%20Systems%20in)"
+  },
+  {
+    "State/Territory": "Florida",
+    "System": "Florida Safe Families Network (FSFN)",
+    "Vendor": "Originally Northrop Grumman; maintenance by CGI (aligning FSFN to CCWIS) [oai_citation:21‡facts.fldfs.com](https://facts.fldfs.com/Search/ContractDetail.aspx?AgencyId=600000&ContractId=LU913#:~:text=Amendment%20%20%242%2C941%2C800,enhancement%20%2009%2F28%2F2018%20%2009%2F28%2F2018)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:22‡facts.fldfs.com](https://facts.fldfs.com/Search/ContractDetail.aspx?AgencyId=600000&ContractId=LU913#:~:text=Amendment%20%20%242%2C941%2C800,enhancement%20%2009%2F28%2F2018%20%2009%2F28%2F2018)"
+  },
+  {
+    "State/Territory": "Georgia",
+    "System": "Georgia SHINES (Statewide Automated Child Welfare Info System) [oai_citation:23‡dfcs.georgia.gov](https://dfcs.georgia.gov/about-us#:~:text=Image%3A%20Georgia%20SHINES)",
+    "Vendor": "Accenture (developed SHINES) [oai_citation:24‡govtech.com](https://www.govtech.com/pcio/georgia-centralizes-child-welfare-system-database.html#:~:text=In%202005%2C%20Georgia%20officials%20put,time%20data%20that%20tracks%20progress)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:25‡govtech.com](https://www.govtech.com/pcio/georgia-centralizes-child-welfare-system-database.html#:~:text=In%202005%2C%20Georgia%20officials%20put,time%20data%20that%20tracks%20progress)"
+  },
+  {
+    "State/Territory": "Hawaii",
+    "System": "HI THRIVE (new CCWIS under development, replacing legacy CPSS)",
+    "Vendor": "Cardinality (system integrator) [oai_citation:26‡ets.hawaii.gov](https://ets.hawaii.gov/wp-content/uploads/2025/05/DHS-HI-THRIVE-Status-Report-November-2024-part-1-signed.pdf#:~:text=%E2%80%A2%20All%20other%20IV%26V%20Focus,consistently%20providing%20feedback%20to%20the)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:27‡ets.hawaii.gov](https://ets.hawaii.gov/wp-content/uploads/2025/05/DHS-HI-THRIVE-Status-Report-November-2024-part-1-signed.pdf#:~:text=%E2%80%A2%20All%20other%20IV%26V%20Focus,consistently%20providing%20feedback%20to%20the)"
+  },
+  {
+    "State/Territory": "Idaho",
+    "System": "Ensuring Safety and Permanency in Idaho (ESPI) [oai_citation:28‡www2.deloitte.com](https://www2.deloitte.com/content/dam/Deloitte/us/Documents/about-deloitte/us-state-of-idaho-transforms-child-welfare-case-management.pdf#:~:text=To%20respond%20to%20these%20challenges%2C,365%20and%20Microsoft%20Power%20Platform)",
+    "Vendor": "Deloitte (built on Microsoft Dynamics 365 platform) [oai_citation:29‡www2.deloitte.com](https://www2.deloitte.com/content/dam/Deloitte/us/Documents/about-deloitte/us-state-of-idaho-transforms-child-welfare-case-management.pdf#:~:text=To%20respond%20to%20these%20challenges%2C,365%20and%20Microsoft%20Power%20Platform)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:30‡www2.deloitte.com](https://www2.deloitte.com/content/dam/Deloitte/us/Documents/about-deloitte/us-state-of-idaho-transforms-child-welfare-case-management.pdf#:~:text=To%20respond%20to%20these%20challenges%2C,365%20and%20Microsoft%20Power%20Platform)"
+  },
+  {
+    "State/Territory": "Illinois",
+    "System": [
+      "Legacy SACWIS (Illinois CYCIS/SACWIS)",
+      "New CCWIS (in development on Microsoft Dynamics 365) [oai_citation:31‡scribd.com](https://www.scribd.com/document/869190778/CCWIS-Advanced-Notice-RFPs#:~:text=First%20Round%20Primary%20CCWIS%20RFP,6%20weeks%20possible%20IBM%20Content)"
+    ],
+    "Vendor": "Deloitte (System Integrator, Microsoft Dynamics platform) [oai_citation:32‡scribd.com](https://www.scribd.com/document/869190778/CCWIS-Advanced-Notice-RFPs#:~:text=First%20Round%20Primary%20CCWIS%20RFP,6%20weeks%20possible%20IBM%20Content)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:33‡scribd.com](https://www.scribd.com/document/869190778/CCWIS-Advanced-Notice-RFPs#:~:text=First%20Round%20Primary%20CCWIS%20RFP,6%20weeks%20possible%20IBM%20Content)"
+  },
+  {
+    "State/Territory": "Indiana",
+    "System": "Indiana CCWIS (Salesforce-based, replacing MaGIK) [oai_citation:34‡salesforce.com](https://www.salesforce.com/customer-success-stories/state-of-indiana-department/#:~:text=A%20strategic%20platform%20approach%20to,child%20services)",
+    "Vendor": "Indiana DCS & Salesforce (platform) [oai_citation:35‡salesforce.com](https://www.salesforce.com/customer-success-stories/state-of-indiana-department/#:~:text=A%20strategic%20platform%20approach%20to,child%20services)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:36‡salesforce.com](https://www.salesforce.com/customer-success-stories/state-of-indiana-department/#:~:text=A%20strategic%20platform%20approach%20to,child%20services)"
+  },
+  {
+    "State/Territory": "Iowa",
+    "System": [
+      "JARVIS (web system ancillary to legacy FACS) [oai_citation:37‡bidopportunities.iowa.gov](https://bidopportunities.iowa.gov/Home/GetBidOpportunityDocument/db6d7c17-7021-4025-a032-94ee4beb8476#:~:text=JARVIS%20to%20support%20child%20welfare,used%20to%20manage%20client%20services)",
+      "VISION (CCWIS project under development) [oai_citation:38‡acf.gov](https://acf.gov/cb/training-technical-assistance/ccwis-status#:~:text=CCWIS,KENTUCKY%2C%20TWIST%2C%201)"
+    ],
+    "Vendor": "Iowa DHS (in-house development) [oai_citation:39‡bidopportunities.iowa.gov](https://bidopportunities.iowa.gov/Home/GetBidOpportunityDocument/db6d7c17-7021-4025-a032-94ee4beb8476#:~:text=JARVIS%20to%20support%20child%20welfare,used%20to%20manage%20client%20services)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:40‡bidopportunities.iowa.gov](https://bidopportunities.iowa.gov/Home/GetBidOpportunityDocument/db6d7c17-7021-4025-a032-94ee4beb8476#:~:text=JARVIS%20to%20support%20child%20welfare,used%20to%20manage%20client%20services) [oai_citation:41‡acf.gov](https://acf.gov/cb/training-technical-assistance/ccwis-status#:~:text=CCWIS,KENTUCKY%2C%20TWIST%2C%201)"
+  },
+  {
+    "State/Territory": "Kansas",
+    "System": "Kansas Initiative for Decision Support (KIDS)",
+    "Vendor": "State of Kansas (legacy SACWIS, no CCWIS yet) [oai_citation:42‡acf.gov](https://acf.gov/cb/training-technical-assistance/ccwis-status#:~:text=CCWIS,KENTUCKY%2C%20TWIST%2C%201)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:43‡acf.gov](https://acf.gov/cb/training-technical-assistance/ccwis-status#:~:text=CCWIS,KENTUCKY%2C%20TWIST%2C%201)"
+  },
+  {
+    "State/Territory": "Kentucky",
+    "System": "The Worker Information System (TWIST)",
+    "Vendor": "Kentucky Cabinet for Health and Family Services (legacy system)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:44‡chfs.ky.gov](https://www.chfs.ky.gov/agencies/dcbs/dpp/cpb/Documents/cfspmatrix.pdf#:~:text=%5BPDF%5D%202020,with%20Evident%20Change%20to)"
+  },
+  {
+    "State/Territory": "Louisiana",
+    "System": [
+      "ACESS (legacy CPS investigation system) [oai_citation:45‡dcfs.louisiana.gov](https://www.dcfs.louisiana.gov/assets/docs/searchable/Child%20Welfare/CFSP/CFSP2025.pdf#:~:text=technology%20landscape,ACESS)",
+      "New CCWIS (in development by CITI) [oai_citation:46‡muckrock.com](https://www.muckrock.com/foi/louisiana-233/louisiana-ccwis-documents-105372/#:~:text=1,CCWIS%29%20RFP)"
+    ],
+    "Vendor": "Creative Information Technology, Inc. (CITI – CCWIS developer) [oai_citation:47‡muckrock.com](https://www.muckrock.com/foi/louisiana-233/louisiana-ccwis-documents-105372/#:~:text=1,CCWIS%29%20RFP)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:48‡dcfs.louisiana.gov](https://www.dcfs.louisiana.gov/assets/docs/searchable/Child%20Welfare/CFSP/CFSP2025.pdf#:~:text=technology%20landscape,ACESS) [oai_citation:49‡muckrock.com](https://www.muckrock.com/foi/louisiana-233/louisiana-ccwis-documents-105372/#:~:text=1,CCWIS%29%20RFP)"
+  },
+  {
+    "State/Territory": "Maine",
+    "System": "Katahdin (CCWIS, implemented Jan 2022, replaced MACWIS) [oai_citation:50‡legislature.maine.gov](https://legislature.maine.gov/doc/9961#:~:text=Katahdin%20In%20January%20of%202022%2C,was%20designed%20to%20improve%20efficiencies) [oai_citation:51‡legislature.maine.gov](https://legislature.maine.gov/doc/9961#:~:text=Katahdin%2C%20frontline%20staff%20were%20involved,the%20Maine%20Automated%20Child%20Welfare)",
+    "Vendor": "Maine OCFS & contractors (internal development) [oai_citation:52‡legislature.maine.gov](https://legislature.maine.gov/doc/9961#:~:text=Katahdin%2C%20frontline%20staff%20were%20involved,the%20Maine%20Automated%20Child%20Welfare)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:53‡legislature.maine.gov](https://legislature.maine.gov/doc/9961#:~:text=Katahdin%2C%20frontline%20staff%20were%20involved,the%20Maine%20Automated%20Child%20Welfare)"
+  },
+  {
+    "State/Territory": "Maryland",
+    "System": "Child, Juvenile and Adult Management System (CJAMS)",
+    "Vendor": "Maryland DoIT (implemented CJAMS, replaced CHESSIE in 2019)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Massachusetts",
+    "System": "FamilyNet / i-FamilyNet (SACWIS)",
+    "Vendor": "Massachusetts DCF (legacy system)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:54‡mass.gov](https://www.mass.gov/info-details/manage-i-familynet-roles#:~:text=Manage%20i,and%20allows%20for%20improved)"
+  },
+  {
+    "State/Territory": "Michigan",
+    "System": [
+      "Michigan Statewide Automated Child Welfare Info System (MiSACWIS, legacy)",
+      "New modular CCWIS (9-module system replacing MiSACWIS) [oai_citation:55‡bidnetdirect.com](https://www.bidnetdirect.com/michigan/solicitations/closed-bids/statewide/Comprehensive-Child-Welfare-Information-System-CCWIS-Human-Centered-Design-HCD/1081180858#:~:text=Comprehensive%20Child%20Welfare%20Information%20System,will%20incrementally%20replace%20MiSACWIS%20completely)"
+    ],
+    "Vendor": "State of Michigan (multiple vendors to be contracted for modules)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:56‡bidnetdirect.com](https://www.bidnetdirect.com/michigan/solicitations/closed-bids/statewide/Comprehensive-Child-Welfare-Information-System-CCWIS-Human-Centered-Design-HCD/1081180858#:~:text=Comprehensive%20Child%20Welfare%20Information%20System,will%20incrementally%20replace%20MiSACWIS%20completely)"
+  },
+  {
+    "State/Territory": "Minnesota",
+    "System": "Social Service Information System (SSIS)",
+    "Vendor": "Minnesota IT Services (legacy SACWIS, CCWIS replacement planned) [oai_citation:57‡mn.gov](https://mn.gov/dhs/assets/Minnesota%20Child%20and%20Family%20Services%20Plan%202025-2029_tcm1053-646255.pdf#:~:text=,on%20workers%2C%20maximize%20consistency)",
+    "Scope": "Statewide (county-administered)",
+    "Source": " [oai_citation:58‡mn.gov](https://mn.gov/dhs/assets/Minnesota%20Child%20and%20Family%20Services%20Plan%202025-2029_tcm1053-646255.pdf#:~:text=,on%20workers%2C%20maximize%20consistency)"
+  },
+  {
+    "State/Territory": "Mississippi",
+    "System": [
+      "Mississippi Automated Child Welfare Info System (MACWIS, legacy)",
+      "New CCWIS application (under development) [oai_citation:59‡mdcps.ms.gov](https://www.mdcps.ms.gov/sites/default/files/Notice%20of%20Intent%20to%20Award%20RFP%20Intake.pdf#:~:text=MS%20is%20using%20an%20age,brings%20promising%20workforce%20standards%20and)"
+    ],
+    "Vendor": "RedMane Technology (CCWIS implementation) [oai_citation:60‡mdcps.ms.gov](https://www.mdcps.ms.gov/sites/default/files/Notice%20of%20Intent%20to%20Award%20RFP%20Intake.pdf#:~:text=MS%20is%20using%20an%20age,brings%20promising%20workforce%20standards%20and)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:61‡mdcps.ms.gov](https://www.mdcps.ms.gov/sites/default/files/Notice%20of%20Intent%20to%20Award%20RFP%20Intake.pdf#:~:text=MS%20is%20using%20an%20age,brings%20promising%20workforce%20standards%20and)"
+  },
+  {
+    "State/Territory": "Missouri",
+    "System": "Family and Children Electronic System (FACES)",
+    "Vendor": "Missouri DSS (legacy system, >20 years old) [oai_citation:62‡mydss.mo.gov](https://mydss.mo.gov/cd/CCWIS#:~:text=%2A%20More%20modern%20user,Support%20retention%20of%20frontline%20staff)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:63‡mydss.mo.gov](https://mydss.mo.gov/cd/CCWIS#:~:text=%2A%20More%20modern%20user,Support%20retention%20of%20frontline%20staff)"
+  },
+  {
+    "State/Territory": "Montana",
+    "System": "CAPS (Child and Adult Protective Services system)",
+    "Vendor": "Montana DPHHS (legacy SACWIS)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Nebraska",
+    "System": "N-FOCUS (integrated system including child welfare)",
+    "Vendor": "Nebraska DHHS & OCIO (legacy system)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Nevada",
+    "System": "Unified Nevada Information Technology for Youth (UNITY)",
+    "Vendor": "State of Nevada (legacy mainframe; modernization planning with KPMG) [oai_citation:64‡dcfs.nv.gov](https://dcfs.nv.gov/Programs/UNITY/UNITY/#:~:text=the%20State%20of%20Nevada)",
+    "Scope": "Statewide (state and counties)",
+    "Source": " [oai_citation:65‡dcfs.nv.gov](https://dcfs.nv.gov/Programs/UNITY/UNITY/#:~:text=the%20State%20of%20Nevada)"
+  },
+  {
+    "State/Territory": "New Hampshire",
+    "System": "NH Bridges (Integrated Family Services system, legacy)",
+    "Vendor": "NH DHHS (legacy system; CCWIS modernization contract on Salesforce platform) [oai_citation:66‡federalregister.gov](https://www.federalregister.gov/documents/2016/06/02/2016-12509/comprehensive-child-welfare-information-system#:~:text=Register%20www,with%20the%20Comprehensive%20Child)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:67‡federalregister.gov](https://www.federalregister.gov/documents/2016/06/02/2016-12509/comprehensive-child-welfare-information-system#:~:text=Register%20www,with%20the%20Comprehensive%20Child)"
+  },
+  {
+    "State/Territory": "New Jersey",
+    "System": "NJ SPIRIT (SACWIS)",
+    "Vendor": "NJ DCF (legacy system; CCWIS replacement planned, possibly Oracle-based)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "New Mexico",
+    "System": "CCWIS (new system name TBD, replacing legacy FACTS) [oai_citation:68‡redmane.com](https://www.redmane.com/state-of-new-mexico-selects-redmane-technology-for-comprehensive-child-welfare-information-system-project/#:~:text=Chicago%2C%20IL%20%E2%80%93%20RedMane%20Technology%2C,juvenile%20justice%20solution%20for%20CYFD)",
+    "Vendor": "RedMane Technology (mCase platform) [oai_citation:69‡redmane.com](https://www.redmane.com/state-of-new-mexico-selects-redmane-technology-for-comprehensive-child-welfare-information-system-project/#:~:text=The%20solution%20will%20help%20CYFD,without%20cellular%20or%20Internet%20connectivity)",
+    "Scope": "Statewide (in development)",
+    "Source": " [oai_citation:70‡redmane.com](https://www.redmane.com/state-of-new-mexico-selects-redmane-technology-for-comprehensive-child-welfare-information-system-project/#:~:text=Chicago%2C%20IL%20%E2%80%93%20RedMane%20Technology%2C,juvenile%20justice%20solution%20for%20CYFD) [oai_citation:71‡redmane.com](https://www.redmane.com/state-of-new-mexico-selects-redmane-technology-for-comprehensive-child-welfare-information-system-project/#:~:text=The%20solution%20will%20help%20CYFD,without%20cellular%20or%20Internet%20connectivity)"
+  },
+  {
+    "State/Territory": "New York",
+    "System": "CONNECTIONS",
+    "Vendor": "New York State OCFS (legacy SACWIS)",
+    "Scope": "Statewide (used by all counties)",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "North Carolina",
+    "System": "NC FAST (Child Welfare module – pilot; legacy mix of systems)",
+    "Vendor": "NC DHHS (built on IBM Curam; CCWIS RFP pending) [oai_citation:72‡ncleg.gov](https://www.ncleg.gov/Files/Library/agency/dhhs14323.pdf#:~:text=,DHHS%29%20has)",
+    "Scope": "County-by-county (state-supervised, pilot use)",
+    "Source": " [oai_citation:73‡ncleg.gov](https://www.ncleg.gov/Files/Library/agency/dhhs14323.pdf#:~:text=,DHHS%29%20has)"
+  },
+  {
+    "State/Territory": "North Dakota",
+    "System": "FRAME (Family Reporting & Management System)",
+    "Vendor": "ND Children & Family Services (legacy system)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Ohio",
+    "System": "Ohio SACWIS",
+    "Vendor": "Ohio Dept. of Job & Family Services (legacy system)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:74‡sacwis.ohio.gov](https://sacwis.ohio.gov/#:~:text=Statewide%20Automated%20Child%20Welfare%20Information,and%20local%20child%20welfare)"
+  },
+  {
+    "State/Territory": "Oklahoma",
+    "System": "KIDS (Knowledge-based Info Data System)",
+    "Vendor": "Oklahoma DHS (legacy SACWIS)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:75‡humanservices.arkansas.gov](https://humanservices.arkansas.gov/wp-content/uploads/710-20-0041_Exhibit_26_-_Draft_DCFS_Data_Quality_Plan.pdf#:~:text=The%20Arkansas%20SACWIS%20system%2C%20called,Arkansas%20modified%20KIDS%20based%20on)"
+  },
+  {
+    "State/Territory": "Oregon",
+    "System": "OR-Kids",
+    "Vendor": "Deloitte (built on IBM Curam, 2011)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Pennsylvania",
+    "System": "Pennsylvania Child Welfare Information Solution (data exchange platform)",
+    "Vendor": "PA DHS (no single statewide case management; counties use disparate systems)",
+    "Scope": "County-Administered (state data aggregation only)",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Rhode Island",
+    "System": "RICHIST (Rhode Island Children's Information System, legacy)",
+    "Vendor": "Rhode Island DCYF (legacy system, CCWIS planning)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "South Carolina",
+    "System": "CAPSS (Child and Adult Protective Services System)",
+    "Vendor": "SC DSS (legacy SACWIS)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "South Dakota",
+    "System": "FACIS (Family and Community Information System)",
+    "Vendor": "SD DSS (legacy system)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Tennessee",
+    "System": "TFACTS (Tennessee Family and Child Tracking System)",
+    "Vendor": "Accenture (built TFACTS ~2010; no new CCWIS planned) [oai_citation:76‡dcfs.nv.gov](https://dcfs.nv.gov/uploadedFiles/dcfsnvgov/content/Programs/UNITY/UNITYModernization_3.5.3.6_AlternativesAnalysis.pdf#:~:text=Tennessee%20%28TN%29,replacement%20system%20at%20this%20time%E2%80%9D)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:77‡dcfs.nv.gov](https://dcfs.nv.gov/uploadedFiles/dcfsnvgov/content/Programs/UNITY/UNITYModernization_3.5.3.6_AlternativesAnalysis.pdf#:~:text=Tennessee%20%28TN%29,replacement%20system%20at%20this%20time%E2%80%9D)"
+  },
+  {
+    "State/Territory": "Texas",
+    "System": "IMPACT (Information Management Protecting Adults and Children in Texas)",
+    "Vendor": "Texas DFPS & Deloitte (legacy system; modernization planned) [oai_citation:78‡acf.hhs.gov](https://www.acf.hhs.gov/sites/default/files/documents/cb/ccwis_tb7_0.pdf#:~:text=ACF%20may%20provide%20a%20summary,status%20and%20progress%20for)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:79‡acf.hhs.gov](https://www.acf.hhs.gov/sites/default/files/documents/cb/ccwis_tb7_0.pdf#:~:text=ACF%20may%20provide%20a%20summary,status%20and%20progress%20for)"
+  },
+  {
+    "State/Territory": "Utah",
+    "System": "SAFE (Statewide Automated Child Welfare Info System)",
+    "Vendor": "Utah DHS (legacy system, in-house developed; CCWIS updates ongoing)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Vermont",
+    "System": "Family Services Case Management System (legacy; new CCWIS RFP planned)",
+    "Vendor": "VT DCF (planning Casebook or other vendor solution)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Virginia",
+    "System": "OASIS (Online Automated Services Information System, legacy)",
+    "Vendor": "VA DSS (legacy system; CCWIS replacement in procurement) [oai_citation:80‡cgi.com](https://www.cgi.com/us/en-us/news/state-and-local-government/modernize-commonwealth-virginias-child-support#:~:text=CGI%20awarded%20contract%20to%20modernize,CGI%20Transcend%E2%84%A2%20to%20improve)",
+    "Scope": "State-supervised, locally administered (all LDSS use OASIS)",
+    "Source": " [oai_citation:81‡cgi.com](https://www.cgi.com/us/en-us/news/state-and-local-government/modernize-commonwealth-virginias-child-support#:~:text=CGI%20awarded%20contract%20to%20modernize,CGI%20Transcend%E2%84%A2%20to%20improve)"
+  },
+  {
+    "State/Territory": "Washington",
+    "System": "FamLink",
+    "Vendor": "Washington DSHS (built by Microsoft & partners, 2009)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "West Virginia",
+    "System": "WV PATH (People’s Access to Help) – CCWIS (operational 2023) [oai_citation:82‡dhhr.wv.gov](https://dhhr.wv.gov/News/2024/Pages/DoHS-Completes-WV-PATH-Implementation,-First-State-with-Operational-Child-Welfare-System.aspx#:~:text=The%20West%20Virginia%20Department%20of,CCWIS) [oai_citation:83‡dhhr.wv.gov](https://dhhr.wv.gov/News/2024/Pages/DoHS-Completes-WV-PATH-Implementation,-First-State-with-Operational-Child-Welfare-System.aspx#:~:text=Project%20leadership%2C%20which%20included%20Department,modules%20%E2%80%93%20family%20assistance%2C%20child)",
+    "Vendor": "Optum (integrated solution vendor) [oai_citation:84‡dhhr.wv.gov](https://dhhr.wv.gov/News/2024/Pages/DoHS-Completes-WV-PATH-Implementation,-First-State-with-Operational-Child-Welfare-System.aspx#:~:text=Project%20leadership%2C%20which%20included%20Department,modules%20%E2%80%93%20family%20assistance%2C%20child)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:85‡dhhr.wv.gov](https://dhhr.wv.gov/News/2024/Pages/DoHS-Completes-WV-PATH-Implementation,-First-State-with-Operational-Child-Welfare-System.aspx#:~:text=The%20West%20Virginia%20Department%20of,CCWIS) [oai_citation:86‡dhhr.wv.gov](https://dhhr.wv.gov/News/2024/Pages/DoHS-Completes-WV-PATH-Implementation,-First-State-with-Operational-Child-Welfare-System.aspx#:~:text=Project%20leadership%2C%20which%20included%20Department,modules%20%E2%80%93%20family%20assistance%2C%20child)"
+  },
+  {
+    "State/Territory": "Wisconsin",
+    "System": "eWiSACWIS (Electronic Wisconsin SACWIS)",
+    "Vendor": "Wisconsin DCF & Accenture (legacy system, operational)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Wyoming",
+    "System": "WYCAPS (Wyoming Child Assistance and Protection System)",
+    "Vendor": "WY DFS (legacy system)",
+    "Scope": "Statewide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Puerto Rico",
+    "System": "ACUDEN Child Welfare System (planning CCWIS)",
+    "Vendor": "Puerto Rico ADFAN (currently planning CCWIS implementation)",
+    "Scope": "Territory-wide",
+    "Source": "Not found in connected sources"
+  },
+  {
+    "State/Territory": "Guam",
+    "System": "Public Health Professional (PH/pro) system [oai_citation:87‡dphss.guam.gov](https://dphss.guam.gov/wp-content/uploads/2019/01/FY2016-Title-XX-Post-Exp_Report-final-report.pdf#:~:text=The%20Bureau%20has%20been%20using,Professional%20system%20or%20PH%2Fpro%20system)",
+    "Vendor": "Guam DPHSS (implemented 2015) [oai_citation:88‡dphss.guam.gov](https://dphss.guam.gov/wp-content/uploads/2019/01/FY2016-Title-XX-Post-Exp_Report-final-report.pdf#:~:text=The%20Bureau%20has%20been%20using,Professional%20system%20or%20PH%2Fpro%20system)",
+    "Scope": "Territory-wide",
+    "Source": " [oai_citation:89‡dphss.guam.gov](https://dphss.guam.gov/wp-content/uploads/2019/01/FY2016-Title-XX-Post-Exp_Report-final-report.pdf#:~:text=The%20Bureau%20has%20been%20using,Professional%20system%20or%20PH%2Fpro%20system)"
+  },
+  {
+    "State/Territory": "American Samoa",
+    "System": "No dedicated SACWIS; manual processes (planning CCWIS)",
+    "Vendor": "American Samoa DHS (no system vendor yet)",
+    "Scope": "Territory-wide",
+    "Source": " [oai_citation:90‡hhs.gov](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents//pi0305.pdf#:~:text=,Commonwealth%20of%20the%20Northern%20Marianas)"
+  },
+  {
+    "State/Territory": "Northern Mariana Islands",
+    "System": "No dedicated SACWIS; exploring CCWIS options",
+    "Vendor": "CNMI DYS (no system vendor yet)",
+    "Scope": "Territory-wide",
+    "Source": " [oai_citation:91‡hhs.gov](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents//pi0305.pdf#:~:text=,Commonwealth%20of%20the%20Northern%20Marianas)"
+  },
+  {
+    "State/Territory": "U.S. Virgin Islands",
+    "System": "Family Information System (planned CCWIS)",
+    "Vendor": "USVI DHS (seeking CCWIS solution)",
+    "Scope": "Territory-wide",
+    "Source": "Not found in connected sources"
+  }
+]

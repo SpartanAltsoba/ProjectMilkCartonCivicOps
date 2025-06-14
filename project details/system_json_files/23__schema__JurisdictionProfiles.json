@@ -1,0 +1,74 @@
+{
+  "summary": "This file describes the operational and legal control structure for each U.S. county. It includes system type (state vs county), intake paths, legal frameworks, assigned agencies, contractor vendors, and data resolution sources. Used to power jurisdiction-aware AI responses and system tracing.",
+  "jurisdictions": [
+    {
+      "jurisdiction_id": "AL-Jefferson",
+      "state": "Alabama",
+      "county": "Jefferson",
+      "system_type": "state-operated",
+      "legal_framework": ["CHINS"],
+      "cps_intake_agency": "Alabama DHR",
+      "court_system": "Family Court of Jefferson County",
+      "data_sources": [
+        "Alabama DHR Intake Manual",
+        "AL Family Court Rules",
+        "USAspending.gov"
+      ],
+      "known_contractors": [
+        {
+          "name": "Youth Villages",
+          "type": "Foster care vendor",
+          "uei": "JKF3L8KZNF27"
+        },
+        {
+          "name": "Gateway",
+          "type": "Behavioral services provider",
+          "uei": "YV3HFLPZHQ92"
+        }
+      ],
+      "political_oversight": {
+        "state_legislators": ["Sen. Rodger Smitherman", "Rep. Juandalynn Givan"],
+        "board_of_contracts": "Alabama Finance Department",
+        "child_advocacy_NGO": ["VOICES for Alabama’s Children"]
+      },
+      "contract_watch_flags": {
+        "audit_misses_last_5y": true,
+        "conflict_of_interest_investigations": 2,
+        "has_active_civil_rights_monitoring": true
+      },
+      "active_cse_boost_keywords": [
+        "alabama dhr", "jefferson cps", "gateway services", "youth villages"
+      ],
+      "default_ui_card_icon": "🏛️"
+    },
+    {
+      "jurisdiction_id": "CA-LosAngeles",
+      "state": "California",
+      "county": "Los Angeles",
+      "system_type": "county-operated",
+      "legal_framework": ["WIC §300", "CINA"],
+      "cps_intake_agency": "DCFS Los Angeles",
+      "court_system": "Edmund D. Edelman Children’s Court",
+      "known_contractors": [
+        {
+          "name": "Five Acres",
+          "type": "Residential treatment center",
+          "uei": "E2NS4L98A8R9"
+        }
+      ],
+      "political_oversight": {
+        "county_board": "LA County Board of Supervisors",
+        "child_advocacy_NGO": ["Children's Defense Fund – California"]
+      },
+      "contract_watch_flags": {
+        "audit_misses_last_5y": false,
+        "conflict_of_interest_investigations": 0,
+        "has_active_civil_rights_monitoring": false
+      },
+      "active_cse_boost_keywords": [
+        "la dcfs", "children's court", "wic 300", "five acres"
+      ],
+      "default_ui_card_icon": "🏙️"
+    }
+  ]
+}

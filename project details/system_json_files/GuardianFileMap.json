@@ -1,0 +1,197 @@
+{
+  "registry_version": "v1.1",
+  "files": [
+    {
+      "file_id": "01__core__TheSystem.json",
+      "path": "project details/system_json_files/01__core__TheSystem.json",
+      "type": "system_overview",
+      "description": "Top-level system architecture: agents, pipelines, stores, and runtime contracts.",
+      "used_by": ["UI", "GuardianExecutionMap", "FSM", "SelfTest"],
+      "models": []
+    },
+    {
+      "file_id": "02__agent__ReconWorker.json",
+      "path": "project details/system_json_files/02__agent__ReconWorker.json",
+      "type": "agent_spec",
+      "description": "Primary agent for data acquisition, query generation, source extraction.",
+      "used_by": ["ExecutionPipeline", "FunctionCalling", "ChainTelemetry"],
+      "models": ["gpt-4o", "text-embedding-3-large", "moderation-latest"]
+    },
+    {
+      "file_id": "03__agent__DataFetcher.json",
+      "path": "project details/system_json_files/03__agent__DataFetcher.json",
+      "type": "agent_spec",
+      "description": "Defines data-fetching ladder: curated → CSE → API → scraper → Playwright.",
+      "used_by": ["ReconWorker", "CSE Engine", "RetryQueue"],
+      "models": ["gpt-3.5-turbo", "text-embedding-3-large"]
+    },
+    {
+      "file_id": "04__process__DeterministicFSM.json",
+      "path": "project details/system_json_files/04__process__DeterministicFSM.json",
+      "type": "state_machine",
+      "description": "Scenario job state machine logic — retry max, backoff, next state on fail/success.",
+      "used_by": ["Router", "Scenario Queue", "RedisFSM"],
+      "models": []
+    },
+    {
+      "file_id": "05__agent__CorrelationWorker.json",
+      "path": "project details/system_json_files/05__agent__CorrelationWorker.json",
+      "type": "agent_spec",
+      "description": "Agent responsible for graph merge, orphan detection, conflict resolution, ID harmonization.",
+      "used_by": ["Neo4j", "EntityIndex", "KnowledgeGraph"],
+      "models": ["gpt-4o", "gpt-3.5-turbo", "text-embedding-3-large"]
+    },
+    {
+      "file_id": "06__schema__KnowledgeGraph.json",
+      "path": "project details/system_json_files/06__schema__KnowledgeGraph.json",
+      "type": "schema",
+      "description": "Graph schema of entities and their relations: Vendor, PAC, Judge, Agency, etc.",
+      "used_by": ["CorrelationWorker", "AnalystWorker", "UI Graph Renderer"],
+      "models": []
+    },
+    {
+      "file_id": "07__agent__AnalystWorker.json",
+      "path": "project details/system_json_files/07__agent__AnalystWorker.json",
+      "type": "agent_spec",
+      "description": "Performs scoring, violation flagging, feature generation, rule/ML-based risk tagging.",
+      "used_by": ["RiskModel", "ViolationEngine", "COASelector"],
+      "models": ["gpt-4-0125-preview", "gpt-3.5-turbo-instruct-0914", "text-embedding-3-large"]
+    },
+    {
+      "file_id": "08__agent__AdvisoryWorker.json",
+      "path": "project details/system_json_files/08__agent__AdvisoryWorker.json",
+      "type": "agent_spec",
+      "description": "Renders COAs, selects template sets by jurisdiction/violation/user role.",
+      "used_by": ["COAEngine", "RenderStack", "UI Right Panel"],
+      "models": ["gpt-4o", "gpt-3.5-turbo-0125", "dall-e-3"]
+    },
+    {
+      "file_id": "09__logic__CourseOfActionRules.json",
+      "path": "project details/system_json_files/09__logic__CourseOfActionRules.json",
+      "type": "rule_contract",
+      "description": "Defines COASet format, auto-population rules, delivery modes (PDF, Court Doc, Email).",
+      "used_by": ["AdvisoryWorker", "TemplateEngine"],
+      "models": []
+    },
+    {
+      "file_id": "10__infra__ObservabilityStack.json",
+      "path": "project details/system_json_files/10__infra__ObservabilityStack.json",
+      "type": "infra_spec",
+      "description": "CI/CD pipeline logic, Prometheus metrics, alert triggers, test orchestration.",
+      "used_by": ["GitHubActions", "Alertmanager", "UI Canary"],
+      "models": []
+    },
+    {
+      "file_id": "11__infra__ImplementationOrder.json",
+      "path": "project details/system_json_files/11__infra__ImplementationOrder.json",
+      "type": "execution_plan",
+      "description": "Sprints, files, exit criteria per component, mirrors execution pipeline readiness map.",
+      "used_by": ["Project Tracker", "BlackBoxAI", "CI Planning"],
+      "models": []
+    },
+    {
+      "file_id": "12__infra__ExecutionPipeline.json",
+      "path": "project details/system_json_files/12__infra__ExecutionPipeline.json",
+      "type": "trigger_pipeline",
+      "description": "Input validation, fingerprinting, Redis job queue logic, retry handling.",
+      "used_by": ["ScenarioRouter", "TriggerResolver", "FSM"],
+      "models": []
+    },
+    {
+      "file_id": "13__ai__FunctionCalling_BestPractices.json",
+      "path": "project details/system_json_files/13__ai__FunctionCalling_BestPractices.json",
+      "type": "ai_logic",
+      "description": "How Guardian models should be function-called, pool selection, fallback tiering.",
+      "used_by": ["OpenAIService", "Orchestrator", "ModelHandler"],
+      "models": ["gpt-4o", "gpt-3.5-turbo", "gpt-3.5-turbo-instruct"]
+    },
+    {
+      "file_id": "14__ai__GoogleCSE_Config.json",
+      "path": "project details/system_json_files/14__ai__GoogleCSE_Config.json",
+      "type": "cse_weighting",
+      "description": "Refinement weights, annotation.xml logic, CSE query tier structure.",
+      "used_by": ["ReconWorker", "CseWeightBuilder", "DataFetcher"],
+      "models": ["gpt-3.5-turbo"]
+    },
+    {
+      "file_id": "15__ai__ModelsInSystem.json",
+      "path": "project details/system_json_files/15__ai__ModelsInSystem.json",
+      "type": "model_registry",
+      "description": "All GPT models and embeddings with purpose, scope, role, and fallback logic.",
+      "used_by": ["OpenAIService", "BlackBoxAI", "SelfTest"],
+      "models": []
+    },
+    {
+      "file_id": "16__infra__SelfHealing_Framework.json",
+      "path": "project details/system_json_files/16__infra__SelfHealing_Framework.json",
+      "type": "watchdog_system",
+      "description": "Auto-healing routines, nightly canary checks, fallback-on-schema-fail.",
+      "used_by": ["CI", "Prometheus", "AuditTrail"],
+      "models": []
+    },
+    {
+      "file_id": "17__schema__TypesAndEnums.json",
+      "path": "project details/system_json_files/17__schema__TypesAndEnums.json",
+      "type": "schema",
+      "description": "Defines graph node types, edge types, UI color/icon pairs, enforcement tags.",
+      "used_by": ["UI Graph", "COAGenerator", "DecisionChainRenderer"],
+      "models": []
+    },
+    {
+      "file_id": "18__schema__EntitySchema.json",
+      "path": "project details/system_json_files/18__schema__EntitySchema.json",
+      "type": "schema",
+      "description": "Canonical schema for any actor in the system: NGO, PAC, vendor, judge, etc.",
+      "used_by": ["CorrelationWorker", "KnowledgeGraph", "AdvisoryWorker"],
+      "models": []
+    },
+    {
+      "file_id": "19__logic__FailureToCOAMap.json",
+      "path": "project details/system_json_files/19__logic__FailureToCOAMap.json",
+      "type": "coa_mapping",
+      "description": "Maps flagged decision chain failure nodes to COAs for rendering.",
+      "used_by": ["AdvisoryWorker", "ChainTelemetry", "UI Action Panel"],
+      "models": []
+    },
+    {
+      "file_id": "20__logic__GuardianExecutionMap.json",
+      "path": "project details/system_json_files/20__logic__GuardianExecutionMap.json",
+      "type": "agent_flow",
+      "description": "Mission routing of Guardian agents per scenario type with fallbacks.",
+      "used_by": ["FSM", "Orchestrator", "UI Agent Tracker"],
+      "models": []
+    },
+    {
+      "file_id": "21__telemetry__ChainTelemetry.json",
+      "path": "project details/system_json_files/21__telemetry__ChainTelemetry.json",
+      "type": "telemetry",
+      "description": "Tracks node coverage, risk flags, progress %, current agent — for UI HUD.",
+      "used_by": ["UI", "FSM", "SelfTest", "AdvisoryWorker"],
+      "models": []
+    },
+    {
+      "file_id": "22__schema__StatuteViolations.json",
+      "path": "project details/system_json_files/22__schema__StatuteViolations.json",
+      "type": "law_index",
+      "description": "Anchors every violation to statute, citation, and enforcement category.",
+      "used_by": ["AnalystWorker", "AdvisoryWorker", "UI Violation Modal"],
+      "models": ["gpt-4-0125-preview"]
+    },
+    {
+      "file_id": "23__schema__JurisdictionProfiles.json",
+      "path": "project details/system_json_files/23__schema__JurisdictionProfiles.json",
+      "type": "jurisdiction_map",
+      "description": "Maps each U.S. county to legal framework, control type, known vendors, agencies.",
+      "used_by": ["ReconWorker", "AdvisoryWorker", "UI Cards", "DataFetcher"],
+      "models": []
+    },
+    {
+      "file_id": "24__schema__LogEventSchema.json",
+      "path": "project details/system_json_files/24__schema__LogEventSchema.json",
+      "type": "log_contract",
+      "description": "Canonical contract for all runtime logs, trace events, retry triggers, and alerts.",
+      "used_by": ["SelfTest", "UI Timeline", "FSM Logger", "Prometheus"],
+      "models": []
+    }
+  ]
+}

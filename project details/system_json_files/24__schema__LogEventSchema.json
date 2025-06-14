@@ -1,0 +1,86 @@
+{
+  "summary": "Defines a unified logging format for all Guardian system events, including agent calls, failures, retries, COA generations, risk flags, data ingestion errors, and test results. Ensures full traceability, reproducibility, and real-time UI feedback.",
+  "log_event": {
+    "event_id": "auto-generated UUID",
+    "timestamp": "ISO 8601",
+    "agent": "ReconWorker | AnalystWorker | AdvisoryWorker | CorrelationWorker | UI | System",
+    "event_type": "state_entry | success | failure | retry | violation_flag | template_gap | audit_trace | self_test",
+    "scenario_hash": "optional if part of tracked case",
+    "node_id": "optional chain node identifier",
+    "message": "Human-readable summary of event",
+    "details": {
+      "type": "object",
+      "description": "Flexible structured payload per event type"
+    },
+    "severity": "info | warn | error | critical",
+    "action_taken": "none | fallback_triggered | reroute_agent | raised_alert | sent_to_retry",
+    "trace_id": "optional if tied to distributed trace (OpenTelemetry)",
+    "origin": "api | fsm | pipeline | webhook | guardian_agent | UI",
+    "tags": [
+      "violation",
+      "audit",
+      "retry",
+      "COA",
+      "render",
+      "external_fetch",
+      "coverage"
+    ]
+  },
+  "examples": [
+    {
+      "event_id": "53b40f5a-6019-4c64-95d1-bfdc9c124bd5",
+      "timestamp": "2025-06-14T21:15:09Z",
+      "agent": "ReconWorker",
+      "event_type": "success",
+      "scenario_hash": "3f45d889",
+      "node_id": "C1_Action",
+      "message": "Successfully expanded query and matched 9 of 12 fields.",
+      "details": {
+        "coverage_ratio": 0.75,
+        "api_calls": ["fec_api", "cse", "usa_spending"]
+      },
+      "severity": "info",
+      "action_taken": "none",
+      "trace_id": "d59a2713",
+      "origin": "pipeline",
+      "tags": ["coverage", "external_fetch"]
+    },
+    {
+      "event_id": "111c93ae-dfcb-4b5b-a94e-e1c7e1a9dabc",
+      "timestamp": "2025-06-14T21:22:44Z",
+      "agent": "AnalystWorker",
+      "event_type": "violation_flag",
+      "scenario_hash": "3f45d889",
+      "node_id": "C1_Failure",
+      "message": "Violation flagged: ASFA noncompliant TPR recommendation.",
+      "details": {
+        "violation_id": "unlawful_removal_asfa",
+        "risk_score": 0.91,
+        "statute_ref": "ASFA §675(5)(E)"
+      },
+      "severity": "critical",
+      "action_taken": "raised_alert",
+      "trace_id": "d59a2713",
+      "origin": "guardian_agent",
+      "tags": ["violation", "audit"]
+    },
+    {
+      "event_id": "ea4fd1b4-4f99-4967-8813-eae4dcffb7a7",
+      "timestamp": "2025-06-14T21:27:01Z",
+      "agent": "AdvisoryWorker",
+      "event_type": "template_gap",
+      "scenario_hash": "3f45d889",
+      "node_id": "C1_PMC",
+      "message": "No matching COA template found for violation: Conflict of Interest (AL)",
+      "details": {
+        "template_id": "COA_conflict_interest_AL",
+        "attempted_variants": 2
+      },
+      "severity": "warn",
+      "action_taken": "sent_to_retry",
+      "trace_id": "d59a2713",
+      "origin": "guardian_agent",
+      "tags": ["render", "COA"]
+    }
+  ]
+}

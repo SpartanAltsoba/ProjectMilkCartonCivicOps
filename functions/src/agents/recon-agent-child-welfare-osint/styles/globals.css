@@ -1,0 +1,127 @@
+/*
+ * GLOBAL STYLES FOR RECON AGENT CHILD WELFARE OSINT
+ *
+ * This stylesheet applies the global styles for the entire application.
+ * It includes CSS resets, typography settings, color schemes, and layouts marks
+ * for ensuring that our application appears consistent across different browsers.
+ */
+
+/* CSS Reset to provide a consistent baseline */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size for the application */
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  background-color: #f9fafb; /* Light grey for subtle background */
+  color: #333; /* Dark grey, optimal for readable text */
+}
+
+/* Headings for general structure */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  color: #111;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Links with consistent style */
+a {
+  text-decoration: none;
+  color: #1a73e8; /* Google Blue */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #135ba1;
+}
+
+/* Layout Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header, footer {
+  background-color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Component-specific styles */
+.footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Button Styles */
+button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #1a73e8;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #135ba1;
+}
+
+/* Input Styles */
+input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "stage_4_1",
+    "name": "Graph Merge",
+    "trigger": "raw_data_ready",
+    "component": "CorrelationWorker + Neo4j",
+    "description": "Load raw facts and harmonize IDs into Neo4j, calling inference if orphan nodes are detected.",
+    "inputs_required": ["RawSet"],
+    "operations": [
+      "Load raw data",
+      "Run ID harmonizer",
+      "Upsert nodes and edges into Neo4j",
+      "If orphan nodes: call InferLinks",
+      "If conflict: log GraphConflict"
+    ],
+    "on_success": {
+      "log": ["graph_upsert_success", "inferred_links"]
+    },
+    "on_failure": {
+      "log": ["GraphConflict"]
+    },
+    "outputs_produced": ["merged_graph"],
+    "next_stage": "stage_4_2"
+  },
+  {
+    "id": "stage_4_2",
+    "name": "Circular-Flow Detector",
+    "trigger": "graph_merged",
+    "component": "Cypher proc",
+    "description": "Detect financial or influence loops in the graph using custom Cypher logic. Annotate edges with loop IDs.",
+    "inputs_required": ["EntityIndex.GraphSet"],
+    "operations": [
+      "Run Cypher to detect cycles (e.g., vendor → NGO → PAC → vendor)",
+      "Annotate edge with loop_id",
+      "Fallback to DFS if algorithm error"
+    ],
+    "on_success": {
+      "log": ["loop_detection_success"]
+    },
+    "on_failure": {
+      "log": ["fallback_to_DFS"]
+    },
+    "outputs_produced": ["annotated_graph_edges"],
+    "next_stage": "stage_4_3"
+  },
+  {
+    "id": "stage_4_3",
+    "name": "Graph Quality Gate",
+    "trigger": "loop_analysis_complete",
+    "component": "GraphValidator",
+    "description": "Validate that critical relations exist in the graph and roll back or retry if empty or malformed.",
+    "inputs_required": ["annotated_graph_edges"],
+    "operations": [
+      "Ensure CONTRACTS and FUNDED_BY relations are present",
+      "Rollback transactions if validation fails"
+    ],
+    "on_success": {
+      "log": ["CorrelationCompleted"]
+    },
+    "on_failure": {
+      "log": ["rollback_bad_txn"],
+      "route": "RetryQueue"
+    },
+    "outputs_produced": ["validated_graph"],
+    "next_stage": null
+  }
+]

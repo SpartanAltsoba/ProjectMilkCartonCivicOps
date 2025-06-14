@@ -1,0 +1,104 @@
+{
+  "id": "chain_7",
+  "name": "Missed Federal Audit → Repeated Failures → Systemic Abuse",
+  "nodes": [
+    {
+      "id": "L7",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "Federal & State Audit Requirements (ACF, HHS, etc.)",
+        "Political Influence"
+      ]
+    },
+    {
+      "id": "M7",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Audits waived, overlooked",
+        "No corrective action plan",
+        "Abuse continues unchallenged"
+      ]
+    },
+    {
+      "id": "C7_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Scheduled Federal/State Audit",
+        "Child Welfare Agency, Contractor Operations"
+      ]
+    },
+    {
+      "id": "C7_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Audit Is Missed/Waived",
+        "Oversight Body or Political Pressure"
+      ]
+    },
+    {
+      "id": "C7_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "No Formal Corrective Action",
+        "Incentive: Save Costs & Avoid Public Scrutiny"
+      ]
+    },
+    {
+      "id": "C7_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Repeated Failures Unseen",
+        "No Accountability"
+      ]
+    },
+    {
+      "id": "C7_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Systemic Abuse Continues",
+        "Perpetrators Unchecked"
+      ]
+    },
+    {
+      "id": "C7_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Monitor Gov Filings",
+        "Push for Independent Audits",
+        "Publish Missed Audit Data"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L7", "to": "M7", "label": "Weak enforcement or\npolitical pressure" },
+    { "from": "L7", "to": "C7_Decision", "label": "Mandated audits exist\nbut can be bypassed" },
+    { "from": "M7", "to": "C7_Action", "label": "Inaction by\nresponsible agencies" },
+    { "from": "C7_Input", "to": "C7_Decision" },
+    { "from": "C7_Decision", "to": "C7_Action" },
+    { "from": "C7_Action", "to": "C7_Outcome" },
+    { "from": "C7_Outcome", "to": "C7_Failure" },
+    { "from": "C7_Action", "to": "C7_PMC", "type": "dashed", "label": "Expose missed audits" },
+    { "from": "C7_Outcome", "to": "C7_PMC", "type": "dashed", "label": "Public pressure,\nforce accountability" }
+  ],
+  "coa_link": "course_7.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_7_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "framework": "Self-Heal & Self-Test Runtime",
+  "version": "v1.0",
+  "components": [
+    {
+      "name": "ETL/API Layer",
+      "monitors": [
+        {
+          "check": "JSON schema hash match",
+          "on_failure": [
+            "Circuit-break provider for 10 min",
+            "Switch to last-24h snapshot",
+            "Log remediation action"
+          ],
+          "on_success": "Log healthy status"
+        }
+      ]
+    },
+    {
+      "name": "Graph Build Layer",
+      "monitors": [
+        {
+          "check": "MATCH (n) WHERE size((n)--()) = 0",
+          "on_failure": [
+            "Run infer_links.py",
+            "If links added > 0 → flag for review",
+            "If 0 links added → no action"
+          ],
+          "on_success": "Log healthy graph"
+        }
+      ]
+    },
+    {
+      "name": "Risk Model Layer",
+      "monitors": [
+        {
+          "check": "confidence_mean >= 0.6",
+          "on_failure": [
+            "Skip ML layer",
+            "Fallback to rules-only logic",
+            "Push ModelConfidenceLow alert"
+          ],
+          "on_success": "Log healthy model"
+        }
+      ]
+    },
+    {
+      "name": "Template Render Layer",
+      "monitors": [
+        {
+          "check": "render_status == SUCCESS",
+          "on_failure": [
+            "Fallback to plaintext email body",
+            "Open Jira ticket (TemplateGap)",
+            "Log remediation"
+          ],
+          "on_success": "Log successful render"
+        }
+      ]
+    },
+    {
+      "name": "UI Diff Layer",
+      "monitors": [
+        {
+          "check": "DOM snapshot hash == previous",
+          "on_failure": [
+            "Capture screenshot",
+            "Create GitHub issue",
+            "Attach diff and log issue"
+          ],
+          "on_success": "Log healthy UI"
+        }
+      ]
+    }
+  ],
+  "integrations": {
+    "alert_targets": ["Log", "Jira", "GitHub"],
+    "fallback_modes": ["snapshot_restore", "rules_only", "plaintext_render"],
+    "triggered_by": "System"
+  }
+}

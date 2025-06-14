@@ -1,0 +1,112 @@
+{
+  "id": "chain_1",
+  "name": "Mandated Reporters → CPS Intake → Removal → TPR → Foster Placement",
+  "nodes": [
+    {
+      "id": "L1",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "CAPTA: Mandated Reporting",
+        "State Mandated-Reporter Laws",
+        "ASFA: 15/22‐Month TPR Rule",
+        "Agency Intake Policy"
+      ]
+    },
+    {
+      "id": "M1",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Overzealous or 'check-box' removal",
+        "Court expedites TPR under ASFA",
+        "'Better Safe Than Sorry' used by default"
+      ]
+    },
+    {
+      "id": "C1_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Suspicion of Abuse/Neglect",
+        "Mandated Reporter: Teacher, Doctor, etc."
+      ]
+    },
+    {
+      "id": "C1_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Screen Report",
+        "Who: CPS Intake Worker",
+        "Policy: 'Mandated to Investigate'",
+        "Trigger: CAPTA Definition"
+      ]
+    },
+    {
+      "id": "C1_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "File Petition for Removal",
+        "Who: CPS Caseworker & Agency Attorney",
+        "Incentive: Avoid Liability",
+        "Meet Federal/State Timelines"
+      ]
+    },
+    {
+      "id": "C1_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Child Brought Into Family Court",
+        "Who: Family Court Judge",
+        "ASFA Timelines Loom"
+      ]
+    },
+    {
+      "id": "C1_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Fast-Tracked TPR",
+        "Child in Foster Care",
+        "Risk of Foster Abuse or Runaway"
+      ]
+    },
+    {
+      "id": "C1_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Enhanced Reporter Training",
+        "Oversight & Advocacy",
+        "Family Preservation Emphasis"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L1", "to": "M1", "label": "Statutes can be weaponized or strictly enforced" },
+    { "from": "L1", "to": "C1_Decision", "label": "CAPTA mandates screening" },
+    { "from": "M1", "to": "C1_Decision", "label": "Default removal approach" },
+    { "from": "C1_Input", "to": "C1_Decision" },
+    { "from": "C1_Decision", "to": "C1_Action" },
+    { "from": "C1_Action", "to": "C1_Outcome" },
+    { "from": "C1_Outcome", "to": "C1_Failure" },
+    { "from": "C1_Action", "to": "C1_PMC", "type": "dashed", "label": "Promote Alt. Response" },
+    { "from": "C1_Outcome", "to": "C1_PMC", "type": "dashed", "label": "Push for Family Reunification" }
+  ],
+  "coa_link": "course_1.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_1_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

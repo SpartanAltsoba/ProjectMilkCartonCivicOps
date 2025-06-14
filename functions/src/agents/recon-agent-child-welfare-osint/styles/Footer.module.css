@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: white;
+}
+
+.footer {
+  margin-top: auto;
+  background-color: #20232a;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.navigationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navigationList li {
+  margin: 0 1rem;
+}
+
+.navigationList a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.navigationList a:hover {
+  text-decoration: underline;
+}

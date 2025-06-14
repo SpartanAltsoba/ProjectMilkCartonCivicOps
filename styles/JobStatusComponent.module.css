@@ -1,0 +1,76 @@
+.jobStatus {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* Status colors */
+.started {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.processing_local,
+.processing_web,
+.processing_gpt {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.completed {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.error {
+  background: #ffebee;
+  color: #d32f2f;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.progress {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.progress p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.timestamp {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 15px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}

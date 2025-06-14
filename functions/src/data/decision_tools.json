@@ -1,0 +1,522 @@
+[
+  {
+    "State": "Alabama",
+    "Tools": [
+      "Comprehensive Assessment and Safety/Risk Tool (ACTION/NRCCPS Model)"
+    ],
+    "Entity": "ACTION for Child Protection (nonprofit) in partnership with AL Dept. of Human Resources",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:0‡theacademy.sdsu.edu](https://theacademy.sdsu.edu/wp-content/uploads/2015/02/SACHS_Risk_Assessment_Report_and_Appendices_11_2012.pdf#:~:text=Alabama%20The%20Alabama%20Comprehensive%20Assessment,of%20Human%20Services%2C%20ACTION%20for)"
+  },
+  {
+    "State": "Alaska",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive analytics pilot)"
+    ],
+    "Entity": "SDM by Evident Change (nonprofit); RSF by Eckerd Connects (NGO) with MindShare analytics",
+    "Scope": "SDM statewide; RSF pilot (2016–2018, discontinued)",
+    "Source": " [oai_citation:1‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:2‡dfcs.alaska.gov](https://dfcs.alaska.gov/ocs/Documents/2019_APSR.pdf#:~:text=2017%20Update%3A%20OCS%20has%20continued,The%20project)"
+  },
+  {
+    "State": "Arizona",
+    "Tools": [
+      "Child Safety and Risk Assessment Tool"
+    ],
+    "Entity": "Developed in-house by AZ Dept. of Child Safety (based on ACTION model)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:3‡dcs.az.gov](https://dcs.az.gov/sites/default/files/media/Family-Assessment-Response-Proposed-Protocols_2015-05-04B.pdf#:~:text=%EF%82%A7%20Child%20Safety%20is%20paramount,within%20the%20family%20and%20community)"
+  },
+  {
+    "State": "Arkansas",
+    "Tools": [
+      "Risk Assessment Formula in CHRIS system",
+      "Family Strengths, Needs, and Risk Assessment (FSNRA)"
+    ],
+    "Entity": "Developed in-house (Arkansas DCFS MIS) with Hornby Zeller Associates",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:4‡aradvocates.org](http://www.aradvocates.org/wp-content/uploads/CW-2008-child-welfare-report-12.08.pdf#:~:text=The%20decision%20to%20leave%20a,for%20DCFS%20to%20conduct%20the)"
+  },
+  {
+    "State": "California",
+    "Tools": [
+      "Structured Decision Making (SDM) system",
+      "Risk Stratification Model (predictive pilot in Los Angeles)"
+    ],
+    "Entity": "SDM by Evident Change (nonprofit); LA model by LA DCFS & Children’s Data Network (USC research partnership)",
+    "Scope": "SDM in all 58 counties statewide [oai_citation:5‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=Over%20the%20last%20two%20decades%2C,and%20safety%20to%20vulnerable%20children); predictive model piloted in 3 LA County offices [oai_citation:6‡dcfs.lacounty.gov](https://dcfs.lacounty.gov/dcfs-shares-risk-stratification-pilot-insights-data-online/#:~:text=The%20Los%20Angeles%20County%20Department,could%20benefit%20from%20enhanced%20support) [oai_citation:7‡dcfs.lacounty.gov](https://dcfs.lacounty.gov/dcfs-shares-risk-stratification-pilot-insights-data-online/#:~:text=The%20three,Foreseeing%20an)",
+    "Source": " [oai_citation:8‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=Over%20the%20last%20two%20decades%2C,and%20safety%20to%20vulnerable%20children) [oai_citation:9‡dcfs.lacounty.gov](https://dcfs.lacounty.gov/dcfs-shares-risk-stratification-pilot-insights-data-online/#:~:text=The%20Los%20Angeles%20County%20Department,could%20benefit%20from%20enhanced%20support)"
+  },
+  {
+    "State": "Colorado",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Douglas County Decision Aid (predictive screening model pilot)"
+    ],
+    "Entity": "SDM by Evident Change; Douglas County model by AUT/USC research team (Vaithianathan & Children’s Data Network)",
+    "Scope": "SDM statewide; predictive pilot in Douglas County (2019)",
+    "Source": " [oai_citation:10‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:11‡csda.aut.ac.nz](https://csda.aut.ac.nz/research/our-projects/all-projects/Douglas-County-Decision-Aid#:~:text=In%20early%202017%20researchers%20developed,controlled%20trial%20in%20February%202019)"
+  },
+  {
+    "State": "Connecticut",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive risk model)"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects (nonprofit)",
+    "Scope": "SDM statewide; RSF pilot implementation (statewide, circa 2017)",
+    "Source": " [oai_citation:12‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:13‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Delaware",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change (formerly NCCD/CRC)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:14‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "District of Columbia",
+    "Tools": [
+      "Structured Decision Making (SDM) system – Hotline Screening Tool"
+    ],
+    "Entity": "Evident Change (nonprofit), implemented by DC CFSA",
+    "Scope": "City-wide (DC CFSA)",
+    "Source": " [oai_citation:15‡cfsa.dc.gov](https://cfsa.dc.gov/sites/default/files/dc/sites/cfsa/page_content/attachments/DC%20CFSA%20Statewide%20Assessment%20FINAL.pdf#:~:text=All%20Hotline%20workers%20complete%20extensive,for%20gathering%20information%20and%20making)"
+  },
+  {
+    "State": "Florida",
+    "Tools": [
+      "Safety Assessment/Family Functioning Assessment model",
+      "Rapid Safety Feedback (RSF) predictive model"
+    ],
+    "Entity": "Safety assessment model by Action for Child Protection; RSF developed by Eckerd Connects & Mindshare",
+    "Scope": "Statewide safety practice; RSF used in Eckerd-managed regions (pilot in multiple counties)",
+    "Source": " [oai_citation:16‡imprintnews.org](https://imprintnews.org/child-welfare-2/rapid-safety-feedbacks-rapid-ascent/25185#:~:text=One%20of%20Sanders%E2%80%99%20updates%20caught,Kids%20in%20Hillsborough%20County%2C%20Fla)"
+  },
+  {
+    "State": "Georgia",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change (nonprofit)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:17‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Hawaii",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change (nonprofit)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:18‡imprintnews.org](https://imprintnews.org/child-welfare-2/28865/28865#:~:text=Relative%20Growth%3A%20Three%20States%20Increasingly,help%20guide%20caseworkers%20as)"
+  },
+  {
+    "State": "Idaho",
+    "Tools": [
+      "Safety Assessment (Signs of Safety-based)"
+    ],
+    "Entity": "Developed with American Humane Association",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:19‡theacademy.sdsu.edu](https://theacademy.sdsu.edu/wp-content/uploads/2015/02/SACHS_Risk_Assessment_Report_and_Appendices_11_2012.pdf#:~:text=,Iowa%20has)"
+  },
+  {
+    "State": "Illinois",
+    "Tools": [
+      "Child Endangerment Risk Assessment Protocol (CERAP)",
+      "Rapid Safety Feedback (predictive analytics pilot)"
+    ],
+    "Entity": "CERAP developed in-house (IL DCFS); RSF by Eckerd Connects/Mindshare (vendor)",
+    "Scope": "CERAP statewide; RSF pilot (2015–2017, terminated) [oai_citation:20‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=,to%20proceed%20with%20that%20contract)",
+    "Source": " [oai_citation:21‡theacademy.sdsu.edu](https://theacademy.sdsu.edu/wp-content/uploads/2015/02/SACHS_Risk_Assessment_Report_and_Appendices_11_2012.pdf#:~:text=Alabama,assessment%20at%20investigation) [oai_citation:22‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=,to%20proceed%20with%20that%20contract)"
+  },
+  {
+    "State": "Indiana",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (RSF) predictive model"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:23‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:24‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Iowa",
+    "Tools": [
+      "Structured Decision Making (SDM) model"
+    ],
+    "Entity": "Evident Change (developed custom SDM for Iowa DHS)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:25‡iachild.org](https://www.iachild.org/index.php?option=com_jevents&task=icalrepeat.detail&evid=485&Itemid=214&year=2022&month=06&day=29&title=structured-decision-making-overview-training-virtual&uid=3660177c208dcecbfdd862fc972ee275#:~:text=Structured%20Decision%20Making%20Overview%20Training,model%20to%20complete%20safety%20assessments)"
+  },
+  {
+    "State": "Kansas",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:26‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Kentucky",
+    "Tools": [
+      "Structured family risk assessment (in-house)"
+    ],
+    "Entity": "KY Dept. for Community Based Services (internal development)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:27‡wku.edu](https://www.wku.edu/childwelfare/child_welfare_analytics_collaborative.php#:~:text=University%20www,of%20data%20science%2C%20while)"
+  },
+  {
+    "State": "Louisiana",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive analytics)"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:28‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:29‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Maine",
+    "Tools": [
+      "Signs of Safety practice model",
+      "Rapid Safety Feedback (predictive analytics)"
+    ],
+    "Entity": "Signs of Safety by Elia International (licensed model); RSF by Eckerd Connects",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:30‡theacademy.sdsu.edu](https://theacademy.sdsu.edu/wp-content/uploads/2015/02/SACHS_Risk_Assessment_Report_and_Appendices_11_2012.pdf#:~:text=Maine%20Since%202011%2C%20Maine%20has,Debra%20Poole%2C%20an%20expert%20in) [oai_citation:31‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Maryland",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:32‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Massachusetts",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:33‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Michigan",
+    "Tools": [
+      "Structured Decision Making (SDM) tools (Safety and Risk Assessment)"
+    ],
+    "Entity": "Evident Change (nonprofit)",
+    "Scope": "Statewide (mandated by law) [oai_citation:34‡michigan.gov](https://www.michigan.gov/mdhhs/adult-child-serv/abuse-neglect/childrens/investigation/results/disposition-and-structured-decision-making#:~:text=6,Making)",
+    "Source": " [oai_citation:35‡michigan.gov](https://www.michigan.gov/mdhhs/adult-child-serv/abuse-neglect/childrens/investigation/results/disposition-and-structured-decision-making#:~:text=6,Making)"
+  },
+  {
+    "State": "Minnesota",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide (county-administered)",
+    "Source": " [oai_citation:36‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Mississippi",
+    "Tools": [
+      "Structured Decision Making (SDM) system (planned)"
+    ],
+    "Entity": "To be implemented via vendor (RFP issued by MS Dept. of Child Protection Services)",
+    "Scope": "Statewide (in procurement phase)",
+    "Source": " [oai_citation:37‡mdcps.ms.gov](https://www.mdcps.ms.gov/sites/default/files/2022/12/MDCPS%20RFP%20Structured%20Decision%20Making.OPSCR%20Review%20NMF.pdf#:~:text=,I%3A%20REQUIRED%20LETTER%20OF%20INTENT)"
+  },
+  {
+    "State": "Missouri",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:38‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Montana",
+    "Tools": [
+      "Safety/Risk assessment protocol (standard)"
+    ],
+    "Entity": "MT DPHHS Child & Family Services (in-house procedures)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Nebraska",
+    "Tools": [
+      "Structured Decision Making (SDM) model"
+    ],
+    "Entity": "Evident Change (NCCD) – implemented as reform measure",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:39‡imprintnews.org](https://imprintnews.org/child-welfare-2/28865/28865#:~:text=In%202012%2C%20the%20state%20implemented,System%20was%20due%20in%20part)"
+  },
+  {
+    "State": "Nevada",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide (state-supervised, county-administered)",
+    "Source": " [oai_citation:40‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "New Hampshire",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:41‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "New Jersey",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide (DCF)",
+    "Source": " [oai_citation:42‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "New Mexico",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:43‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "New York",
+    "Tools": [
+      "Risk Assessment Profile (actuarial risk tool)",
+      "ACS Triage Algorithm (predictive risk model)"
+    ],
+    "Entity": "RAP developed by NYS Office of Children & Family Services; NYC algorithm developed in-house by ACS Office of Analytics",
+    "Scope": "RAP statewide (all counties); NYC model in use within New York City",
+    "Source": " [oai_citation:44‡eff.org](https://www.eff.org/deeplinks/2025/06/nyc-lets-ai-gamble-child-welfare#:~:text=This%20%E2%80%9CAI%E2%80%9D%20tool%2C%20developed%20internally,the%20realm%20of%20child%20services)"
+  },
+  {
+    "State": "North Carolina",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide (state-supervised, county-based)",
+    "Source": " [oai_citation:45‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "North Dakota",
+    "Tools": [
+      "Safety & risk assessment tools (standard protocols)"
+    ],
+    "Entity": "ND Children & Family Services (in-house)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Ohio",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive analytics)"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects",
+    "Scope": "SDM statewide (state-supervised county system); RSF implemented in select counties",
+    "Source": " [oai_citation:46‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:47‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Oklahoma",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive analytics)"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:48‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:49‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Oregon",
+    "Tools": [
+      "Safety at Screening Tool (predictive algorithm)",
+      "Structured Decision Making (SDM) model"
+    ],
+    "Entity": "Algorithm developed in-house (inspired by Allegheny model); SDM by Evident Change",
+    "Scope": "Statewide (algorithm used 2018–2022 at hotline; SDM adopted 2022 onward) [oai_citation:50‡iowapublicradio.org](https://www.iowapublicradio.org/news-from-npr/2022-06-02/oregon-is-dropping-an-artificial-intelligence-tool-used-in-child-welfare-system#:~:text=He%20added%20that%20the%20state,welfare%20jurisdictions%20across%20the%20country)",
+    "Source": " [oai_citation:51‡iowapublicradio.org](https://www.iowapublicradio.org/news-from-npr/2022-06-02/oregon-is-dropping-an-artificial-intelligence-tool-used-in-child-welfare-system#:~:text=He%20added%20that%20the%20state,welfare%20jurisdictions%20across%20the%20country) [oai_citation:52‡iowapublicradio.org](https://www.iowapublicradio.org/news-from-npr/2022-06-02/oregon-is-dropping-an-artificial-intelligence-tool-used-in-child-welfare-system#:~:text=Oregon%27s%20Safety%20at%20Screening%20Tool,out%20to%20investigate%20the%20family)"
+  },
+  {
+    "State": "Pennsylvania",
+    "Tools": [
+      "State Risk Assessment Instrument",
+      "Allegheny Family Screening Tool (predictive model)"
+    ],
+    "Entity": "PA DHS in-house tool (state-approved); Allegheny tool by academic team (Vaithianathan et al.), operated by Allegheny County DHS",
+    "Scope": "Risk tool statewide (county-administered system); AFST in Allegheny County (Pittsburgh) only",
+    "Source": " [oai_citation:53‡youthtoday.org](https://youthtoday.org/2021/11/predictive-analytics-in-child-welfare-raise-concerns/#:~:text=Samant%20added%20the%20tool%2C%20known,two%20years%20of%20the%20complaint)"
+  },
+  {
+    "State": "Puerto Rico",
+    "Tools": [
+      "Standard safety and risk evaluation protocols"
+    ],
+    "Entity": "Departamento de la Familia (internal)",
+    "Scope": "Territory-wide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Rhode Island",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:54‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "South Carolina",
+    "Tools": [
+      "Structured safety and risk assessment tools"
+    ],
+    "Entity": "SC Dept. of Social Services (internal practice model)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "South Dakota",
+    "Tools": [
+      "Safety & risk assessment tools (standard)"
+    ],
+    "Entity": "SD Dept. of Social Services (in-house)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Tennessee",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments",
+      "Rapid Safety Feedback (predictive analytics)"
+    ],
+    "Entity": "SDM by Evident Change; RSF by Eckerd Connects",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:55‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas) [oai_citation:56‡govtech.com](https://www.govtech.com/health/illinois-ends-child-abuse-prediction-program.html#:~:text=Eckerd%20Connects%20%E2%80%94%20which%20recently,Louisiana%2C%20Tennessee%2C%20Connecticut%20and%20Oklahoma)"
+  },
+  {
+    "State": "Texas",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change (integrated into TX DFPS IMPACT system)",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:57‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Utah",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:58‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Vermont",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:59‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Virginia",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide (state-supervised, county-administered)",
+    "Source": " [oai_citation:60‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Washington",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:61‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "West Virginia",
+    "Tools": [
+      "Standard safety and risk assessment tools"
+    ],
+    "Entity": "WV Dept. of Health & Human Resources (in-house)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Wisconsin",
+    "Tools": [
+      "Structured Decision Making (SDM) assessments"
+    ],
+    "Entity": "Evident Change",
+    "Scope": "Statewide",
+    "Source": " [oai_citation:62‡cdss.ca.gov](https://www.cdss.ca.gov/inforesources/child-welfare-protection/structured-decision-making#:~:text=states%20are%20utilizing%20the%20SDM,Utah%2C%20Delaware%2C%20Arizona%2C%20and%20Texas)"
+  },
+  {
+    "State": "Wyoming",
+    "Tools": [
+      "Standard safety and risk assessment tools"
+    ],
+    "Entity": "WY Dept. of Family Services (in-house)",
+    "Scope": "Statewide",
+    "Source": "N/A"
+  },
+  {
+    "State": "American Samoa",
+    "Tools": [
+      "Standard CPS assessment protocols"
+    ],
+    "Entity": "American Samoa DHS (in-house)",
+    "Scope": "Territory-wide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Guam",
+    "Tools": [
+      "Standard CPS assessment protocols"
+    ],
+    "Entity": "Guam Dept. of Public Health & Social Services",
+    "Scope": "Territory-wide",
+    "Source": "N/A"
+  },
+  {
+    "State": "Northern Mariana Islands",
+    "Tools": [
+      "Standard CPS assessment protocols"
+    ],
+    "Entity": "CNMI Dept. of Community and Cultural Affairs (in-house)",
+    "Scope": "Territory-wide",
+    "Source": "N/A"
+  },
+  {
+    "State": "U.S. Virgin Islands",
+    "Tools": [
+      "Standard CPS assessment protocols"
+    ],
+    "Entity": "USVI Dept. of Human Services (in-house)",
+    "Scope": "Territory-wide",
+    "Source": "N/A"
+  }
+]

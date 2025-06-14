@@ -1,0 +1,104 @@
+{
+  "id": "chain_4",
+  "name": "Parent Lacks Services → Labeled Noncompliant → TPR",
+  "nodes": [
+    {
+      "id": "L4",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "ASFA: Quick TPR Timelines",
+        "Court-Ordered Service Mandates",
+        "State Poverty/Access Gaps"
+      ]
+    },
+    {
+      "id": "M4",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "'Noncompliance' if parent can’t travel or pay fees",
+        "TPR used to 'clear docket' regardless of actual effort"
+      ]
+    },
+    {
+      "id": "C4_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Parent Needs Court-Ordered Services",
+        "But Lacks Transportation/Funds"
+      ]
+    },
+    {
+      "id": "C4_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Noncompliance Determination",
+        "Who: CPS Caseworker, Judge"
+      ]
+    },
+    {
+      "id": "C4_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Label Parent 'Noncompliant'",
+        "Incentive: Expedite TPR"
+      ]
+    },
+    {
+      "id": "C4_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Termination of Parental Rights (TPR Granted)",
+        "No Reunification"
+      ]
+    },
+    {
+      "id": "C4_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Family Permanently Separated",
+        "Children in Foster Care"
+      ]
+    },
+    {
+      "id": "C4_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Resource Mapping",
+        "Transportation Assistance",
+        "Legal Advocacy (Fight 'Noncompliance')"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L4", "to": "M4", "label": "ASFA deadlines + no support\n= forced TPR" },
+    { "from": "L4", "to": "C4_Decision", "label": "Court orders but no\nsafety net" },
+    { "from": "M4", "to": "C4_Action", "label": "Use lack of resources\nas 'evidence'" },
+    { "from": "C4_Input", "to": "C4_Decision" },
+    { "from": "C4_Decision", "to": "C4_Action" },
+    { "from": "C4_Action", "to": "C4_Outcome" },
+    { "from": "C4_Outcome", "to": "C4_Failure" },
+    { "from": "C4_Decision", "to": "C4_PMC", "type": "dashed", "label": "PMC can provide\npractical resources" },
+    { "from": "C4_Action", "to": "C4_PMC", "type": "dashed", "label": "Challenge TPR" }
+  ],
+  "coa_link": "course_4.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_4_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

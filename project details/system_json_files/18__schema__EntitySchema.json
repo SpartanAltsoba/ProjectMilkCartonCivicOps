@@ -1,0 +1,95 @@
+{
+  "summary": "This JSON defines the schema for all tracked entities (agencies, vendors, PACs, judges, NGOs, legislators, etc.). It standardizes fields used by Guardian agents and UI components for identification, tagging, linkage, and risk analysis. Links directly to: CorrelationWorker, KnowledgeGraph, Decision Chain UI popups, AnalystWorker risk vector builder, and Neo4j entity resolution logic.",
+  "entity_schema": {
+    "entity_key": {
+      "type": "string",
+      "description": "Primary hash ID, derived from deterministic ID set (EIN, CIK, UEI, etc.)"
+    },
+    "primary_name": {
+      "type": "string",
+      "description": "Canonical name used for display and linking"
+    },
+    "normalized_names": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alternate names, aliases, legal variants"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "State, county, or federal domain"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "government_agency",
+        "vendor",
+        "nonprofit",
+        "lobbyist",
+        "pac",
+        "legislator",
+        "judge",
+        "ngo",
+        "contractor",
+        "caseworker",
+        "unknown"
+      ],
+      "description": "Type classification for filtering, scoring, graph edge resolution"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional custom tags (e.g., 'CPS-contracted', 'faith-based', 'under_audit')"
+    },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "ein": { "type": "string" },
+        "uei": { "type": "string" },
+        "duns": { "type": "string" },
+        "cik": { "type": "string" },
+        "fec_id": { "type": "string" },
+        "lei": { "type": "string" }
+      },
+      "description": "External identifiers for correlation"
+    },
+    "parent_entity_key": {
+      "type": "string",
+      "description": "If this entity is a subsidiary or unit, this points to the parent"
+    },
+    "linked_nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "target_key": { "type": "string" },
+          "edge_label": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      },
+      "description": "Entities or nodes this entity is known to interact with (used in KnowledgeGraph)"
+    },
+    "violation_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "violation_id": { "type": "string" },
+          "description": { "type": "string" },
+          "statute_ref": { "type": "string" },
+          "source": { "type": "string" },
+          "score": { "type": "number" }
+        }
+      },
+      "description": "Violation history as tagged by AnalystWorker or adjudicated record"
+    },
+    "reputation_score": {
+      "type": "number",
+      "description": "Dynamic score calculated by AI scoring agents based on connectivity, violations, flags, audit history"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "stage_5_1",
+    "name": "Feature Extraction",
+    "trigger": "analysis_required",
+    "component": "AnalystWorker",
+    "description": "Extract features per node from the subgraph, using financial metrics, officer linking, and lobbying activity.",
+    "inputs_required": ["scenario_hash", "RawSet.subgraph"],
+    "operations": [
+      "Pull subgraph from RawSet by scenario_hash",
+      "Derive feature vector: financial z-scores, common-officer count, lobbying dollars",
+      "If missing feature: zero-fill & flag FeatureGap"
+    ],
+    "on_success": {
+      "log": ["feature_extraction_success"]
+    },
+    "on_failure": {
+      "log": ["FeatureGap"]
+    },
+    "outputs_produced": ["feature_vectors"],
+    "next_stage": "stage_5_2"
+  },
+  {
+    "id": "stage_5_2",
+    "name": "Hybrid Scoring",
+    "trigger": "features_ready",
+    "component": "Rule engine + ML model",
+    "description": "Score each entity using a hybrid of deterministic rule-based logic and anomaly detection via ML.",
+    "inputs_required": ["feature_vectors"],
+    "operations": [
+      "Apply statutory rules (deterministic logic)",
+      "Run anomaly scoring using ML model",
+      "Output RiskVector[5] and total_score",
+      "If ML confidence < 0.65: fallback to rules-only"
+    ],
+    "on_success": {
+      "log": ["hybrid_scoring_success"]
+    },
+    "on_failure": {
+      "log": ["ML_confidence_too_low", "rules-only_mode"]
+    },
+    "outputs_produced": ["RiskVector", "total_score"],
+    "next_stage": "stage_5_3"
+  },
+  {
+    "id": "stage_5_3",
+    "name": "Violation Flagging",
+    "trigger": "score_evaluated",
+    "component": "ViolationEmitter",
+    "description": "Determine whether a violation flag should be emitted based on score threshold.",
+    "inputs_required": ["total_score"],
+    "operations": [
+      "If total_score ≥ 0.8: emit ViolationFlag",
+      "Else: log as no violation"
+    ],
+    "on_success": {
+      "log": ["AnalystCompleted", "ViolationFlag"]
+    },
+    "on_failure": {
+      "log": ["no_violation_detected"]
+    },
+    "outputs_produced": ["violation_flag (if any)"],
+    "next_stage": null
+  }
+]

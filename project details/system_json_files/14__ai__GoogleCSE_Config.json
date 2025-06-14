@@ -1,0 +1,75 @@
+{
+  "pipeline": "CSE Weight and Querying Pipeline",
+  "version": "v1.0",
+  "steps": [
+    {
+      "step": "5.1",
+      "name": "Weight Matrix",
+      "component": "CseWeightBuilder",
+      "actions": [
+        "Parse annotations.xml",
+        "Assign weight = score * boost_factor",
+        "Generate cse_refinement.xml and upload to CSE"
+      ],
+      "paths": {
+        "upload_success": "Log successful weight matrix update",
+        "upload_failure": "Log failure and retry"
+      }
+    },
+    {
+      "step": "5.2",
+      "name": "Dual Query Templates",
+      "component": "QueryFactory",
+      "queries": [
+        {
+          "template": "T-1",
+          "pattern": "\"{entity}\" \"{keyword}\" site:gov",
+          "goal": "force precision"
+        },
+        {
+          "template": "T-2",
+          "pattern": "intitle:(contract OR vendor) {entity} {jurisdiction}",
+          "goal": "maximize recall"
+        }
+      ],
+      "logging": "Log query templates generated"
+    },
+    {
+      "step": "5.3",
+      "name": "Merge & Score",
+      "component": "ResultMerger",
+      "actions": [
+        "Concatenate and deduplicate by URL",
+        "Compute coverage_score = #filled_fields / total_fields",
+        "Tag each result with `tier=precision`"
+      ],
+      "logging": "Log merged and scored results"
+    },
+    {
+      "step": "5.4",
+      "name": "Quota Monitor",
+      "component": "CseQuotaGuard",
+      "actions": [
+        "Pull daily usage from CSE API"
+      ],
+      "paths": {
+        "usage_90_or_above": [
+          "Throttle to Top-3 queries per scenario",
+          "Log throttling action"
+        ],
+        "usage_below_90": "Log normal operation"
+      }
+    }
+  ],
+  "dependencies": [
+    "annotations.xml",
+    "cse_refinement.xml",
+    "CSE API"
+  ],
+  "tier_labels": ["precision", "recall"],
+  "used_by": [
+    "ReconWorker",
+    "AnalystWorker",
+    "ChainResolver"
+  ]
+}

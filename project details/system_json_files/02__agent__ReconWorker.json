@@ -1,0 +1,97 @@
+[
+  {
+    "id": "stage_2_1",
+    "name": "Query Builder",
+    "trigger": "recon_triggered",
+    "component": "ReconWorker (LLM+Python)",
+    "description": "Generate ranked queries using templates and schema gaps. Escalate from cache to CSE to API tier.",
+    "inputs_required": ["schema_gaps", "query_templates"],
+    "operations": [
+      "internal_cache_lookup",
+      "if_cache_miss_then_query_GoogleCSE",
+      "apply_include_exclude_labels",
+      "if_CSE_quota_hit_switch_to_API",
+      "log_coverage_status='partial' if fallback",
+      "log_query_success"
+    ],
+    "on_success": {
+      "log": ["cache_success", "CSE_query_success"]
+    },
+    "on_failure": {
+      "log": ["coverage_status_partial", "query_fallback"]
+    },
+    "outputs_produced": ["ranked_query_list"],
+    "next_stage": "stage_1_2"
+  },
+  {
+    "id": "stage_2_2",
+    "name": "Fetcher Layer",
+    "trigger": "ranked_queries_ready",
+    "component": "Async HTTP pool + APIAdapters",
+    "description": "Execute queries through cascading sources. Store raw docs. Retry or back-off if needed.",
+    "inputs_required": ["ranked_query_list"],
+    "operations": [
+      "query_cache",
+      "query_CSE",
+      "query_APIs: CourtListener, FEC, Civic, EDGAR, USAspending",
+      "query_scrapers",
+      "store_raw_docs",
+      "on_failure: backoff_with_jitter, retry_or_enqueue"
+    ],
+    "on_success": {
+      "log": ["successful_fetch"]
+    },
+    "on_failure": {
+      "log": ["FetchGap"],
+      "route": "RetryQueue"
+    },
+    "outputs_produced": ["raw_documents"],
+    "next_stage": "stage_1_3"
+  },
+  {
+    "id": "stage_2_3",
+    "name": "Parser & Fingerprint",
+    "trigger": "raw_documents_ready",
+    "component": "ReconParser",
+    "description": "Parse raw docs, extract typed facts, compute hashes. Route unknown schemas to manual review.",
+    "inputs_required": ["raw_documents"],
+    "operations": [
+      "extract_facts",
+      "compute_doc_hash",
+      "update_RawSet [fact, source_url, confidence, doc_hash]",
+      "if_unknown_schema: route_to_ManualReview"
+    ],
+    "on_success": {
+      "log": ["successful_parse"]
+    },
+    "on_failure": {
+      "log": ["schema_issue"],
+      "route": "ManualReview"
+    },
+    "outputs_produced": ["parsed_facts", "doc_hashes"],
+    "next_stage": "stage_1_4"
+  },
+  {
+    "id": "stage_2_4",
+    "name": "Coverage Clock",
+    "trigger": "parsed_facts_ready",
+    "component": "CoverageEvaluator",
+    "description": "Check field coverage against required slots. Trigger retry or mark as complete/failure.",
+    "inputs_required": ["RawSet", "coverage_needed"],
+    "operations": [
+      "compare_fields_to_coverage_needed",
+      "if_coverage_≥_95%: emit_ReconCompleted",
+      "if_coverage_<_95%: emit_ReconRetry_with_missing_slots",
+      "track_retry_count",
+      "mark_ReconFailed_if_retry_limit_exceeded"
+    ],
+    "on_success": {
+      "log": ["ReconCompleted"]
+    },
+    "on_failure": {
+      "log": ["ReconRetry", "ReconFailed"]
+    },
+    "outputs_produced": ["coverage_report", "retry_signal"],
+    "next_stage": null
+  }
+]

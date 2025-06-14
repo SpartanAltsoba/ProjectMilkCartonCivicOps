@@ -1,0 +1,136 @@
+<DOCUMENT filename="annotations.xml">
+    <Entities>
+        <Entity name="Research Monster" weight="0.85">
+            <Keyword name="transparency" boost="0.30" />
+            <Keyword name="research" boost="0.25" />
+            <Keyword name="data" boost="0.20" />
+            <Keyword name="public" boost="0.15" />
+            <Exclude term="private" weight="0.10" />
+            <Site url="https://data.gov" boost="0.25" />
+            <Site url="https://www.usa.gov/research" boost="0.20" />
+            <Site url="https://www.edgar.gov" boost="0.15" />
+            <Site url="https://www.irs.gov" boost="0.15" />
+            <Site url="https://www.sec.gov/search-filings" boost="0.15" />
+            <Scoring>
+                <Dimension name="Legality" weight="0.30" />
+                <Dimension name="Political Influence" weight="0.25" />
+                <Dimension name="COI" weight="0.15" />
+                <Dimension name="Financial Anomaly" weight="0.15" />
+                <Dimension name="Procedural Risk" weight="0.15" />
+            </Scoring>
+        </Entity>
+        <Entity name="Transparency Defender" weight="0.80">
+            <Keyword name="transparency" boost="0.25" />
+            <Keyword name="compliance" boost="0.20" />
+            <Keyword name="data" boost="0.20" />
+            <Keyword name="public" boost="0.15" />
+            <Exclude term="confidential" weight="0.10" />
+            <Site url="https://www.justice.gov" boost="0.20" />
+            <Site url="https://www.transparency.gov" boost="0.15" />
+            <Site url="https://www.courtlistener.com" boost="0.15" />
+            <Site url="https://www.fec.gov" boost="0.15" />
+            <Site url="https://www.usaspending.gov" boost="0.15" />
+            <Scoring>
+                <Dimension name="COI" weight="0.25" />
+                <Dimension name="Procedural Risk" weight="0.20" />
+                <Dimension name="Legality" weight="0.20" />
+                <Dimension name="Financial Anomaly" weight="0.20" />
+                <Dimension name="Political Influence" weight="0.15" />
+            </Scoring>
+        </Entity>
+        <Entity name="Legislative Network" weight="0.75">
+            <Keyword name="legislation" boost="0.30" />
+            <Keyword name="contracts" boost="0.25" />
+            <Keyword name="public" boost="0.20" />
+            <Exclude term="draft" weight="0.10" />
+            <Site url="https://akleg.gov" boost="0.20" />
+            <Site url="https://assembly.state.ny.us" boost="0.20" />
+            <Site url="https://capitol.texas.gov" boost="0.20" />
+            <Site url="https://code.dccouncil.gov" boost="0.15" />
+            <Site url="https://gencourt.state.nh.us" boost="0.15" />
+            <Site url="https://house.mo.gov" boost="0.15" />
+            <Site url="https://justia.com" boost="0.15" />
+            <Site url="https://kslegislature.gov/li" boost="0.15" />
+            <Site url="https://law.cornell.edu" boost="0.15" />
+            <Site url="https://le.utah.gov" boost="0.15" />
+            <Site url="https://leg.colorado.gov" boost="0.15" />
+            <Site url="https://leg.wa.gov" boost="0.15" />
+            <Site url="https://legis.delaware.gov" boost="0.15" />
+            <Site url="https://legis.la.gov/legis/home.aspx" boost="0.15" />
+            <Site url="https://legis.wisconsin.gov" boost="0.15" />
+            <Site url="https://legislature.ky.gov" boost="0.15" />
+            <Site url="https://legislature.maine.gov" boost="0.15" />
+            <Site url="https://legislature.vermont.gov" boost="0.15" />
+            <Site url="https://mgaleg.maryland.gov/mgawebsite" boost="0.15" />
+            <Site url="https://nebraskalegislature.gov" boost="0.15" />
+            <Site url="https://pacer.uscourts.gov" boost="0.15" />
+            <Site url="https://projects.propublica.org/nonprofits" boost="0.15" />
+            <Site url="https://sam.gov" boost="0.15" />
+            <Site url="https://sdlegislature.gov" boost="0.15" />
+            <Site url="https://senate.mo.gov" boost="0.15" />
+            <Site url="https://virginiageneralassembly.gov" boost="0.15" />
+            <Site url="https://www.arkleg.state.ar.us" boost="0.15" />
+            <Site url="https://www.assembly.ca.gov" boost="0.15" />
+            <Site url="https://www.azleg.gov" boost="0.15" />
+            <Site url="https://www.capitol.hawaii.gov" boost="0.15" />
+            <Site url="https://www.capitol.tn.gov" boost="0.15" />
+            <Site url="https://www.cfda.gov" boost="0.15" />
+            <Site url="https://www.cga.ct.gov" boost="0.15" />
+            <Site url="https://www.childwelfare.gov" boost="0.15" />
+            <Site url="https://www.corporationwiki.com" boost="0.15" />
+            <Site url="https://www.councilofnonprofits.org" boost="0.15" />
+            <Site url="https://www.factcheck.org" boost="0.15" />
+            <Site url="https://www.fec.gov" boost="0.15" />
+            <Site url="https://www.federalregister.gov" boost="0.15" />
+            <Site url="https://www.flsenate.gov" boost="0.15" />
+            <Site url="https://www.followthemoney.org" boost="0.15" />
+            <Site url="https://www.grants.gov" boost="0.15" />
+            <Site url="https://www.guidestar.org" boost="0.15" />
+            <Site url="https://www.ilga.gov" boost="0.15" />
+            <Site url="https://www.in.gov/legislative" boost="0.15" />
+            <Site url="https://www.irs.gov" boost="0.15" />
+            <Site url="https://www.justice.gov" boost="0.15" />
+            <Site url="https://www.leg.mt.gov" boost="0.15" />
+            <Site url="https://www.leg.state.mn.us" boost="0.15" />
+            <Site url="https://www.leg.state.nv.us" boost="0.15" />
+            <Site url="https://www.legis.ga.gov" boost="0.15" />
+            <Site url="https://www.legis.iowa.gov" boost="0.15" />
+            <Site url="https://www.legis.nd.gov" boost="0.15" />
+            <Site url="https://www.legis.state.pa.us" boost="0.15" />
+            <Site url="https://www.legislature.idaho.gov" boost="0.15" />
+            <Site url="https://www.legislature.mi.gov" boost="0.15" />
+            <Site url="https://www.legislature.ms.gov" boost="0.15" />
+            <Site url="https://www.legislature.ohio.gov" boost="0.15" />
+            <Site url="https://www.legislature.state.al.us" boost="0.15" />
+            <Site url="https://www.lobbyview.org" boost="0.15" />
+            <Site url="https://www.mass.gov/legis" boost="0.15" />
+            <Site url="https://www.myfloridahouse.gov" boost="0.15" />
+            <Site url="https://www.ncleg.gov" boost="0.15" />
+            <Site url="https://www.ncsl.org" boost="0.15" />
+            <Site url="https://www.njleg.state.nj.us" boost="0.15" />
+            <Site url="https://www.nmlegis.gov" boost="0.15" />
+            <Site url="https://www.nysenate.gov" boost="0.15" />
+            <Site url="https://www.oklegislature.gov" boost="0.15" />
+            <Site url="https://www.opencorporates.com" boost="0.15" />
+            <Site url="https://www.opensecrets.org" boost="0.15" />
+            <Site url="https://www.oregonlegislature.gov" boost="0.15" />
+            <Site url="https://www.rilegislature.gov" boost="0.15" />
+            <Site url="https://www.scstatehouse.gov" boost="0.15" />
+            <Site url="https://www.sec.gov/search-filings" boost="0.15" />
+            <Site url="https://www.sen.ca.gov" boost="0.15" />
+            <Site url="https://www.usaspending.gov" boost="0.15" />
+            <Site url="https://www.wvlegislature.gov" boost="0.15" />
+            <Site url="https://www.wyoleg.gov" boost="0.15" />
+            <Scoring>
+                <Dimension name="Legality" weight="0.30" />
+                <Dimension name="Procedural Risk" weight="0.25" />
+                <Dimension name="COI" weight="0.20" />
+                <Dimension name="Financial Anomaly" weight="0.15" />
+                <Dimension name="Political Influence" weight="0.10" />
+            </Scoring>
+        </Entity>
+    </Entities>
+    <Meta>
+        <UpdateTimestamp>2025-06-12T21:35:00+04</UpdateTimestamp>
+    </Meta>
+</DOCUMENT>

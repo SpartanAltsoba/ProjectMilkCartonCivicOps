@@ -1,0 +1,104 @@
+{
+  "id": "chain_6",
+  "name": "Mental Health Crisis → Underfunded Clinic → No Treatment → Escalation",
+  "nodes": [
+    {
+      "id": "L6",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "Medicaid, Block Grants",
+        "Family First Act (Prevention Services)",
+        "Limited State MH Funding"
+      ]
+    },
+    {
+      "id": "M6",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Underfunding leads to long waitlists, misdiagnosis",
+        "Child's crisis ignored"
+      ]
+    },
+    {
+      "id": "C6_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "Child in Mental Health Crisis",
+        "Depression, PTSD, etc."
+      ]
+    },
+    {
+      "id": "C6_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "Referral to Public/NGO Clinic",
+        "Ordered by Caseworker/Judge"
+      ]
+    },
+    {
+      "id": "C6_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Clinic Overburdened",
+        "Long Waitlist or Misdiagnosis"
+      ]
+    },
+    {
+      "id": "C6_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Child Gets No Effective Treatment",
+        "Issue Unresolved"
+      ]
+    },
+    {
+      "id": "C6_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Crisis Escalates",
+        "Self‐Harm or Violence Risk"
+      ]
+    },
+    {
+      "id": "C6_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Advocacy for MH Funding",
+        "Mobile Crisis Units",
+        "Cross‐Agency Collaboration"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L6", "to": "M6", "label": "Chronic underfunding,\nFamily First not fully implemented" },
+    { "from": "L6", "to": "C6_Action", "label": "Services limited" },
+    { "from": "M6", "to": "C6_Action", "label": "Child 'lost in the queue'" },
+    { "from": "C6_Input", "to": "C6_Decision" },
+    { "from": "C6_Decision", "to": "C6_Action" },
+    { "from": "C6_Action", "to": "C6_Outcome" },
+    { "from": "C6_Outcome", "to": "C6_Failure" },
+    { "from": "C6_Action", "to": "C6_PMC", "type": "dashed", "label": "Coordinate alternative care" },
+    { "from": "C6_Outcome", "to": "C6_PMC", "type": "dashed", "label": "Escalate urgent cases" }
+  ],
+  "coa_link": "course_6.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_6_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

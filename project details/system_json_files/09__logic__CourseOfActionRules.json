@@ -1,0 +1,47 @@
+{
+  "coa_set_version": "v2.0",
+  "scenario_hash": "string",                     // Required: Unique case/session identifier
+  "generated_at": "ISO8601-timestamp",           // Required: Timestamp of generation
+  "generated_by": "AdvisoryWorker",              // System actor responsible
+  "origin": {
+    "decision_chain_id": "chain_3",              // e.g., 'chain_3' (Runaway Classification Failure)
+    "failure_node_id": "C3_Action",              // e.g., node where policy/action failed
+    "system_components": ["M1", "M9"],           // e.g., Mandated Reporter, Runaway Recovery
+    "violations_detected": ["Conflict_of_interest", "Neglect_of_tracking"], // Tags from Analyst
+    "source_stages": [
+      "ReconWorker", "DataFetcher", "CorrelationWorker",
+      "AnalystWorker", "AdvisoryWorker"
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "AL_CHAIN_3_NODE_7",            // Decision chain node ID
+      "user_role": "parent",
+      "violations": ["Conflict_of_interest"],
+      "actions": [
+        {
+          "label": "File administrative complaint",
+          "template_id": "AL_DHR_COI_COMPLAINT",
+          "auto_populated": true,
+          "delivery": "pdf_form",
+          "deadline": "2025-07-01"
+        },
+        {
+          "label": "Request investigatory hearing",
+          "statute_ref": "ALA CODE §38‑2‑6",
+          "deadline": "2025-07-15"
+        }
+      ]
+    }
+  ],
+  "render": {
+    "engine": "WeasyPrint",
+    "format": "PDF",
+    "status": "success",
+    "rendered_at": "ISO8601-timestamp"
+  },
+  "telemetry": {
+    "click_tracking_enabled": true,
+    "posted_to_ui": true
+  }
+}

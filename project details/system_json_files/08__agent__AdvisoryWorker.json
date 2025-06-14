@@ -1,0 +1,87 @@
+[
+  {
+    "id": "stage_6_1",
+    "name": "Template Selector",
+    "trigger": "violation_flagged",
+    "component": "AdvisoryWorker",
+    "description": "Select appropriate course-of-action (COA) templates based on jurisdiction, violation type, and user role.",
+    "inputs_required": ["flagged_nodes", "jurisdiction", "violation_type", "user_role"],
+    "operations": [
+      "For each node with flags: select COA template",
+      "Match on: jurisdiction, violation_type, user_role"
+    ],
+    "on_success": {
+      "log": ["template_selected"]
+    },
+    "on_failure": {
+      "log": ["TemplateGap"]
+    },
+    "outputs_produced": ["selected_templates"],
+    "next_stage": "stage_6_2"
+  },
+  {
+    "id": "stage_6_2",
+    "name": "LLM Render",
+    "trigger": "template_selected",
+    "component": "LLM with function-calling",
+    "description": "Render final COA using LLM with statute, deadline, and sign-off generation. Fallback to alternate model if needed.",
+    "inputs_required": ["selected_templates", "user_context"],
+    "operations": [
+      "Fill placeholders in template: <parent_name>, etc.",
+      "Attach statute references and legal deadlines",
+      "Render final JSON-formatted COA",
+      "On render failure: retry with alternate model"
+    ],
+    "on_success": {
+      "log": ["COA rendered successfully"],
+      "store": ["COASet"]
+    },
+    "on_failure": {
+      "log": ["render_failure", "retry_attempt"]
+    },
+    "outputs_produced": ["COASet"],
+    "next_stage": "stage_6_3"
+  },
+  {
+    "id": "stage_6_3",
+    "name": "COA Telemetry Hook",
+    "trigger": "COA_ready",
+    "component": "TelemetryClient",
+    "description": "Send COASet to Decision-Chain UI and log delivery. Retry if no UI acknowledgement.",
+    "inputs_required": ["COASet"],
+    "operations": [
+      "Post COASet event to Decision-Chain UI",
+      "Wait for ack",
+      "If timeout: queue resend"
+    ],
+    "on_success": {
+      "log": ["UI_ack_received"]
+    },
+    "on_failure": {
+      "log": ["UI_ack_timeout", "resend_queued"]
+    },
+    "outputs_produced": ["coa_id"],
+    "next_stage": "stage_6_4"
+  },
+  {
+    "id": "stage_6_4",
+    "name": "Scenario Close-out",
+    "trigger": "UI_ack_confirmed",
+    "component": "OrchestratorFSM",
+    "description": "Close scenario, mark FSM as complete, compute SLA metrics, and archive artifacts.",
+    "inputs_required": ["coa_id", "scenario_metadata"],
+    "operations": [
+      "Set FSM_state = Complete",
+      "Compute SLA metrics",
+      "Archive scenario artifacts"
+    ],
+    "on_success": {
+      "log": ["successful_closeout"]
+    },
+    "on_failure": {
+      "log": ["metric_computation_failure", "still_mark_complete"]
+    },
+    "outputs_produced": ["scenario_closed"],
+    "next_stage": null
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "summary": "Defines canonical violation types and their legal sources. Used to generate violation flags, annotate decision chain nodes, render COA citations, and educate users. Also supports legal tracebacks for audit or dispute filing.",
+  "violations": [
+    {
+      "violation_id": "unlawful_removal_asfa",
+      "label": "Unlawful Removal Without Due Process",
+      "jurisdiction": "federal",
+      "statute_ref": "ASFA §675(5)(E)",
+      "description": "A child is removed from the home or TPR is initiated without the state making reasonable efforts to prevent removal or reunify the family.",
+      "source_url": "https://www.law.cornell.edu/uscode/text/42/675",
+      "violation_category": "Unlawful Removal",
+      "triggers": ["service_denial", "noncompliance_without_support"],
+      "severity": "critical"
+    },
+    {
+      "violation_id": "capta_overscreening",
+      "label": "Over-Screening Under CAPTA",
+      "jurisdiction": "federal",
+      "statute_ref": "CAPTA 42 U.S.C. § 5106a",
+      "description": "Reports screened in or investigated despite lacking credible evidence or not meeting state-defined abuse/neglect thresholds.",
+      "source_url": "https://www.law.cornell.edu/uscode/text/42/5106a",
+      "violation_category": "Improper Classification",
+      "triggers": ["low_evidence_report", "broad_neglect_definition"],
+      "severity": "moderate"
+    },
+    {
+      "violation_id": "due_process_state_termination",
+      "label": "Termination Without Due Process",
+      "jurisdiction": "state",
+      "statute_ref": "Ala. Code §12-15-319",
+      "description": "Parental rights were terminated without adequate notice, hearing, or meaningful opportunity to present evidence.",
+      "source_url": "https://codes.findlaw.com/al/title-12-alabama-juvenile-proceedings/al-code-sect-12-15-319.html",
+      "violation_category": "Due Process Violation",
+      "triggers": ["no_counsel", "noncompliance_due_to_poverty"],
+      "severity": "critical"
+    },
+    {
+      "violation_id": "conflict_of_interest_vendor_board",
+      "label": "Vendor Conflict of Interest",
+      "jurisdiction": "state",
+      "statute_ref": "Ala. Ethics Law §36-25-5",
+      "description": "An NGO or foster care contractor sits on a state board or allocates contracts in which it has a financial interest.",
+      "source_url": "https://www.ethics.alabama.gov/laws.aspx",
+      "violation_category": "Conflict of Interest",
+      "triggers": ["contractor_award_to_self", "influence_in_policy"],
+      "severity": "high"
+    },
+    {
+      "violation_id": "audit_failure_noncompliant_ngo",
+      "label": "Contractor Operating Without Required Oversight",
+      "jurisdiction": "federal",
+      "statute_ref": "2 CFR § 200.501",
+      "description": "An entity receiving federal funds fails to undergo required audits or avoids corrective action plans.",
+      "source_url": "https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200/subpart-F/section-200.501",
+      "violation_category": "Negligent Oversight",
+      "triggers": ["audit_skipped", "data_not_disclosed"],
+      "severity": "high"
+    }
+  ]
+}

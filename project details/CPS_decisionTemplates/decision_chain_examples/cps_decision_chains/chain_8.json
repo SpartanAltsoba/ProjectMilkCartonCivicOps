@@ -1,0 +1,107 @@
+{
+  "id": "chain_8",
+  "name": "Policy Change → CPS Mandate Shift → Surge in Removals → Resource Collapse",
+  "nodes": [
+    {
+      "id": "L8",
+      "type": "policy_context",
+      "label": "LAWS/POLICIES",
+      "details": [
+        "New/Amended State Statutes",
+        "Zero-Tolerance Approaches",
+        "Federal IV‐E Reimbursement Limits"
+      ]
+    },
+    {
+      "id": "M8",
+      "type": "misuse_risk",
+      "label": "POTENTIAL MISUSE",
+      "details": [
+        "Broad definitions of neglect",
+        "System Overload w/o extra funding",
+        "Blanket removals"
+      ]
+    },
+    {
+      "id": "C8_Input",
+      "type": "input",
+      "label": "INPUT",
+      "details": [
+        "New State Legislation/Policy",
+        "Zero‐Tolerance on Neglect"
+      ]
+    },
+    {
+      "id": "C8_Decision",
+      "type": "decision_point",
+      "label": "DECISION POINT",
+      "details": [
+        "CPS Mandate Shift",
+        "Agency Directors, Policy Implementation"
+      ]
+    },
+    {
+      "id": "C8_Action",
+      "type": "action",
+      "label": "ACTION",
+      "details": [
+        "Aggressive Child Removals",
+        "Strict Compliance, Avoid Liability"
+      ]
+    },
+    {
+      "id": "C8_Outcome",
+      "type": "outcome",
+      "label": "OUTCOME",
+      "details": [
+        "Surge in Foster Placements",
+        "Overwhelmed System",
+        "Insufficient Homes/Staff"
+      ]
+    },
+    {
+      "id": "C8_Failure",
+      "type": "failure",
+      "label": "FAILURE CASCADE",
+      "details": [
+        "Resource Collapse",
+        "Inadequate Care",
+        "Increased Abuse Risk"
+      ]
+    },
+    {
+      "id": "C8_PMC",
+      "type": "intervention",
+      "label": "PMC Intervention",
+      "details": [
+        "Balanced Legislation",
+        "Impact Analysis",
+        "Educate Lawmakers & Public on Consequences"
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "L8", "to": "M8", "label": "Expanded definitions => mass removals" },
+    { "from": "L8", "to": "C8_Action", "label": "Strict liability fear" },
+    { "from": "M8", "to": "C8_Action", "label": "No nuance => \nRemovals skyrocket" },
+    { "from": "C8_Input", "to": "C8_Decision" },
+    { "from": "C8_Decision", "to": "C8_Action" },
+    { "from": "C8_Action", "to": "C8_Outcome" },
+    { "from": "C8_Outcome", "to": "C8_Failure" },
+    { "from": "C8_Decision", "to": "C8_PMC", "type": "dashed", "label": "Mitigate extremes" },
+    { "from": "C8_Action", "to": "C8_PMC", "type": "dashed", "label": "Highlight unintended\nconsequences" }
+  ],
+  "coa_link": "course_8.json",
+  "semantic_context": {
+    "embedding_model": "text-embedding-3-large",
+    "embedding_version": "v1.0",
+    "vector_id": "chain_8_embedding",
+    "enabled_for_similarity_matching": true,
+    "used_in": [
+      "COA recommendation",
+      "scenario clustering",
+      "failure similarity detection",
+      "user input → chain mapping"
+    ]
+  }
+}

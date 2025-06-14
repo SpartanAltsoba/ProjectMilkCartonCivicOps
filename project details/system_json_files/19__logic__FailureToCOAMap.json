@@ -1,0 +1,71 @@
+{
+  "summary": "Maps failure nodes from decision chains to recommended COAs. Used by AdvisoryWorker to generate personalized interventions. UI references this to populate right-panel recommendations based on user role, violation type, and jurisdiction.",
+  "failure_to_coa_map": [
+    {
+      "chain_id": "chain_1",
+      "failure_node_id": "C1_Failure",
+      "violation_category": "Unlawful Removal",
+      "triggers": [
+        "Default removal approach",
+        "Better Safe Than Sorry"
+      ],
+      "user_role": "parent",
+      "statute_refs": ["CAPTA", "ASFA §675"],
+      "recommended_actions": [
+        {
+          "label": "File administrative complaint",
+          "template_id": "COA_admin_complaint_unlawful_removal",
+          "delivery": "pdf_form",
+          "auto_populated": true
+        },
+        {
+          "label": "Request emergency hearing",
+          "template_id": "COA_hearing_request_due_process",
+          "delivery": "court_doc",
+          "auto_populated": true
+        }
+      ]
+    },
+    {
+      "chain_id": "chain_4",
+      "failure_node_id": "C4_Failure",
+      "violation_category": "Due Process Violation",
+      "triggers": ["Service gap", "Parent marked noncompliant due to poverty"],
+      "user_role": "parent",
+      "statute_refs": ["ASFA", "State: Ala. Code §12-15-301"],
+      "recommended_actions": [
+        {
+          "label": "Submit affidavit of compliance barriers",
+          "template_id": "COA_affidavit_resource_gap",
+          "delivery": "pdf_form",
+          "auto_populated": true
+        },
+        {
+          "label": "Petition for TPR stay",
+          "template_id": "COA_motion_TPR_stay",
+          "delivery": "court_doc"
+        }
+      ]
+    },
+    {
+      "chain_id": "chain_7",
+      "failure_node_id": "C7_Failure",
+      "violation_category": "Negligent Oversight",
+      "triggers": ["Missed audit", "Contractor non-compliance"],
+      "user_role": "advocate",
+      "statute_refs": ["HHS Audit Rule §200.501"],
+      "recommended_actions": [
+        {
+          "label": "File public records request",
+          "template_id": "COA_foia_audit_gap",
+          "delivery": "email_template"
+        },
+        {
+          "label": "Submit NGO oversight complaint",
+          "template_id": "COA_admin_complaint_contractor_failure",
+          "delivery": "pdf_form"
+        }
+      ]
+    }
+  ]
+}

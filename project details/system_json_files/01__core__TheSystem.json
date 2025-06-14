@@ -1,0 +1,95 @@
+[
+  {
+    "id": "stage_recon",
+    "name": "Recon Stage",
+    "trigger": "scenario_input_received",
+    "component": "ReconWorker",
+    "inputs_required": ["ScenarioHash", "coverage_needed[]", "optional_raw_docs"],
+    "description": "Expand queries, run async fetchers, extract schema-free entities, and resolve ID conflicts.",
+    "operations": [
+      "query_expansion (LLM)",
+      "async_fetchers (non-LLM)",
+      "entity_extraction (LLM)",
+      "conflict_resolution (LLM)",
+      "redact_PII_at_source",
+      "unit_test_fixtures_per_data_type"
+    ],
+    "on_success": {
+      "log": ["ReconReport", "coverage%", "KPI: coverage_ratio, fetch_latency"]
+    },
+    "on_failure": {
+      "log": ["ReconRetry", "FetchGap", "ReconFailed"]
+    },
+    "outputs_produced": ["ReconReport"],
+    "next_stage": "stage_correlation"
+  },
+  {
+    "id": "stage_correlation",
+    "name": "Correlation Stage",
+    "trigger": "raw_data_ready",
+    "component": "CorrelationWorker",
+    "inputs_required": ["RawSet.rows"],
+    "description": "Harmonize IDs, augment graph, detect loops, and secure graph layer.",
+    "operations": [
+      "harmonize_IDs (LLM)",
+      "graph_build_bulk (Neo4j)",
+      "loop_detection (LLM)",
+      "secure_RBAC_graph",
+      "unit_test_crossID_graph"
+    ],
+    "on_success": {
+      "log": ["GraphSet", "KPI: graph_density, conflict_rate"]
+    },
+    "on_failure": {
+      "log": ["GraphConflict", "CorrelationRetry"]
+    },
+    "outputs_produced": ["GraphSet"],
+    "next_stage": "stage_analyst"
+  },
+  {
+    "id": "stage_analyst",
+    "name": "Analyst Stage",
+    "trigger": "graph_ready",
+    "component": "AnalystWorker",
+    "inputs_required": ["GraphSet.subgraph"],
+    "description": "Generate features, apply ML/rules, flag violations, and pseudonymize outputs.",
+    "operations": [
+      "generate_features (LLM)",
+      "apply_rules_and_ML (Scikit/XGBoost)",
+      "flag_violations (LLM)",
+      "pseudonymise_before_export",
+      "unit_test_known_violations"
+    ],
+    "on_success": {
+      "log": ["ScoredSet", "KPI: flag_precision, avg_score"]
+    },
+    "on_failure": {
+      "log": ["FeatureGap", "rules-only fallback"]
+    },
+    "outputs_produced": ["ScoredSet"],
+    "next_stage": "stage_advisory"
+  },
+  {
+    "id": "stage_advisory",
+    "name": "Advisory Stage",
+    "trigger": "scored_data_ready",
+    "component": "AdvisoryWorker",
+    "inputs_required": ["ScoredSet", "user_profile"],
+    "description": "Select templates, render course of action (COA), and push to decision UI.",
+    "operations": [
+      "select_templates (LLM)",
+      "render_COAs (non-LLM: Jinja2/PDF)",
+      "push_to_UI",
+      "role_based_COA_exposure",
+      "unit_test_template_render_diff"
+    ],
+    "on_success": {
+      "log": ["COASet", "KPI: template_hit_rate, COA_click_rate"]
+    },
+    "on_failure": {
+      "log": ["TemplateGap", "re-render"]
+    },
+    "outputs_produced": ["COASet"],
+    "next_stage": null
+  }
+]

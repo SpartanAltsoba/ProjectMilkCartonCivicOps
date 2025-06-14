@@ -1,0 +1,114 @@
+[
+  {
+    "id": "stage_trigger_resolver",
+    "name": "Trigger Resolver",
+    "trigger": "POST /trigger, cron_msg, or webhook",
+    "component": "TriggerResolver",
+    "description": "Validates and processes input triggers, assigns scenario hash, and queues scenario state.",
+    "inputs_required": ["trigger_payload"],
+    "operations": [
+      "InputValidator (regex & schema)",
+      "Geo-resolve ZIP/IP if jurisdiction_codes missing",
+      "Generate idempotency key = sha256(payload_sorted)",
+      "Write scenario row: status=QUEUED"
+    ],
+    "on_success": {
+      "log": ["scenario_hash", "scenario_type", "jurisdiction_codes[]", "input_ids[]"]
+    },
+    "on_failure": {
+      "log": ["validation_error", "geo_resolver_failure"]
+    },
+    "outputs_produced": ["scenario_hash"],
+    "next_stage": "stage_state_machine"
+  },
+  {
+    "id": "stage_state_machine",
+    "name": "State Machine",
+    "trigger": "scenario_queued",
+    "component": "StateMachine",
+    "description": "Load FSM from YAML, publish stage start events, and manage retries/backoffs based on worker ACKs.",
+    "inputs_required": ["scenario_hash", "FSM YAML"],
+    "operations": [
+      "Load YAML → dataclass",
+      "Run StateRunner",
+      "Publish <state>_START",
+      "If Worker ACK: log DONE/FAIL, inject backoff into Redis",
+      "If no ACK: retry up to retry_max",
+      "Snapshot FSM to ScenarioFSMState"
+    ],
+    "on_success": {
+      "log": ["<state>_DONE or _FAIL", "FSM loaded"]
+    },
+    "on_failure": {
+      "log": ["FSM retry", "retry_max reached"]
+    },
+    "outputs_produced": ["FSMState", "retry_backoff_injection"],
+    "next_stage": "stage_central_queue"
+  },
+  {
+    "id": "stage_central_queue",
+    "name": "Central Job Queue",
+    "trigger": "FSM_state_resolved",
+    "component": "CentralJobQueue",
+    "description": "Queue job with tracing, handle Redis storage, and overflow to durable queue if needed.",
+    "inputs_required": ["scenario_hash", "state_payload"],
+    "operations": [
+      "Enqueue job → Redis key {scenario_hash}:{state}",
+      "Add tracing span ID",
+      "If overload: spill to AWS SQS (same key format)",
+      "Log queue metrics to Prometheus"
+    ],
+    "on_success": {
+      "log": ["queue_inserted", "tracing_span_id"]
+    },
+    "on_failure": {
+      "log": ["queue_overflow", "spill_success"]
+    },
+    "outputs_produced": ["queued_job_key"],
+    "next_stage": "stage_timeout_guard"
+  },
+  {
+    "id": "stage_timeout_guard",
+    "name": "Timeout Guard",
+    "trigger": "job_enqueued",
+    "component": "TimeoutGuard",
+    "description": "Monitor job TTL, enforce soft timeouts, handle heartbeat signals, and store partial checkpoint if timed out.",
+    "inputs_required": ["scenario_hash", "job_env_vars"],
+    "operations": [
+      "Start JobTimer, ApiSoftLimiter, CheckpointWriter",
+      "Track JOB_TTL and provider-specific API_TTL",
+      "Expect worker heartbeat every 15s",
+      "If TTL breach: write checkpoint, mark as TIMED_OUT, enqueue _RETRY"
+    ],
+    "on_success": {
+      "log": ["heartbeat OK"]
+    },
+    "on_failure": {
+      "log": ["job TIMED_OUT", "checkpoint written"]
+    },
+    "outputs_produced": ["checkpoint_file", "job_status_update"],
+    "next_stage": "stage_audit_log"
+  },
+  {
+    "id": "stage_audit_log",
+    "name": "Audit Log",
+    "trigger": "job_transition_detected",
+    "component": "AuditLog",
+    "description": "Log every state transition as RFC-6902 JSON diff, compute Merkle tree, and optionally sign root hash.",
+    "inputs_required": ["previous_state", "new_state"],
+    "operations": [
+      "PayloadHasher, DiffEngine, MerkleAppender",
+      "Store Merkle chunk in AuditStore",
+      "Optional: Sign root hash weekly with GPG",
+      "Log immutable transition {prev_hash, new_hash, diff, actor, timestamp}"
+    ],
+    "on_success": {
+      "log": ["Merkle chain append", "CloudTrail event"]
+    },
+    "on_failure": {
+      "log": ["audit_log_failure"]
+    },
+    "outputs_produced": ["patch_record", "signed_hash (optional)"],
+    "next_stage": null
+  }
+]

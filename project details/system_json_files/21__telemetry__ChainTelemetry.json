@@ -1,0 +1,75 @@
+{
+  "summary": "Captures the current execution state of a scenario through the decision chain. Includes which nodes were activated, which failed, risk scores per segment, and the agent currently processing. Used for UI feedback, auditing, recovery, and graph overlay logic.",
+  "scenario_telemetry": {
+    "scenario_hash": "a15f21c7e2bcd883",
+    "jurisdiction": "AL-Jefferson",
+    "scenario_type": "standard_intake",
+    "trigger_source": "user_input",
+    "current_agent": "AnalystWorker",
+    "progress": {
+      "nodes_total": 9,
+      "nodes_covered": 7,
+      "coverage_ratio": 0.78,
+      "last_node_id": "C4_Outcome",
+      "next_node_id": "C4_Failure"
+    },
+    "node_trace": [
+      {
+        "node_id": "C1_Input",
+        "status": "covered",
+        "agent": "ReconWorker",
+        "timestamp": "2025-06-14T15:17:32Z"
+      },
+      {
+        "node_id": "C1_Decision",
+        "status": "covered",
+        "agent": "ReconWorker"
+      },
+      {
+        "node_id": "C1_Action",
+        "status": "covered",
+        "agent": "CorrelationWorker"
+      },
+      {
+        "node_id": "C1_Outcome",
+        "status": "covered",
+        "agent": "CorrelationWorker"
+      },
+      {
+        "node_id": "C1_Failure",
+        "status": "flagged",
+        "agent": "AnalystWorker",
+        "violation_type": "Unlawful Removal",
+        "score": 0.91
+      },
+      {
+        "node_id": "C1_PMC",
+        "status": "queued",
+        "agent": "AdvisoryWorker"
+      }
+    ],
+    "agent_sequence": [
+      "ReconWorker",
+      "CorrelationWorker",
+      "AnalystWorker"
+    ],
+    "active_failures": [
+      {
+        "node_id": "C1_Failure",
+        "violation_type": "Unlawful Removal",
+        "statute_ref": "ASFA §675",
+        "risk_score": 0.91,
+        "explanation": "TPR accelerated due to service denial; parent classified noncompliant without resources."
+      }
+    ],
+    "COA_status": {
+      "rendered": false,
+      "pending_templates": [
+        "COA_admin_complaint_unlawful_removal",
+        "COA_hearing_request_due_process"
+      ],
+      "delivery_state": "AdvisoryWorker_awaiting_render"
+    },
+    "last_updated": "2025-06-14T15:20:12Z"
+  }
+}
